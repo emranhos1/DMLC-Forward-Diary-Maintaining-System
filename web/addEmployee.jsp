@@ -10,25 +10,17 @@
 
     <head>
         <title>DMLC - Add Employee</title>
-
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
         <!-- MetisMenu CSS -->
         <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
-
         <!-- Custom CSS -->
         <link href="css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
-
         <!-- Custom Fonts -->
-        <link href="css/font awesome/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-
+        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     </head>
-
     <body>
-
         <div id="wrapper">
-
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -40,7 +32,6 @@
                     </button>
                     <a class="navbar-brand" href="index.html">DMLC Admin</a>
                 </div>
-                <!-- /.navbar-header -->
 
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
@@ -181,7 +172,7 @@
                 </ul>
                 <!-- /.navbar-top-links -->
 
-
+                <!--Navigation Side Bar-->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -197,119 +188,44 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
-                                <a href="add_org.html"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="#"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="view_org.html"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                                <a href="#"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="add_emp.html"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                                <a href="#"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
                             </li>
 
                             <li>
-                                <a href="view_emp.html"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="#"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
-
-                            <!-- <li>
-                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="flot.html">Flot Charts</a>
-                                    </li>
-                                    <li>
-                                        <a href="morris.html">Morris.js Charts</a>
-                                    </li>
-                                </ul>
-    
-                            </li>
-                            <li>
-                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                            </li>
-                            <li>
-                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="panels-wells.html">Panels and Wells</a>
-                                    </li>
-                                    <li>
-                                        <a href="buttons.html">Buttons</a>
-                                    </li>
-                                    <li>
-                                        <a href="notifications.html">Notifications</a>
-                                    </li>
-                                    <li>
-                                        <a href="typography.html">Typography</a>
-                                    </li>
-                                    <li>
-                                        <a href="icons.html"> Icons</a>
-                                    </li>
-                                    <li>
-                                        <a href="grid.html">Grid</a>
-                                    </li>
-                                </ul>
-    
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#">Second Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Second Level Item</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Level <span class="fa arrow"></span></a>
-                                        <ul class="nav nav-third-level">
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Third Level Item</a>
-                                            </li>
-                                        </ul>
-    
-                                    </li>
-                                </ul>
-    
-                            </li> -->
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="send_message.html">বার্তা পাঠান</a>
+                                        <a href="#">বার্তা পাঠান</a>
                                     </li>
                                     <li>
-                                        <a href="view_message.html">বার্তা দেখুন</a>
+                                        <a href="#">বার্তা দেখুন</a>
                                     </li>
                                     <li>
-                                        <a href="view_notification.html">প্রজ্ঞাপন</a>
+                                        <a href="#">প্রজ্ঞাপন</a>
                                     </li>
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                         </ul>
                     </div>
-                    <!-- /.sidebar-collapse -->
                 </div>
-                <!-- /.navbar-static-side -->
             </nav>
 
+            <!--Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
@@ -324,79 +240,76 @@
                             <div class="panel-heading">
                                 নতুন কর্মচারী সৃষ্টি করুন
                             </div>
+                            
+                            <div id="message">
+                                <center><h3>${addEmpInfo}</h3></center>
+                            </div>
+                            
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" class="form-horizontal">
+                                        <form role="form" action="addEmployeeBean" method="post" class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="dept">ব্যবহারকারীর নাম</label>
+                                                <label class="col-md-3 control-label" for="uName">ব্যবহারকারীর নাম</label>
                                                 <div class="col-md-9">
-                                                    <input id="dept" name="dept" class="form-control" required>
+                                                    <input type="text" id="uName" name="uName" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="dept">পাসওয়ার্ড</label>
+                                                <label class="col-md-3 control-label" for="password">পাসওয়ার্ড</label>
                                                 <div class="col-md-9">
-                                                    <input id="dept" name="dept" class="form-control" required>
+                                                    <input type="password" id="password" name="password" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="fnam">পুরো নাম</label>
+                                                <label class="col-md-3 control-label" for="fullName">পুরো নাম</label>
                                                 <div class="col-md-9">
-                                                    <input id="fnam" name="fnam" class="form-control" required>
+                                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="addr">ঠিকানা</label>
+                                                <label class="col-md-3 control-label" for="address">ঠিকানা</label>
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="addr" id="addr" required=""></textarea>
+                                                    <textarea class="form-control" name="address" id="address" required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="cell">মোবাইল নম্বর</label>
+                                                <label class="col-md-3 control-label" for="cellNo">মোবাইল নম্বর</label>
                                                 <div class="col-md-9">
-                                                    <input id="cell" name="cell" class="form-control" required>
+                                                    <input type="text" id="cellNo" name="cellNo" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="email">ইমেইল</label>
                                                 <div class="col-md-9">
-                                                    <input id="email" name="email" class="form-control" required>
+                                                    <input type="email" id="email" name="email" class="form-control" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group hidden">
+                                                <div class="col-md-9">
+                                                    <input type="hidden" id="task" name="task" value="0" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="task">মোট কাজ সম্পন্ন</label>
+                                                <label class="col-md-3 control-label" for="designation">বিভাগ এবং পদবী</label>
                                                 <div class="col-md-9">
-                                                    <input id="task" name="task" class="form-control" required>
+                                                    <input type="text" name="designation" id="designation" onclick="getrole(this)" class="form-control" required>
+                                                    <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
                                                 </div>
                                             </div>
-
+                                            
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="srol">বিভাগ এবং পদবী</label>
+                                                <label class="col-md-3 control-label" for="status">অবস্থা</label>
                                                 <div class="col-md-9">
-                                                    <input id="srol" onclick="getrole(this)" class="form-control" required>
-                                                    <input type="hidden" id="role" class="form-control" required>
-                                                </div>
-                                            </div>
-
-
-                                            <!-- <div class="form-group">
-                                                <label class="col-md-3 control-label" for="role">User Role</label>
-                                                <div class="col-md-9">
-                                                  <input id="role" name="role" class="form-control">
-                                                </div>
-                                            </div> -->
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="stat">অবস্থা</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control" name="stat" id="stat">
+                                                    <select class="form-control" name="status" id="status" required>
+                                                        <option value="">নির্বাচন করুন</option>
                                                         <option value="1">সক্রিয়</option>
                                                         <option value="0">নিষ্ক্রিয়</option>
                                                     </select>
@@ -412,21 +325,13 @@
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
-                                <!-- /.row (nested) -->
                             </div>
-                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel -->
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /#page-wrapper -->
         </div>
-        <!-- /#wrapper -->
 
         <!-- jQuery -->
         <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
@@ -436,17 +341,15 @@
         <script src="js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
         <script src="js/custom/sb-admin-2.js" type="text/javascript"></script>
+        
         <script type="text/javascript">
-            $(document).ready(function () {
-                // function getparent(el){
-                //   console.log("click on parent");
-                // }
-            });
             function getrole(el) {
                 console.log(el);
             }
 
-
+            setTimeout(function () {
+                $('#message').fadeOut('slow');
+            }, 2000);
         </script>
     </body>
 </html>

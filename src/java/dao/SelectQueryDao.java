@@ -22,7 +22,6 @@ public class SelectQueryDao {
         con = db.myConn();
         pstm = con.prepareStatement("Select " + columnName + " from " + tableName);
         rs = pstm.executeQuery();
-        pstm.close();
         return rs;
     }
 
@@ -31,7 +30,6 @@ public class SelectQueryDao {
         con = db.myConn();
         pstm = con.prepareStatement("Select " + columnName + " from " + tableName + " where " + whereCondition);
         rs = pstm.executeQuery();
-        pstm.close();
         return rs;
     }
 }
