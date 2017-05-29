@@ -13,16 +13,13 @@
     <title>DMLC Forward Diary Maintaining System</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- MetisMenu CSS -->
-    <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Custom CSS -->
-    <link href="css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Custom Fonts -->
-    <link href="css/font awesome/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <!-- MetisMenu CSS -->
+        <link href="../allStyles/css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom CSS -->
+        <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <!-- Custom Fonts -->
+        <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
 </head>
 
@@ -59,16 +56,13 @@
     </div>
 
     <!-- jQuery -->
-    <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/custom/sb-admin-2.min.js" type="text/javascript"></script>
+        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
 
 </body>
 

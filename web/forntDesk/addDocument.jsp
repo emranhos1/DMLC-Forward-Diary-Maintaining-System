@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addEmployee
-    Created on : May 25, 2017, 11:49:29 AM
+    Document   : addDocument
+    Created on : May 29, 2017, 11:36:12 AM
     Author     : Md. Emran Hossain
 --%>
 
@@ -9,7 +9,13 @@
 <html lang="en">
 
     <head>
-        <title>DMLC - Add Employee</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DMLC - Add Document</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -19,8 +25,11 @@
         <!-- Custom Fonts -->
         <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     </head>
+
     <body>
+
         <div id="wrapper">
+
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -30,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Admin</a>
+                    <a class="navbar-brand" href="index.html">DMLC FrontDesk</a>
                 </div>
 
                 <ul class="nav navbar-top-links navbar-right">
@@ -170,9 +179,8 @@
                     </li>
                     <!-- /.dropdown -->
                 </ul>
-                <!-- /.navbar-top-links -->
 
-                <!--Navigation Side Bar-->
+
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -190,21 +198,11 @@
                             <li>
                                 <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
-
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="#"><i class="fa fa-file-o fa-fw"></i> নতুন ফাইল</a>
                             </li>
-
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
-                            </li>
-
-                            <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> সকল ফাইল</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
@@ -225,86 +223,64 @@
                 </div>
             </nav>
 
-            <!--Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">কর্মচারী</h1>
+                        <h1 class="page-header">নথিপত্র</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                নতুন কর্মচারী সৃষ্টি করুন
+                                নতুন নথিপত্র সৃষ্টি করুন
                             </div>
-                            
-                            <div id="message">
-                                <center><h3>${addEmpInfo}</h3></center>
-                            </div>
-                            
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" action="../addEmployeeBean" method="post" class="form-horizontal">
+                                        <form action="" method="post" role="form" class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="uName">ইউজারনেম</label>
+                                                <label class="col-md-3 control-label" for="subject">বিষয়</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="uName" name="uName" class="form-control" required>
+                                                    <input id="subject" name="subject" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="password">পাসওয়ার্ড</label>
+                                                <label class="col-md-3 control-label" for="description">বিবরণ</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="password" name="password" class="form-control" required>
+                                                    <textarea class="form-control" name="description" id="desc" required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="fullName">পুরো নাম</label>
+                                                <label class="col-md-3 control-label" for="scanfile">স্ক্যান ফাইল</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
+                                                    <input type="file" id="scanfile" name="scanfile" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="address">ঠিকানা</label>
+                                                <label class="col-md-3 control-label" for="requestId">অনুরোধ আইডি</label>
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="address" id="address" required></textarea>
+                                                    <input id="requestId" name="requestId" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="cellNo">মোবাইল নম্বর</label>
+                                                <label class="col-md-3 control-label" for="depOfOrigin">উত্পত্তি বিভাগ</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="cellNo" name="cellNo" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="email">ইমেইল</label>
-                                                <div class="col-md-9">
-                                                    <input type="email" id="email" name="email" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group hidden">
-                                                <div class="col-md-9">
-                                                    <input type="hidden" id="task" name="task" value="0" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="designation">বিভাগ এবং পদবী</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" name="designation" id="designation" onclick="getrole(this)" class="form-control" required>
-                                                    <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
+                                                    <input id="depOfOrigin" name="depOfOrigin" class="form-control" required>
                                                 </div>
                                             </div>
                                             
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="endDate">শেষ তারিখ</label>
+                                                <div class="col-md-9">
+                                                    <input id="endDate" name="endDate" class="form-control" required>
+                                                </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="status">অবস্থা</label>
                                                 <div class="col-md-9">
@@ -325,6 +301,7 @@
                                             </div>
                                         </form>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -341,16 +318,21 @@
         <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
         <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
-        
+
         <script type="text/javascript">
-            function getrole(el) {
+            $(document).ready(function () {
+                // function getparent(el){
+                //   console.log("click on parent");
+                // }
+            });
+            function getparent(el) {
                 console.log(el);
             }
 
-            setTimeout(function () {
-                $('#message').fadeOut('slow');
-            }, 2000);
+
         </script>
+
     </body>
+
 </html>
 

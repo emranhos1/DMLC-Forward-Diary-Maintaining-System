@@ -8,6 +8,10 @@
         <servlet-name>addEmployeeBean</servlet-name>
         <servlet-class>userBean.addEmployeeBean</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FindMainDepartment</servlet-name>
+        <servlet-class>userBean.FindMainDepartment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>addEmployeeBean</servlet-name>
         <url-pattern>/addEmployeeBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindMainDepartment</servlet-name>
+        <url-pattern>/FindMainDepartment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
