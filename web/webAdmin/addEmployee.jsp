@@ -11,13 +11,13 @@
     <head>
         <title>DMLC - Add Employee</title>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
-        <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
-        <link href="css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <div id="wrapper">
@@ -248,9 +248,9 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" action="addEmployeeBean" method="post" class="form-horizontal">
+                                        <form role="form" action="../addEmployeeBean" method="post" class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="uName">ব্যবহারকারীর নাম</label>
+                                                <label class="col-md-3 control-label" for="uName">ইউজারনেম</label>
                                                 <div class="col-md-9">
                                                     <input type="text" id="uName" name="uName" class="form-control" required>
                                                 </div>
@@ -334,13 +334,13 @@
         </div>
 
         <!-- jQuery -->
-        <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../js/jquery/jquery.min.js" type="text/javascript"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <script src="../js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
-        <script src="js/custom/sb-admin-2.js" type="text/javascript"></script>
+        <script src="../js/custom/sb-admin-2.js" type="text/javascript"></script>
         
         <script type="text/javascript">
             function getrole(el) {

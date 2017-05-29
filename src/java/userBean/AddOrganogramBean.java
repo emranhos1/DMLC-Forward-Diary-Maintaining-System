@@ -40,25 +40,12 @@ public class AddOrganogramBean extends HttpServlet {
             if(addOrganogram){
                 String addOrgSuccess = "<p class='alert-info'>org insert</p>";
                 request.getSession().setAttribute("addOrgInfo", addOrgSuccess);
-                response.sendRedirect("addOrganogram.jsp");
+                response.sendRedirect("webAdmin/addOrganogram.jsp");
             } else {
                 String addOrgError = "<p class='alert-info'>error to org insert</p>";
                 request.getSession().setAttribute("addOrgInfo", addOrgError);
-                response.sendRedirect("addOrganogram.jsp");
+                response.sendRedirect("webAdmin/addOrganogram.jsp");
             }
-            
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AddOrganogramBean</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println(designation+"<br/>");
-            out.println(depertment+"<br/>");
-            out.println("<h1>Servlet AddOrganogramBean at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
         } catch (SQLException ex) {
             Logger.getLogger(AddOrganogramBean.class.getName()).log(Level.SEVERE, null, ex);
         }

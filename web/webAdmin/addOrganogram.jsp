@@ -20,13 +20,13 @@
 
         <title>DMLC - Organogram</title>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
-        <link href="css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
-        <link href="css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
@@ -249,7 +249,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form action="AddOrganogramBean" accept-charset="UTF-8" method="post" role="form" class="form-horizontal">
+                                        <form action="../AddOrganogramBean" accept-charset="UTF-8" method="post" role="form" class="form-horizontal">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="depertment">বিভাগ</label>
                                                 <div class="col-md-9">
@@ -288,13 +288,13 @@
         </div>
 
         <!-- jQuery -->
-        <script src="js/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../js/jquery/jquery.min.js" type="text/javascript"></script>
         <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
         <!-- Metis Menu Plugin JavaScript -->
-        <script src="js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <script src="../js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
-        <script src="js/custom/sb-admin-2.js" type="text/javascript"></script>
+        <script src="../js/custom/sb-admin-2.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
                 // function getparent(el){
