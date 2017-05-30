@@ -1,17 +1,22 @@
 <%-- 
-    Document   : addEmployee
-    Created on : May 25, 2017, 11:49:29 AM
-    Author     : Md. Emran Hossain
+    Document   : allOrganogram
+    Created on : May 30, 2017, 1:58:11 PM
+    Author     : Softcell-4
 --%>
 
-<%@page import="dao.SelectQueryDao"%>
-<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
-        <title>DMLC - Add Employee</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DMLC - Organogram</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -20,9 +25,25 @@
         <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
         <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
+        <!-- DataTables JavaScript -->
+        <script src="../allStyles/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="../allStyles/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="../allStyles/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
+
     </head>
+
     <body>
+
         <div id="wrapper">
+
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -34,7 +55,7 @@
                     </button>
                     <a class="navbar-brand" href="index.html">DMLC Admin</a>
                 </div>
-
+                <!-- /.navbar-header -->
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -174,7 +195,7 @@
                 </ul>
                 <!-- /.navbar-top-links -->
 
-                <!--Navigation Side Bar-->
+                <!-- /.navbar-static-side -->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -190,173 +211,149 @@
                                 <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="add_org.html"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                                <a href="view_org.html"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                                <a href="add_emp.html"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="view_emp.html"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
+
+                            <!-- <li>
+                                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="flot.html">Flot Charts</a>
+                                    </li>
+                                    <li>
+                                        <a href="morris.html">Morris.js Charts</a>
+                                    </li>
+                                </ul>
+    
+                            </li>
+                            <li>
+                                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            </li>
+                            <li>
+                                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="panels-wells.html">Panels and Wells</a>
+                                    </li>
+                                    <li>
+                                        <a href="buttons.html">Buttons</a>
+                                    </li>
+                                    <li>
+                                        <a href="notifications.html">Notifications</a>
+                                    </li>
+                                    <li>
+                                        <a href="typography.html">Typography</a>
+                                    </li>
+                                    <li>
+                                        <a href="icons.html"> Icons</a>
+                                    </li>
+                                    <li>
+                                        <a href="grid.html">Grid</a>
+                                    </li>
+                                </ul>
+    
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">Second Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Second Level Item</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-third-level">
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">Third Level Item</a>
+                                            </li>
+                                        </ul>
+    
+                                    </li>
+                                </ul>
+    
+                            </li> -->
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">বার্তা পাঠান</a>
+                                        <a href="send_message.html">বার্তা পাঠান</a>
                                     </li>
                                     <li>
-                                        <a href="#">বার্তা দেখুন</a>
+                                        <a href="view_message.html">বার্তা দেখুন</a>
                                     </li>
                                     <li>
-                                        <a href="#">প্রজ্ঞাপন</a>
+                                        <a href="view_notification.html">প্রজ্ঞাপন</a>
                                     </li>
                                 </ul>
+                                <!-- /.nav-second-level -->
                             </li>
                         </ul>
                     </div>
+                    <!-- /.sidebar-collapse -->
                 </div>
             </nav>
-
-            <!--Body Part--> 
+            <!--page body-->
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">কর্মচারী</h1>
+                        <h1 class="page-header">অর্গানোগ্রাম</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                নতুন কর্মচারী সৃষ্টি করুন
+                                সকল অর্গানোগ্রাম দেখুন
                             </div>
-
-                            <div id="message">
-                                <center><h3>${addEmpInfo}</h3></center>
-                            </div>
-
                             <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" action="../addEmployeeBean" method="post" class="form-horizontal">
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="uName">ইউজারনেম</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="uName" name="uName" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="password">পাসওয়ার্ড</label>
-                                                <div class="col-md-9">
-                                                    <input type="password" id="password" name="password" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="fullName">পুরো নাম</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="address">ঠিকানা</label>
-                                                <div class="col-md-9">
-                                                    <textarea class="form-control" name="address" id="address" required></textarea>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="cellNo">মোবাইল নম্বর</label>
-                                                <div class="col-md-9">
-                                                    <input type="text" id="cellNo" name="cellNo" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="email">ইমেইল</label>
-                                                <div class="col-md-9">
-                                                    <input type="email" id="email" name="email" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group hidden">
-                                                <div class="col-md-9">
-                                                    <input type="hidden" id="task" name="task" value="0" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="designation">বিভাগ এবং পদবী</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control" name="designation" id="designation" required>
-                                                        <option value="0">নির্বাচন করুন</option>
-                                                        <%
-                                                            int i = 0;
-                                                            ResultSet rs;
-                                                            String columnName = "*";
-                                                            String tableName = "employee_organogram";
-                                                            rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
-                                                            rs.last();
-                                                            int orgRow = rs.getRow();
-                                                            int[] empOrgId = new int[orgRow];
-                                                            String[] designation = new String[orgRow];
-                                                            String[] department = new String[orgRow];
-                                                            int[] hasParent = new int[orgRow];
-                                                            int[] parentId = new int[orgRow];
-                                                            rs.beforeFirst();
-                                                            while (rs.next()) {
-                                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                                designation[i] = rs.getString("designation");
-                                                                department[i] = rs.getString("department");
-                                                                hasParent[i] = rs.getInt("has_parent");
-                                                                parentId[i] = rs.getInt("parent_id");
-                                                                i++;
-                                                            }
-                                                            for (i = 0; i < orgRow; i++) {
-                                                        %>
-                                                        <option value="<%=empOrgId[i]%>"><%=designation[i]%> (<%=department[i]%>)</option>
-                                                        <%
-                                                            }
-                                                        %>
-                                                    </select>
-                                                    <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label class="col-md-3 control-label" for="status">অবস্থা</label>
-                                                <div class="col-md-9">
-                                                    <select class="form-control" name="status" id="status" required>
-                                                        <option value="">নির্বাচন করুন</option>
-                                                        <option value="1">সক্রিয়</option>
-                                                        <option value="0">নিষ্ক্রিয়</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <button type="submit" class="btn btn-default">দাখিল করুন</button>
-                                                    <button type="reset" class="btn btn-default">পুনরায় বসান</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Department</th>
+                                            <th>Designation</th>
+                                            <th>Has Parent</th>
+                                            <th>Parent</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                    </tbody>
+                                </table>
+                                <!-- /.table-responsive -->
+                                <div class="well">
+                                    <h4>Organugram</h4>
+                                    <p>View this organugram <a href="#">Click Here</a>
                                 </div>
                             </div>
                         </div>
@@ -364,29 +361,15 @@
                 </div>
             </div>
         </div>
-        <!-- jQuery -->
-        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-            $("#designation").change(function () {
-                var empOrgId = $(this).val();
-                $("#empOrgId").val(empOrgId);
+        <script>
+            $(document).ready(function () {
+                $('#dataTables-example').DataTable({
+                    responsive: true
+                });
             });
-            
-            function getrole(el) {
-                console.log(el);
-            }
-
-            setTimeout(function () {
-                $('#message').fadeOut('slow');
-            }, 2000);
         </script>
+
     </body>
+
 </html>
 

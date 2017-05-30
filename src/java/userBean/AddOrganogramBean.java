@@ -19,6 +19,8 @@ public class AddOrganogramBean extends HttpServlet {
     private String columnName;
     private String values;
     private boolean addOrganogram;
+    private String parentId;
+    private String hasParent;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -28,21 +30,25 @@ public class AddOrganogramBean extends HttpServlet {
 
             designation = new String(request.getParameter("designation").getBytes("ISO-8859-1"), "UTF-8");
             depertment = new String(request.getParameter("depertment").getBytes("ISO-8859-1"), "UTF-8");
+            parentId = new String(request.getParameter("parentId").getBytes("ISO-8859-1"), "UTF-8");
+            hasParent = new String(request.getParameter("hasParent").getBytes("ISO-8859-1"), "UTF-8");
 
             System.out.println("designation : " + designation);
             System.out.println("depertment : " + depertment);
-
+            System.out.println("parentId : " + parentId);
+            System.out.println("hasParent : " + hasParent);
+            
             tableName = " employee_organogram ";
-            columnName = " designation, department ";
-            values = "'" + designation + "'," + "'" + depertment + "'";
+            columnName = " designation, department, has_parent, parent_id ";
+            values = "'" + designation + "'," + "'" + depertment + "',"+ "'" + hasParent + "',"+ "'" + parentId + "'";
             addOrganogram = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
 
-            if(addOrganogram){
-                String addOrgSuccess = "<p class='alert-info'>org insert</p>";
+            if (addOrganogram) {
+                String addOrgSuccess = "<p class='alert-info'>অর্গানোগ্রাম নিবন্ধিত হয়েছে</p>";
                 request.getSession().setAttribute("addOrgInfo", addOrgSuccess);
                 response.sendRedirect("webAdmin/addOrganogram.jsp");
             } else {
-                String addOrgError = "<p class='alert-info'>error to org insert</p>";
+                String addOrgError = "<p class='alert-info'>অর্গানোগ্রাম নিবন্ধিত হয়নি</p>";
                 request.getSession().setAttribute("addOrgInfo", addOrgError);
                 response.sendRedirect("webAdmin/addOrganogram.jsp");
             }

@@ -25,13 +25,13 @@ public class addEmployeeBean extends HttpServlet {
     private String columnName;
     private String values;
     private boolean addEmployee;
+    private String numCompleatedTask;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
             uName = new String(request.getParameter("uName").getBytes("ISO-8859-1"), "UTF-8");
             password = new String(request.getParameter("password").getBytes("ISO-8859-1"), "UTF-8");
             fullName = new String(request.getParameter("fullName").getBytes("ISO-8859-1"), "UTF-8");
@@ -39,12 +39,12 @@ public class addEmployeeBean extends HttpServlet {
             cellNo = new String(request.getParameter("cellNo").getBytes("ISO-8859-1"), "UTF-8");
             email = new String(request.getParameter("email").getBytes("ISO-8859-1"), "UTF-8");
             task = new String(request.getParameter("task").getBytes("ISO-8859-1"), "UTF-8");
-            empOrgId = new String(request.getParameter("empOrgId").getBytes("ISO-8859-1"), "UTF-8");
             status = new String(request.getParameter("status").getBytes("ISO-8859-1"), "UTF-8");
+            empOrgId = new String(request.getParameter("empOrgId").getBytes("ISO-8859-1"), "UTF-8");
             
             tableName =" employee ";
-            columnName =" user_name, password, full_name, comtact_info, contact_cell, contact_email ";
-            values ="'"+uName+"', "+"'"+password+"', "+"'"+fullName+"', "+"'"+address+"', "+"'"+cellNo+"', "+"'"+email+"'";
+            columnName =" user_name, password, full_name, comtact_info, contact_cell, contact_email, num_compleated_task, is_active, employee_organogram_id ";
+            values ="'"+uName+"', "+"'"+password+"', "+"'"+fullName+"', "+"'"+address+"', "+"'"+cellNo+"', "+"'"+email+"',"+"'"+task+"',"+"'"+status+"',"+"'"+empOrgId+"'";
             addEmployee = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             
             if(!addEmployee){

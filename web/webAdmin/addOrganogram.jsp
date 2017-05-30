@@ -27,7 +27,7 @@
         <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
         <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-         <!-- jQuery -->
+        <!-- jQuery -->
         <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
     </head>
 
@@ -267,9 +267,39 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="mainDepartment">মুখ্য বিভাগ</label>
                                                 <div class="col-md-9">
-                                                    <input id="mainDepartment" name="mainDepartment" class="form-control" required>
+                                                    <select class="form-control" name="mainDepartment" id="mainDepartment" required>
+                                                        <option value="0">নির্বাচন করুন</option>
+                                                        <%
+                                                            int i = 0;
+                                                            ResultSet rs;
+                                                            String columnName = "*";
+                                                            String tableName = "employee_organogram";
+                                                            rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
+                                                            rs.last();
+                                                            int orgRow = rs.getRow();
+                                                            int[] empOrgId = new int[orgRow];
+                                                            String[] designation = new String[orgRow];
+                                                            String[] department = new String[orgRow];
+                                                            int[] hasParent = new int[orgRow];
+                                                            int[] parentId = new int[orgRow];
+                                                            rs.beforeFirst();
+                                                            while (rs.next()) {
+                                                                empOrgId[i] = rs.getInt("employee_organogram_id");
+                                                                designation[i] = rs.getString("designation");
+                                                                department[i] = rs.getString("department");
+                                                                hasParent[i] = rs.getInt("has_parent");
+                                                                parentId[i] = rs.getInt("parent_id");
+                                                                i++;
+                                                            }
+                                                            for (i = 0; i < orgRow; i++) {
+                                                        %>
+                                                        <option value="<%=empOrgId[i]%>"><%=designation[i]%> (<%=department[i]%>)</option>
+                                                        <%
+                                                            }
+                                                        %>
+                                                    </select>
                                                     <div id="suggesstion-box"></div>
-                                                    <input type="hidden" id="parentId" name="parentId">
+                                                    <input type="hidden" id="parentId" name="parentId" value="">
                                                     <input type="hidden" id="hasParent" name="hasParent" value="0">
                                                 </div>
                                             </div>
@@ -290,32 +320,41 @@
             </div>
         </div>
         <script type="text/javascript">
-            
-                $("#mainDepartment").on("keyup", function () {
-                    var search = $(this).val();
-                    console.log('Search : ' + search);
-                    var ln = search.length;
-                    console.log('Ln : ' + ln);
-                    if(ln>0){
-                        $.ajax({
-                            type: "POST",
-                            url: "../FindMainDepartment",
-                            data: 'keyword=' + search,
-                            success: function (data) {
-                                $("#suggesstion-box").show();
-                                $("#suggesstion-box").html(data);
-                                console.log(data);
-                            }
-                        });
-                    }
-                });
+            $("#mainDepartment").change(function () {
+                var empOrgId = $(this).val();
+                $("#parentId").val(empOrgId);
+                if(empOrgId > 0 ){
+                    $("#hasParent").val(1);
+                } else{
+                    $("#hasParent").val(0);
+                }
+            });
+
+            $("#mainDepartment").on("keyup", function () {
+                var search = $(this).val();
+                console.log('Search : ' + search);
+                var ln = search.length;
+                console.log('Ln : ' + ln);
+                if (ln > 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: "../FindMainDepartment",
+                        data: 'keyword=' + search,
+                        success: function (data) {
+                            $("#suggesstion-box").show();
+                            $("#suggesstion-box").html(data);
+                            console.log(data);
+                        }
+                    });
+                }
+            });
             setTimeout(function () {
                 $('#message').fadeOut('fast');
             }, 2000);
 
         </script>
-        
-       
+
+
         <!-- Bootstrap Core JavaScript -->
         <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
         <!-- Metis Menu Plugin JavaScript -->
