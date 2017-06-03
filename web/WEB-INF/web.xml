@@ -12,6 +12,14 @@
         <servlet-name>FindMainDepartment</servlet-name>
         <servlet-class>userBean.FindMainDepartment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllOrganogramBean</servlet-name>
+        <servlet-class>userBean.AllOrganogramBean</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllEmployeeBean</servlet-name>
+        <servlet-class>userBean.AllEmployeeBean</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>FindMainDepartment</servlet-name>
         <url-pattern>/FindMainDepartment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllOrganogramBean</servlet-name>
+        <url-pattern>/AllOrganogramBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllEmployeeBean</servlet-name>
+        <url-pattern>/AllEmployeeBean</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

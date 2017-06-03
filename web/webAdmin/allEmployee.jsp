@@ -1,11 +1,9 @@
 <%-- 
-    Document   : allOrganogram
-    Created on : May 30, 2017, 1:58:11 PM
-    Author     : Softcell-4
+    Document   : allEmployee
+    Created on : Jun 3, 2017, 10:13:38 AM
+    Author     : Md. Emran Hossain
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="dao.SelectQueryDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,27 +16,37 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>DMLC - Organogram</title>
+        <title>DMLC - Employee</title>
         <!-- Bootstrap Core CSS -->
-        <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
-        <link href="../allStyles/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- DataTables CSS -->
-        <link href="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
         <!-- DataTables Responsive CSS -->
-        <link href="../allStyles/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/datatables-responsive/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
-        <link href="../allStyles/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
-        <link href="../allStyles/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
+        <!-- DataTables JavaScript -->
+        <script src="../allStyles/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="../allStyles/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="../allStyles/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
-
     <body>
-
         <div id="wrapper">
-
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <!--navbar-header -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -48,7 +56,7 @@
                     </button>
                     <a class="navbar-brand" href="index.html">DMLC Admin</a>
                 </div>
-                <!-- /.navbar-header -->
+
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -86,9 +94,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-messages -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -133,9 +139,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-tasks -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -166,9 +170,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-alerts -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -182,13 +184,9 @@
                             <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-user -->
                     </li>
-                    <!-- /.dropdown -->
                 </ul>
-                <!-- /.navbar-top-links -->
-
-                <!-- /.navbar-static-side -->
+                <!--Sidebar-->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -201,7 +199,6 @@
                                         </button>
                                     </span>
                                 </div>
-                                <!-- /input-group -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
@@ -235,54 +232,44 @@
                                         <a href="#">প্রজ্ঞাপন</a>
                                     </li>
                                 </ul>
-                                <!-- /.nav-second-level -->
                             </li>
                         </ul>
                     </div>
-                    <!-- /.sidebar-collapse -->
                 </div>
             </nav>
-            <!--page body-->
+
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">অর্গানোগ্রাম</h1>
+                        <h1 class="page-header">কর্মচারী</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                সকল অর্গানোগ্রাম দেখুন
+                                সকল কর্মচার দেখুন
                             </div>
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>SL</th>
-                                            <th>Designation</th>
+                                            <th>Username</th>
+                                            <th>Full Name</th>
+                                            <th>Contact Info</th>
                                             <th>Department</th>
-                                            <th>Has Parent</th>
-                                            <th>Parent</th>
-                                            <th>Edit</th>
+                                            <th>Designation</th>
+                                            <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tebleRow">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>মহাপরিচালক</td>
-                                            <td>প্রশাসন</td>
-                                            <td>না</td>
-                                            <td>না</td>
-                                            <td></td>
-                                        </tr>
-                                        
+
                                     </tbody>
                                 </table>
-                                <!-- /.table-responsive -->
                                 <div class="well">
-                                    <h4>Organugram</h4>
-                                    <p>View this organugram <a href="#">Click Here</a>
+                                    <h4>Employee</h4>
+                                    <p>View this employee more click on table row</a>
                                 </div>
                             </div>
                         </div>
@@ -290,107 +277,26 @@
                 </div>
             </div>
         </div>
-        
-        <!--Specification Dialog-->
-        <div class="modal fade" id="newSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">অর্গানোগ্রাম পরিবর্তন করুন</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="">
-                            <div id="supplierAuctionOrder">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="designation" class="col-sm-10 control-label">উপাধি</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="designation" value="" id="designation" class="form-control"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="department" class="col-sm-10 control-label">বিভাগ</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="department" value="" id="department" class="form-control"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="pdesignation" class="col-sm-10 control-label">ঊর্ধ্বতন পদ</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="pdesignation" value="" id="pdesignation" class="form-control"/>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-10">
-                                        <div class="form-group">
-                                            <div class="div-center">
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">Cancel</span>
-                                                </button>
-                                                <input type="submit" name="submit" value="Update"  class="btn btn-large btn-primary" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>    
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- jQuery -->
-        <script src="../allStyles/vendor/jquery/jquery.min.js" type="text/javascript"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../allStyles/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../allStyles/vendor/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-        <!-- DataTables JavaScript -->
-        <script src="../allStyles/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
-        <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
         <script>
             $(document).ready(function () {
+
+            });
+            $(window).on("load", function () {
                 $.ajax({
                     type: "POST",
-                    url: "../AllOrganogramBean",
+                    url: "../AllEmployeeBean",
                     success: function (data) {
                         $("#tebleRow").show();
-                        $("#tebleRow").append(data);
-                        
+                        $("#tebleRow").html(data);
                         $('#dataTables-example').DataTable({
-                        responsive: true
+                            responsive: true
                         });
                     }
                 });
             });
-            
-            $(document).on("click", ".open-newDialog", function () {
-
-                var designation = $(this).data('designation');
-                var department = $(this).data('department');
-                var pdesignation = $(this).data('pdesignation');
-                console.log(designation);
-                console.log(department);
-                console.log(pdesignation);
-
-                $(".modal-body #designation").val(designation);
-                $(".modal-body #department").val(department);
-                $(".modal-body #pdesignation").val(pdesignation);
-            });
         </script>
+
     </body>
+
 </html>
 
