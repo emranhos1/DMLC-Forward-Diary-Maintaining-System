@@ -186,7 +186,7 @@
                         </ul>
                     </li>
                 </ul>
-                <!--Sidebar-->
+                <!--Navigation Side Bar-->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -205,19 +205,19 @@
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>

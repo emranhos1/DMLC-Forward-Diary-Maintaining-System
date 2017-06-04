@@ -43,7 +43,7 @@
                     </button>
                     <a class="navbar-brand" href="index.html">DMLC Admin</a>
                 </div>
-
+                <!--navbar-top-links -->
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -181,7 +181,6 @@
                     </li>
                     <!-- /.dropdown -->
                 </ul>
-                <!-- /.navbar-top-links -->
 
                 <!--Navigation Side Bar-->
                 <div class="navbar-default sidebar" role="navigation">
@@ -196,26 +195,25 @@
                                         </button>
                                     </span>
                                 </div>
-                                <!-- /input-group -->
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
