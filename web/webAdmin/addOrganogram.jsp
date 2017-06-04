@@ -20,15 +20,22 @@
 
         <title>DMLC - Organogram</title>
         <!-- Bootstrap Core CSS -->
-        <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
-        <link href="../allStyles/css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
-        <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
-        <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery -->
-        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
+        <script src="../allStyles/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../allStyles/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../allStyles/vendor/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
+
     </head>
 
     <body>
@@ -230,7 +237,7 @@
                 </div>
             </nav>
 
-            <!--Body Part--> 
+            <!--Page Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
@@ -353,15 +360,6 @@
             }, 2000);
 
         </script>
-
-
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
-
     </body>
 
 </html>

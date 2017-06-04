@@ -43,7 +43,7 @@ public class addEmployeeBean extends HttpServlet {
             empOrgId = new String(request.getParameter("empOrgId").getBytes("ISO-8859-1"), "UTF-8");
             
             tableName =" employee ";
-            columnName =" user_name, password, full_name, comtact_info, contact_cell, contact_email, num_compleated_task, is_active, employee_organogram_id ";
+            columnName =" user_name, password, full_name, contact_info, contact_cell, contact_email, num_compleated_task, is_active, employee_organogram_id ";
             values ="'"+uName+"', "+"'"+password+"', "+"'"+fullName+"', "+"'"+address+"', "+"'"+cellNo+"', "+"'"+email+"',"+"'"+task+"',"+"'"+status+"',"+"'"+empOrgId+"'";
             addEmployee = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             
