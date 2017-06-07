@@ -42,7 +42,7 @@
                         <div class="panel-body">
                             <form role="form" action="LoginBean" method="post" class="form-horizontal">
                                     <div class="form-group">
-                                        <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
+                                        <input class="form-control" placeholder="Username" name="username" type="text" autofocus required>
                                     </div>
                                     <div class="form-group">
                                         <input class="form-control" placeholder="Password" name="password" type="password" required>

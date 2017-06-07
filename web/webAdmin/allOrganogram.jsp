@@ -1,7 +1,7 @@
 <%-- 
-    Document   : allOrganogram
-    Created on : May 30, 2017, 1:58:11 PM
-    Author     : Softcell-4
+    Document   : addOrganogram
+    Created on : May 30, 2017, 10:40:58 AM
+    Author     : Md. Emran Hossain
 --%>
 
 <%@page import="java.sql.ResultSet"%>
@@ -49,8 +49,10 @@
 
         <div id="wrapper">
 
-            <!-- Navigation -->
+            <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                <!--Navigation Bar Head-->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -58,9 +60,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Admin</a>
+                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
                 </div>
-                <!--navbar-header -->
+
+                <!--Navigation Bar Head(User)-->
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -98,9 +101,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-messages -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -145,9 +146,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-tasks -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -178,25 +177,21 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-alerts -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
+                            <li><a href="userProfile.jsp"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
                             </li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> সেটিংস</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
+                            <li><a href="../logout.jsp"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-user -->
                     </li>
-                    <!-- /.dropdown -->
                 </ul>
 
                 <!--Navigation Side Bar-->
@@ -214,7 +209,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
@@ -246,10 +241,15 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            
             <!--Page Body Part-->
             <div id="page-wrapper">
                 <div class="row">

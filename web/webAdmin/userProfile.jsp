@@ -1,6 +1,6 @@
 <%-- 
-    Document   : addEmployee
-    Created on : May 25, 2017, 11:49:29 AM
+    Document   : addOrganogram
+    Created on : Jun 07, 2017, 10:40:58 AM
     Author     : Md. Emran Hossain
 --%>
 
@@ -11,7 +11,14 @@
 <html lang="en">
 
     <head>
-        <title>DMLC - Add Employee</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>DMLC - Organogram</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -30,9 +37,10 @@
         <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
 
     </head>
+
     <body>
         <div id="wrapper">
-           <!-- Navigation Bar-->
+            <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
                 <!--Navigation Bar Head-->
@@ -237,127 +245,76 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">কর্মচারী</h1>
+                        <h1 class="page-header">অর্গানোগ্রাম</h1>
                     </div>
-                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.row -->
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                নতুন কর্মচারী সৃষ্টি করুন
+                                নতুন অর্গানোগ্রাম সৃষ্টি করুন
                             </div>
 
                             <div id="message">
-                                <center><h3>${addEmpInfo}</h3></center>
+                                <center><h3>${addOrgInfo}</h3></center>
                             </div>
 
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" action="../addEmployeeBean" method="post" class="form-horizontal">
+                                        <form action="#" accept-charset="UTF-8" method="post" role="form" class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="uName">ইউজারনেম</label>
+                                                <label class="col-md-3 control-label" for="userName">ইউজারনেম</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="uName" name="uName" class="form-control" required>
+                                                    <input id="userName" name="userName" class="form-control" value="">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="password">পাসওয়ার্ড</label>
+                                                <label class="col-md-3 control-label" for="password">নতুন পাসওয়ার্ড</label>
                                                 <div class="col-md-9">
-                                                    <input type="password" id="password" name="password" class="form-control" required>
+                                                    <input id="password" name="password" class="form-control" required>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="fullName">পুরো নাম</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="fullName" name="fullName" class="form-control" required>
+                                                    <input id="fullName" name="fullName" value="" class="form-control">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="address">ঠিকানা</label>
+                                                <label class="col-md-3 control-label" for="contactInfo">ঠিকানা</label>
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="address" id="address" required></textarea>
+                                                    <textarea id="contactInfo" name="contactInfo" class="form-control"></textarea>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="cellNo">মোবাইল নম্বর</label>
+                                                <label class="col-md-3 control-label" for="contactCell">যোগাযোগের নম্বর</label>
                                                 <div class="col-md-9">
-                                                    <input type="text" id="cellNo" name="cellNo" class="form-control" required>
+                                                    <input id="contactCell" name="contactCell" class="form-control">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="email">ইমেইল</label>
+                                                <label class="col-md-3 control-label" for="contactEmail">যোগাযোগের ই - মেইল</label>
                                                 <div class="col-md-9">
-                                                    <input type="email" id="email" name="email" class="form-control" required>
+                                                    <input type="email" id="contactEmail" name="contactEmail" class="form-control">
                                                 </div>
                                             </div>
-
-                                            <div class="form-group hidden">
-                                                <div class="col-md-9">
-                                                    <input type="hidden" id="task" name="task" value="0" class="form-control" required>
-                                                </div>
-                                            </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="designation">বিভাগ এবং পদবী</label>
+                                                <label class="col-md-3 control-label" for="designation">উপাধি</label>
                                                 <div class="col-md-9">
-                                                    <select class="form-control" name="designation" id="designation" required>
-                                                        <option value="0">নির্বাচন করুন</option>
-                                                        <%
-                                                            int i = 0;
-                                                            ResultSet rs;
-                                                            String columnName = "*";
-                                                            String tableName = "employee_organogram";
-                                                            rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
-                                                            rs.last();
-                                                            int orgRow = rs.getRow();
-                                                            int[] empOrgId = new int[orgRow];
-                                                            String[] designation = new String[orgRow];
-                                                            String[] department = new String[orgRow];
-                                                            int[] hasParent = new int[orgRow];
-                                                            int[] parentId = new int[orgRow];
-                                                            rs.beforeFirst();
-                                                            while (rs.next()) {
-                                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                                designation[i] = rs.getString("designation");
-                                                                department[i] = rs.getString("department");
-                                                                hasParent[i] = rs.getInt("has_parent");
-                                                                parentId[i] = rs.getInt("parent_id");
-                                                                i++;
-                                                            }
-                                                            for (i = 0; i < orgRow; i++) {
-                                                        %>
-                                                        <option value="<%=empOrgId[i]%>"><%=designation[i]%> (<%=department[i]%>)</option>
-                                                        <%
-                                                            }
-                                                        %>
-                                                    </select>
-                                                    <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
+                                                    <input id="designation" name="designation" class="form-control">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="status">অবস্থা</label>
+                                                <label class="col-md-3 control-label" for="department">বিভাগ</label>
                                                 <div class="col-md-9">
-                                                    <select class="form-control" name="status" id="status" required>
-                                                        <option value="">নির্বাচন করুন</option>
-                                                        <option value="1">সক্রিয়</option>
-                                                        <option value="0">নিষ্ক্রিয়</option>
-                                                    </select>
+                                                    <input id="department" name="department" class="form-control">
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <div class="col-md-3"></div>
-                                                <div class="col-md-6">
-                                                    <button type="submit" class="btn btn-default">দাখিল করুন</button>
+                                                <div class="col-md-10">
+                                                    <button type="submit" class="btn btn-default">হালনাগাদ করুন</button>
                                                     <button type="reset" class="btn btn-default">পুনরায় বসান</button>
                                                 </div>
                                             </div>
@@ -370,21 +327,14 @@
                 </div>
             </div>
         </div>
-        
         <script type="text/javascript">
-            $("#designation").change(function () {
-                var empOrgId = $(this).val();
-                $("#empOrgId").val(empOrgId);
-            });
-            
-            function getrole(el) {
-                console.log(el);
-            }
 
             setTimeout(function () {
-                $('#message').fadeOut('slow');
+                $('#message').fadeOut('fast');
             }, 2000);
+
         </script>
     </body>
+
 </html>
 

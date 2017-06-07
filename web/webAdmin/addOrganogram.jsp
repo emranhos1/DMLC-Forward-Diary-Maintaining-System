@@ -51,7 +51,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Admin</a>
+                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -174,12 +174,12 @@
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
+                            <li><a href="userProfile.jsp"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
                             </li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> সেটিংস</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
+                            <li><a href="../logout.jsp"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
                             </li>
                         </ul>
                     </li>
@@ -200,7 +200,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
@@ -232,6 +232,10 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -260,13 +264,13 @@
                                     <div class="col-md-offset-2 col-md-6">
                                         <form action="../AddOrganogramBean" accept-charset="UTF-8" method="post" role="form" class="form-horizontal">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="depertment">বিভাগ</label>
+                                                <label class="col-md-3 control-label" for="depertment">বিভাগ*</label>
                                                 <div class="col-md-9">
                                                     <input id="depertment" name="depertment" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="designation">উপাধি</label>
+                                                <label class="col-md-3 control-label" for="designation">উপাধি*</label>
                                                 <div class="col-md-9">
                                                     <input id="designation" name="designation" class="form-control" required>
                                                 </div>
@@ -274,7 +278,7 @@
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="mainDepartment">মুখ্য বিভাগ</label>
                                                 <div class="col-md-9">
-                                                    <select class="form-control" name="mainDepartment" id="mainDepartment" required>
+                                                    <select class="form-control" name="mainDepartment" id="mainDepartment">
                                                         <option value="0">নির্বাচন করুন</option>
                                                         <%
                                                             int i = 0;
@@ -326,6 +330,7 @@
                 </div>
             </div>
         </div>
+                                                    
         <script type="text/javascript">
             $("#mainDepartment").change(function () {
                 var empOrgId = $(this).val();
@@ -355,12 +360,10 @@
                     });
                 }
             });
+            
             setTimeout(function () {
                 $('#message').fadeOut('fast');
             }, 2000);
-
         </script>
     </body>
-
 </html>
-

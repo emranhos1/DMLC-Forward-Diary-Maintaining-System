@@ -11,51 +11,89 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginBean extends HttpServlet {
 
     ResultSet rs;
-    private String userEmail;
+    private String userName;
     private String userPass;
     private String columnName;
     private String tableName;
+    private String whereCondition;
     private int userId;
     private String email;
     private String password;
-    
+    private int emplOrgId;
+    private String designation;
+    private String department;
+    private String role;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            userEmail = request.getParameter("email");
-            userPass = request.getParameter("password");
-            
-            columnName =" * ";
-            tableName =" employee ";
-            
-            rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
+
+            userName = new String(request.getParameter("username").getBytes("ISO-8859-1"), "UTF-8");
+            userPass = new String(request.getParameter("password").getBytes("ISO-8859-1"), "UTF-8");
+
+            columnName = " * ";
+            tableName = " employee_emp_org ";
+            whereCondition = " user_name = '" + userName + "' and password = '" + userPass + "' ";;
+
+            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
             if (rs.next()) {
-//                userType = rs.getString("type");
                 userId = rs.getInt("employee_id");
                 email = rs.getString("contact_email");
                 password = rs.getString("password");
-
-//                switch (userType) {
-//                    case "Purchaser": {
-//                        String loginSuccess = "<p><h3 class='alert-info'>Login Successful</h3></p>";
-//                        request.getSession().setAttribute("loginSuccess", loginSuccess);
-//                        response.sendRedirect("purchaser/purchaser.jsp");
-//                        break;
-//                    }
-//                    case "Supplier": {
-//                        String loginSuccess = "<p><h3 class='alert-info'>Login Successful</h3></p>";
-//                        request.getSession().setAttribute("loginSuccess", loginSuccess);
-//                        response.sendRedirect("supplier/supplier.jsp");
-//                        break;
-//                    }
+                emplOrgId = rs.getInt("employee_organogram_id");
+                designation = rs.getString("designation");
+                department = rs.getString("department");
+                                
+                if (department.equals("webadmin") && designation.equals("webadmin")) {
+                    role = "webadmin";
+                } else if (department.equals("frontdesk") && designation.equals("frontdesk")) {
+                    role = "frontdesk";
+                } else if (designation.equals("মহাপরিচালক") && department.equals("সকল")) {
+                    role = "DG";
+                } else {
+                    role = "employee";
                 }
+                switch(role){
+                    case "webadmin" :{
+//                        out.println(department+", "+designation+"</br> ");
+//                        out.println("Role : "+role);
+                        response.sendRedirect("webAdmin/dashbord.jsp");
+                        break;
+                    }
+                    case "frontdesk": {
+//                        out.println(department+", "+designation+"</br> ");
+//                        out.println("Role : "+role);
+                        response.sendRedirect("frontDesk/addDocument.jsp");
+                        break;
+                    }
+                    case "DG": {
+//                        out.println(department+", "+designation+"</br> ");
+//                        out.println("Role : "+role);
+                        response.sendRedirect("director_general/dashbord.jsp");
+                        break;
+                    }
+                    case "employee": {
+//                        out.println(department+", "+designation+"</br> ");
+//                        out.println("Role : "+role);
+                        response.sendRedirect("employee/dashbord.jsp");
+                        break;
+                    }
+                }
+            } else {
+                String loginError = "<p class='alert-danger'>User Email or Password Incorrect</p>";
+                request.getSession().setAttribute("loginError", loginError);
+                response.sendRedirect("login.jsp");
+            }
+            
+            HttpSession session = request.getSession();
+            session.setAttribute("idUser", userId);
             
         } catch (SQLException ex) {
             Logger.getLogger(LoginBean.class.getName()).log(Level.SEVERE, null, ex);
