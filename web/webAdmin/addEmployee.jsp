@@ -256,7 +256,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form role="form" action="../addEmployeeBean" method="post" class="form-horizontal">
+                                        <form role="form" action="../AddEmployeeBean" method="post" class="form-horizontal">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="uName">ইউজারনেম</label>
                                                 <div class="col-md-9">

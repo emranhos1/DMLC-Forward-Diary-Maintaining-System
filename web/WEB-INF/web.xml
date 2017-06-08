@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>addEmployeeBean</servlet-name>
-        <servlet-class>userBean.addEmployeeBean</servlet-class>
+        <servlet-class>userBean.AddEmployeeBean</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>FindMainDepartment</servlet-name>
@@ -23,6 +23,10 @@
     <servlet>
         <servlet-name>LoginBean</servlet-name>
         <servlet-class>userBean.LoginBean</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddDocumentBean</servlet-name>
+        <servlet-class>userBean.AddDocumentBean</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>LoginBean</servlet-name>
         <url-pattern>/LoginBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddDocumentBean</servlet-name>
+        <url-pattern>/AddDocumentBean</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

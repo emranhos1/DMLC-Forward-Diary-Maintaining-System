@@ -16,22 +16,31 @@
         <meta name="author" content="">
 
         <title>DMLC - Add Document</title>
-        <!-- Bootstrap Core CSS -->
-        <link href="../allStyles/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
-        <link href="../allStyles/css/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
-        <link href="../allStyles/css/custom/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
-        <link href="../allStyles/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../allStyles/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- jQuery -->
+        <script src="../allStyles/vendor/jquery/jquery.min.js" type="text/javascript"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../allStyles/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../allStyles/vendor/metisMenu/metisMenu.min.js" type="text/javascript"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
     </head>
 
     <body>
 
         <div id="wrapper">
 
-            <!-- Navigation -->
+            <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                <!--Navigation Bar Head-->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -39,9 +48,10 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC FrontDesk</a>
+                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
                 </div>
 
+                <!--Navigation Bar Head(User)-->
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -79,9 +89,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-messages -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -126,9 +134,7 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-tasks -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -159,28 +165,24 @@
                                 </a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-alerts -->
                     </li>
-                    <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
+                            <li><a href="userProfile.jsp"><i class="fa fa-user fa-fw"></i> ব্যবহারকারী প্রোফাইল</a>
                             </li>
                             <li><a href="#"><i class="fa fa-gear fa-fw"></i> সেটিংস</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
+                            <li><a href="../logout.jsp"><i class="fa fa-sign-out fa-fw"></i> প্রস্থান</a>
                             </li>
                         </ul>
-                        <!-- /.dropdown-user -->
                     </li>
-                    <!-- /.dropdown -->
                 </ul>
 
-
+                <!--Navigation Side Bar-->
                 <div class="navbar-default sidebar" role="navigation">
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
@@ -193,36 +195,23 @@
                                         </button>
                                     </span>
                                 </div>
-                                <!-- /input-group -->
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                            </li>
+
+                            <li>
+                                <a href="addDocument.jsp"><i class="fa fa-users fa-fw"></i>নথি যোগ করুন</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-file-o fa-fw"></i> নতুন ফাইল</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> সকল ফাইল</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#">বার্তা পাঠান</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">বার্তা দেখুন</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">প্রজ্ঞাপন</a>
-                                    </li>
-                                </ul>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
+            <!--Page Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
@@ -238,7 +227,7 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form action="" method="post" role="form" class="form-horizontal">
+                                        <form action="../AddDocumentBean" method="post" role="form" class="form-horizontal" charset="utf-8" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="subject">বিষয়</label>
                                                 <div class="col-md-9">
@@ -273,11 +262,11 @@
                                                     <input id="depOfOrigin" name="depOfOrigin" class="form-control" required>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="endDate">শেষ তারিখ</label>
                                                 <div class="col-md-9">
-                                                    <input id="endDate" name="endDate" class="form-control" required>
+                                                    <input type="date" id="endDate" name="endDate" class="form-control" required>
                                                 </div>
                                             </div>
 
@@ -286,8 +275,9 @@
                                                 <div class="col-md-9">
                                                     <select class="form-control" name="status" id="status" required>
                                                         <option value="">নির্বাচন করুন</option>
-                                                        <option value="1">সক্রিয়</option>
-                                                        <option value="0">নিষ্ক্রিয়</option>
+                                                        <option value="1">শুরু হয়েছে</option>
+                                                        <option value="2">চলমান</option>
+                                                        <option value="3">শেষ</option>
                                                     </select>
                                                 </div>
                                             </div>

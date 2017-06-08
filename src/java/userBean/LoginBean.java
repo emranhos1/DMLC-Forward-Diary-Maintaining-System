@@ -70,7 +70,7 @@ public class LoginBean extends HttpServlet {
                     case "frontdesk": {
 //                        out.println(department+", "+designation+"</br> ");
 //                        out.println("Role : "+role);
-                        response.sendRedirect("frontDesk/addDocument.jsp");
+                        response.sendRedirect("frontDesk/dashbord.jsp");
                         break;
                     }
                     case "DG": {
