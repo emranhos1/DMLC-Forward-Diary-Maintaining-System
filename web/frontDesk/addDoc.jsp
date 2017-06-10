@@ -1,21 +1,20 @@
 <%-- 
-    Document   : addDocument
-    Created on : May 29, 2017, 11:36:12 AM
+    Document   : allEmployee
+    Created on : Jun 3, 2017, 10:13:38 AM
     Author     : Md. Emran Hossain
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-
-        <title>DMLC - Add Document</title>
+        <title>DMLC - Document</title>
+        <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
         <link href="../allStyles/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
@@ -23,6 +22,10 @@
         <link href="../allStyles/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
         <link href="../allStyles/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- DataTables CSS -->
+        <link href="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- DataTables Responsive CSS -->
+        <link href="../allStyles/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery -->
         <script src="../allStyles/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <!-- Bootstrap Core JavaScript -->
@@ -31,10 +34,12 @@
         <script src="../allStyles/vendor/metisMenu/metisMenu.min.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
         <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
+        <!-- DataTables JavaScript -->
+        <script src="../allStyles/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
-
     <body>
-
         <div id="wrapper">
 
             <!-- Navigation Bar-->
@@ -201,17 +206,44 @@
                             </li>
 
                             <li>
-                                <a href="addDocument.jsp"><i class="fa fa-users fa-fw"></i>নথি যোগ করুন</a>
+                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                            </li>
+
+                            <li>
+                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                            </li>
+
+                            <li>
+                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                            </li>
+
+                            <li>
+                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">বার্তা পাঠান</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">বার্তা দেখুন</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">প্রজ্ঞাপন</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <!--Page Body Part--> 
+            <!--Page Body Part-->
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
@@ -227,34 +259,75 @@
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
-                                        <form action="../AddDocumentBean" method="post" role="form" class="form-horizontal" charset="utf-8" enctype="multipart/form-data">
-                                            
-
+                                        <div id="message">
+                                            <center><h3>${addDocInfo}</h3></center>
+                                        </div>
+                                        <form name="addDocument" action="../AddDocument" class="form-horizontal" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="description">বিবরণ</label>
+                                                <label class="col-md-3 control-label" for="subject">বিষয়</label>
                                                 <div class="col-md-9">
-                                                    <textarea class="form-control" name="description" id="desc" required></textarea>
+                                                    <input type="text" id="subject" name="subject" class="form-control" required>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
-                                                <label class="col-md-3 control-label" for="scanfile">স্ক্যান ফাইল</label>
+                                                <label class="col-md-3 control-label" for="details">বিবরণ</label>
                                                 <div class="col-md-9">
-                                                    <input type="file" id="scanfile" name="scanfile" class="form-control" required>
+                                                    <textarea class="form-control" name="details" id="details" required></textarea>
                                                 </div>
                                             </div>
-
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="file">স্ক্যান ফাইল</label>
+                                                <div class="col-md-9">
+                                                    <input type="file" id="file" name="file" class="form-control" required>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="requestId">অনুরোধ আইডি</label>
                                                 <div class="col-md-9">
-                                                    <input id="requestId" name="requestId" class="form-control" required>
+                                                    <input type="text" id="requestId" name="requestId" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="requestId">অনুরোধ আইডি</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="requestId" name="requestId" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="depOfOrigin">উত্পত্তি বিভাগ</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="depOfOrigin" name="depOfOrigin" class="form-control" required>
                                                 </div>
                                             </div>
 
-                                            
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="endDate">শেষ তারিখ</label>
+                                                <div class="col-md-9">
+                                                    <input type="date" id="endDate" name="endDate" class="form-control" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="status">অবস্থা</label>
+                                                <div class="col-md-9">
+                                                    <select class="form-control" name="status" id="status" required>
+                                                        <option value="">নির্বাচন করুন</option>
+                                                        <option value="1">শুরু হয়েছে</option>
+                                                        <option value="2">চলমান</option>
+                                                        <option value="3">শেষ</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-6">
+                                                    <button type="submit" class="btn btn-default">দাখিল করুন</button>
+                                                    <button type="reset" class="btn btn-default">পুনরায় বসান</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -262,21 +335,11 @@
                 </div>
             </div>
         </div>
-        
-        <script type="text/javascript">
-            $(document).ready(function () {
-                // function getparent(el){
-                //   console.log("click on parent");
-                // }
-            });
-            function getparent(el) {
-                console.log(el);
-            }
-
-
+                                        
+        <script>
+            setTimeout(function () {
+                $('#message').fadeOut('fast');
+            }, 2000);
         </script>
-
     </body>
-
 </html>
-

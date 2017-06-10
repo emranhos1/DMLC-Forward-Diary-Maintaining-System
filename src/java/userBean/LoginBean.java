@@ -62,26 +62,18 @@ public class LoginBean extends HttpServlet {
                 }
                 switch(role){
                     case "webadmin" :{
-//                        out.println(department+", "+designation+"</br> ");
-//                        out.println("Role : "+role);
                         response.sendRedirect("webAdmin/dashbord.jsp");
                         break;
                     }
                     case "frontdesk": {
-//                        out.println(department+", "+designation+"</br> ");
-//                        out.println("Role : "+role);
                         response.sendRedirect("frontDesk/dashbord.jsp");
                         break;
                     }
                     case "DG": {
-//                        out.println(department+", "+designation+"</br> ");
-//                        out.println("Role : "+role);
                         response.sendRedirect("director_general/dashbord.jsp");
                         break;
                     }
                     case "employee": {
-//                        out.println(department+", "+designation+"</br> ");
-//                        out.println("Role : "+role);
                         response.sendRedirect("employee/dashbord.jsp");
                         break;
                     }

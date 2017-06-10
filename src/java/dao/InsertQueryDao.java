@@ -20,7 +20,7 @@ public class InsertQueryDao {
     public static boolean insertQueryWithOutWhereClause(String tableName, String columnName, String values) throws SQLException {
 
         con = db.myConn();
-        pstm = con.prepareStatement("insert into " + tableName + "(" + columnName + ") values(" + values + ")");
+        pstm = con.prepareStatement("Insert into " + tableName + "(" + columnName + ") values(" + values + ")");
         pstm.execute();
         pstm.close();
         return true;
