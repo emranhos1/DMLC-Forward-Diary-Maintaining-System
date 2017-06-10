@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 @MultipartConfig(maxFileSize = 169999999)
-public class AddDocument extends HttpServlet {
+public class AddDocumentBean extends HttpServlet {
 
     private InputStream inputStream;
     private long fileSize;
@@ -127,19 +127,19 @@ public class AddDocument extends HttpServlet {
                 if (addLetter) {
                     String addDocSuccess = "<p class='alert-info'>নতুন নথি সফলভাবে সংযোজিত হয়েছে</p>";
                     request.getSession().setAttribute("addDocInfo", addDocSuccess);
-                    response.sendRedirect("frontDesk/addDoc.jsp");
+                    response.sendRedirect("frontDesk/addDocument.jsp");
                 } else {
                     String addDocError = "<p class='alert-info'> নতুন নথিটি অন্তর্ভুক্ত করা হয়নি</p>";
                     request.getSession().setAttribute("addDocInfo", addDocError);
-                    response.sendRedirect("frontDesk/addDoc.jsp");
+                    response.sendRedirect("frontDesk/addDocument.jsp");
                 }
             } else {
                 String addDocError = "<p class='alert-info'> নতুন নথিটি অন্তর্ভুক্ত করা হয়নি</p>";
                 request.getSession().setAttribute("addDocInfo", addDocError);
-                response.sendRedirect("frontDesk/addDoc.jsp");
+                response.sendRedirect("frontDesk/addDocument.jsp");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AddDocument.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddDocumentBean.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

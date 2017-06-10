@@ -262,7 +262,7 @@
                                         <div id="message">
                                             <center><h3>${addDocInfo}</h3></center>
                                         </div>
-                                        <form name="addDocument" action="../AddDocument" class="form-horizontal" method="POST" enctype="multipart/form-data">
+                                        <form name="addDocument" action="../AddDocumentBean" class="form-horizontal" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="subject">বিষয়</label>
                                                 <div class="col-md-9">

@@ -25,8 +25,8 @@
         <servlet-class>userBean.AddEmployeeBean</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AddDocument</servlet-name>
-        <servlet-class>userBean.AddDocument</servlet-class>
+        <servlet-name>AddDocumentBean</servlet-name>
+        <servlet-class>userBean.AddDocumentBean</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
@@ -53,8 +53,8 @@
         <url-pattern>/AddEmployeeBean</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AddDocument</servlet-name>
-        <url-pattern>/AddDocument</url-pattern>
+        <servlet-name>AddDocumentBean</servlet-name>
+        <url-pattern>/AddDocumentBean</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
