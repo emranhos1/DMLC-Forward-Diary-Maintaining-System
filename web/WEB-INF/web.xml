@@ -5,10 +5,6 @@
         <servlet-class>userBean.AddOrganogramBean</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>addEmployeeBean</servlet-name>
-        <servlet-class>userBean.AddEmployeeBean</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>FindMainDepartment</servlet-name>
         <servlet-class>userBean.FindMainDepartment</servlet-class>
     </servlet>
@@ -28,13 +24,13 @@
         <servlet-name>AddDocumentBean</servlet-name>
         <servlet-class>userBean.AddDocumentBean</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddEmployeeBean</servlet-name>
+        <servlet-class>userBean.AddEmployeeBean</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>addEmployeeBean</servlet-name>
-        <url-pattern>/addEmployeeBean</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>FindMainDepartment</servlet-name>
@@ -56,6 +52,10 @@
         <servlet-name>AddDocumentBean</servlet-name>
         <url-pattern>/AddDocumentBean</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddEmployeeBean</servlet-name>
+        <url-pattern>/AddEmployeeBean</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -64,4 +64,5 @@
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+    
 </web-app>

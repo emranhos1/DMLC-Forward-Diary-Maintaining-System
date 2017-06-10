@@ -234,7 +234,6 @@
                                                     <input id="subject" name="subject" class="form-control" required>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label class="col-md-3 control-label" for="description">বিবরণ</label>
                                                 <div class="col-md-9">
@@ -299,16 +298,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- jQuery -->
-        <script src="../allStyles/js/jquery/jquery.min.js" type="text/javascript"></script>
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../allStyles/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../allStyles/js/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-        <!-- Custom Theme JavaScript -->
-        <script src="../allStyles/js/custom/sb-admin-2.js" type="text/javascript"></script>
-
+        
         <script type="text/javascript">
             $(document).ready(function () {
                 // function getparent(el){
