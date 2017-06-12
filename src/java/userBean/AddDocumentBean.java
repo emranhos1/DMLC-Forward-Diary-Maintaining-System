@@ -108,7 +108,7 @@ public class AddDocumentBean extends HttpServlet {
                 documentId = selectMaxId.getInt("document_id");
             }
             tableName = " letter ";
-            columnName = " current_status, receiving_date, department_of_origin, request_id, subject_of_letter, end_date, document_id, short_desc, scan_fite ";
+            columnName = " current_status, receiving_date, department_of_origin, request_id, subject_of_letter, end_date, document_id, short_desc, scan_file ";
             values = "'" + status + "', '" + inputDate + "', '" + depOfOrigin + "', '" + requestId + "', '" + subject + "', '" + endDate + "', '" + documentId + "', '" + description + "', '" + fileName + "'";
             addLetter = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
 

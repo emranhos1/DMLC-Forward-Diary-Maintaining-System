@@ -28,6 +28,10 @@
         <servlet-name>AddDocumentBean</servlet-name>
         <servlet-class>userBean.AddDocumentBean</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllNewDocument</servlet-name>
+        <servlet-class>userBean.AllNewDocument</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>AddDocumentBean</servlet-name>
         <url-pattern>/AddDocumentBean</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllNewDocument</servlet-name>
+        <url-pattern>/AllNewDocument</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
