@@ -1,6 +1,6 @@
 <%-- 
     Document   : addOrganogram
-    Created on : Jun 08, 2017, 10:40:58 AM
+    Created on : Jun 07, 2017, 10:40:58 AM
     Author     : Md. Emran Hossain
 --%>
 
@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>SB Admin 2 - Bootstrap Admin Theme</title>
+        <title>DMLC - Dashboard</title>
 
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -39,7 +39,7 @@
     </head>
     <body>
         <div id="wrapper">
-
+            
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -200,26 +200,53 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>
-                                <a href="addDocument.jsp"><i class="fa fa-users fa-fw"></i>নথি যোগ করুন</a>
+                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                            </li>
+
+                            <li>
+                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
+                            </li>
+
+                            <li>
+                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
+                            </li>
+
+                            <li>
+                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#">বার্তা পাঠান</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">বার্তা দেখুন</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">প্রজ্ঞাপন</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
-            <!--Page Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">Dashboard</h1>
                     </div>
+                    <!-- /.col-lg-12 -->
                 </div>
                 <!-- /.row -->
                 <div class="row">
@@ -757,4 +784,3 @@
         </div>
     </body>
 </html>
-

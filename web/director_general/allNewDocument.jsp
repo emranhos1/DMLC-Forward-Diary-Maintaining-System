@@ -4,6 +4,8 @@
     Author     : Md. Emran Hossain
 --%>
 
+<%@page import="dao.SelectQueryDao"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +16,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>DMLC - Employee</title>
+        <title>DMLC - All New Document</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -54,7 +56,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
+                    <a class="navbar-brand" href="dashbord.jsp">DMLC মহাপরিচালক</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -203,7 +205,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
                             <li>
                                 <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>নতুন নথি সমুহ</a>
@@ -215,8 +217,7 @@
                                 <a href="endDocument.jsp"><i class="fa fa-user fa-fw"></i>শেষ নথি সমুহ</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
-                                </a>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
                             </li>
                         </ul>
                     </div>
@@ -279,64 +280,74 @@
                         <h4 class="modal-title" id="myModalLabel">Add Specification</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../SupplierProSpceBean">
+                        <form class="form-horizontal" method="post" action="">
                             <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">Status</label>
+                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
                                 <div class="col-sm-8">
                                     <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="receivingDate" class="col-sm-4 control-label">Receiving Date</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="receivingDate" name="receivingDate" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="depOfOrigin" class="col-sm-4 control-label">department Of Origin</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="depOfOrigin" name="depOfOrigin" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="requestId" class="col-sm-4 control-label">requestId</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="requestId" name="requestId" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subjectOfLetter" class="col-sm-4 control-label">subject Of Letter</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" required/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="endDate" class="col-sm-4 control-label">endDate</label>
+                                <label for="endDate" class="col-sm-4 control-label">শেষ তারিখ</label>
                                 <div class="col-sm-8">
                                     <input  type="date" id="endDate" name="endDate" class="form-control" value="" required/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="documentId" class="col-sm-4 control-label">documentId</label>
+                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
                                 <div class="col-sm-8">
-                                    <input  type="text" id="documentId" name="documentId" class="form-control" value="" required/>
+                                    <img src="../uplopded_file/${scanfile}"  alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="shortDesc" class="col-sm-4 control-label">shortDesc</label>
+                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
                                 <div class="col-sm-8">
-                                    <textarea id="shortDesc" name="shortDesc" class="form-control" required></textarea>
+                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">scanFile</label>
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
                                 <div class="col-sm-8">
-                                    <input  type="text" id="scanFile" name="scanFile" class="form-control" value="" required/>
+                                <select class="form-control" name="goingTo" id="goingTo" required>
+                                    <option value="">কর্মচারী নির্বাচন করুন</option>
+                                    <%
+                                        int i = 0;
+                                        ResultSet rs;
+                                        String columnName = " * ";
+                                        String tableName = " employee_organogram ";
+                                        rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
+                                        rs.last();
+                                        int orgRow = rs.getRow();
+                                        int[] empOrgId = new int[orgRow];
+                                        String[] designation = new String[orgRow];
+                                        String[] department = new String[orgRow];
+                                        int[] hasParent = new int[orgRow];
+                                        int[] parentId = new int[orgRow];
+                                        rs.beforeFirst();
+                                        while (rs.next()) {
+                                            empOrgId[i] = rs.getInt("employee_organogram_id");
+                                            designation[i] = rs.getString("designation");
+                                            department[i] = rs.getString("department");
+                                            hasParent[i] = rs.getInt("has_parent");
+                                            parentId[i] = rs.getInt("parent_id");
+                                            i++;
+                                        }
+                                        for (i = 0; i < orgRow; i++) {
+                                    %>
+                                    <option value="<%=empOrgId[i]%>"><%=designation[i]%> (<%=department[i]%>)</option>
+                                    <%
+                                        }
+                                    %>
+                                </select>
                                 </div>
+                                <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
                             </div>
-                            <div class="modal-footer">
-                                <input type="submit" class="btn btn-primary" name="submitSpce" value="Save" />
-                            </div>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
                         </form>
                     </div>
                 </div>
@@ -360,7 +371,7 @@
                     }
                 });
             });
-            
+
             $(document).on("click", ".open-spceDialog", function () {
 
                 var status = $(this).data('status');
@@ -372,7 +383,7 @@
                 var documentId = $(this).data('documentid');
                 var shortDesc = $(this).data('shortdesc');
                 var scanFile = $(this).data('scanfile');
-                
+
                 //console.log(pName);
 
                 $(".modal-body #status").val(status);

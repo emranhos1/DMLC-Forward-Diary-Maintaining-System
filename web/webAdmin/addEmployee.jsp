@@ -192,7 +192,7 @@
                                 </div>
                             </li>
                             <li>
-                                <a href="dashbord.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
+                                <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
 
                             <li>

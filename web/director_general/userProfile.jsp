@@ -1,24 +1,20 @@
 <%-- 
-    Document   : addOrganogram
-    Created on : May 30, 2017, 10:40:58 AM
-    Author     : Md. Emran Hossain
+    Document   : userProfile
+    Created on : Jun 13, 2017, 1:14:53 PM
+    Author     : Softcell-4
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="dao.SelectQueryDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>DMLC - All Organogram</title>
+        <title>DMLC - Running Document</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -44,11 +40,9 @@
         <script src="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
         <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
-
     <body>
-
         <div id="wrapper">
-
+            
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -60,7 +54,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
+                    <a class="navbar-brand" href="dashbord.jsp">DMLC মহাপরিচালক</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -211,86 +205,102 @@
                             <li>
                                 <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
-
                             <li>
-                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
-                            </li>
-
-                            <li>
-                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
-                            </li>
-
-                            <li>
-                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
-                            </li>
-
-                            <li>
-                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
+                                <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>নতুন নথি সমুহ</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#">বার্তা পাঠান</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">বার্তা দেখুন</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">প্রজ্ঞাপন</a>
-                                    </li>
-                                </ul>
+                                <a href="runningDocument.jsp"><i class="fa fa-users fa-fw"></i>চলমান নথি সমুহ</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
-                                </a>
+                                <a href="endDocument.jsp"><i class="fa fa-user fa-fw"></i>শেষ নথি সমুহ</a>
+                            </li>
+                            <li>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
             
-            <!--Page Body Part-->
+            <!--Page Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">অর্গানোগ্রাম</h1>
+                        <h1 class="page-header">ব্যবহারকারী প্রোফাইল</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                সকল অর্গানোগ্রাম দেখুন
+                                ব্যবহারকারীর প্রোফাইল পরিবর্তন করুন
                             </div>
-                            <div class="panel-body">
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>SL</th>
-                                            <th>Designation</th>
-                                            <th>Department</th>
-                                            <th>Has Parent</th>
-                                            <th>Parent</th>
-                                            <th>Edit</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tebleRow">
-                                        <tr>
-                                            <td>1</td>
-                                            <td>মহাপরিচালক</td>
-                                            <td>প্রশাসন</td>
-                                            <td>না</td>
-                                            <td>না</td>
-                                            <td></td>
-                                        </tr>
 
-                                    </tbody>
-                                </table>
-                                <!-- /.table-responsive -->
-                                <div class="well">
-                                    <h4>Organugram</h4>
-                                    <p>View this organugram <a href="#">Click Here</a>
+                            <div id="message">
+                                <center><h3>${addOrgInfo}</h3></center>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-offset-2 col-md-6">
+                                        <form action="#" accept-charset="UTF-8" method="post" role="form" class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="userName">ইউজারনেম</label>
+                                                <div class="col-md-9">
+                                                    <input id="userName" name="userName" class="form-control" value="">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="password">নতুন পাসওয়ার্ড</label>
+                                                <div class="col-md-9">
+                                                    <input id="password" name="password" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="fullName">পুরো নাম</label>
+                                                <div class="col-md-9">
+                                                    <input id="fullName" name="fullName" value="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="contactInfo">ঠিকানা</label>
+                                                <div class="col-md-9">
+                                                    <textarea id="contactInfo" name="contactInfo" class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="contactCell">যোগাযোগের নম্বর</label>
+                                                <div class="col-md-9">
+                                                    <input id="contactCell" name="contactCell" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="contactEmail">যোগাযোগের ই - মেইল</label>
+                                                <div class="col-md-9">
+                                                    <input type="email" id="contactEmail" name="contactEmail" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="designation">উপাধি</label>
+                                                <div class="col-md-9">
+                                                    <input id="designation" name="designation" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-md-3 control-label" for="department">বিভাগ</label>
+                                                <div class="col-md-9">
+                                                    <input id="department" name="department" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-3"></div>
+                                                <div class="col-md-10">
+                                                    <button type="submit" class="btn btn-default">হালনাগাদ করুন</button>
+                                                    <button type="reset" class="btn btn-default">পুনরায় বসান</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -298,83 +308,6 @@
                 </div>
             </div>
         </div>
-
-        <!--Specification Dialog-->
-        <div class="modal fade" id="newSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">অর্গানোগ্রাম পরিবর্তন করুন</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="">
-                            <div class="form-group">
-                                <label for="designation" class="col-sm-8 control-label">উপাধি</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="designation" value="" id="designation" class="form-control"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="department" class="col-sm-8 control-label">বিভাগ</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="department" value="" id="department" class="form-control"/>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="pdesignation" class="col-sm-8 control-label">ঊর্ধ্বতন পদ</label>
-                                <div class="col-sm-8">
-                                    <input type="text" name="pdesignation" value="" id="pdesignation" class="form-control"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <center>
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">Cancel</span>
-                                    </button>
-                                    <input type="submit" name="submit" value="Update"  class="btn btn-large btn-primary" />
-                                </center>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            $(document).ready(function () {
-                $.ajax({
-                    type: "POST",
-                    url: "../AllOrganogramBean",
-                    success: function (data) {
-                        $("#tebleRow").show();
-                        $("#tebleRow").append(data);
-
-                        $('#dataTables-example').DataTable({
-                            responsive: true
-                        });
-                    }
-                });
-            });
-
-            $(document).on("click", ".open-newDialog", function () {
-
-                var designation = $(this).data('designation');
-                var department = $(this).data('department');
-                var pdesignation = $(this).data('pdesignation');
-                console.log(designation);
-                console.log(department);
-                console.log(pdesignation);
-
-                $(".modal-body #designation").val(designation);
-                $(".modal-body #department").val(department);
-                $(".modal-body #pdesignation").val(pdesignation);
-            });
-        </script>
+        
     </body>
 </html>
-

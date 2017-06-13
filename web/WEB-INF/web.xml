@@ -32,6 +32,14 @@
         <servlet-name>AllNewDocument</servlet-name>
         <servlet-class>userBean.AllNewDocument</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllRunningDocument</servlet-name>
+        <servlet-class>userBean.AllRunningDocument</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllEndDocument</servlet-name>
+        <servlet-class>userBean.AllEndDocument</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>AllNewDocument</servlet-name>
         <url-pattern>/AllNewDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllRunningDocument</servlet-name>
+        <url-pattern>/AllRunningDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllEndDocument</servlet-name>
+        <url-pattern>/AllEndDocument</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

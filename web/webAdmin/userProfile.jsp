@@ -18,7 +18,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>DMLC - Organogram</title>
+        <title>DMLC - Web Admin</title>
         <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -245,14 +245,14 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">অর্গানোগ্রাম</h1>
+                        <h1 class="page-header">ব্যবহারকারী প্রোফাইল</h1>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                নতুন অর্গানোগ্রাম সৃষ্টি করুন
+                                ব্যবহারকারীর প্রোফাইল পরিবর্তন করুনন
                             </div>
 
                             <div id="message">

@@ -11,15 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class AllNewDocument extends HttpServlet {
+public class AllEndDocument extends HttpServlet {
 
     private int i;
     private String columnName;
     private String tableName;
     private String whereCondition;
-    ResultSet rs;
+    private ResultSet rs ;
     private int dataRow;
     private String[] letterId;
     private int[] currentStatus;
@@ -33,17 +32,16 @@ public class AllNewDocument extends HttpServlet {
     private String[] scanFile;
     private String[] priority;
     private String status;
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             i = 0;
             columnName = "*";
             tableName = " letter ";
-            whereCondition = " current_status = 1 ";
+            whereCondition = " current_status = 3 ";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
             rs.last();
