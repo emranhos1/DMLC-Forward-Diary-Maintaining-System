@@ -94,9 +94,9 @@ public class AllNewDocument extends HttpServlet {
                         + "<td>" + endDate[i] + "</td>"
                         + "<td>" + documentId[i] + "</td>"
                         + "<td>" + shortDesc[i] + "</td>"
-                        + "<td><img src='../uplopded_file/" + scanFile[i] + "' alt='এই ফাইলটি লোড করা যাচ্ছেনা' height='40px' width='40px'/></td>"
+                        + "<td><img src='../uplopded_file/" + scanFile[i] + "' alt='এই ফাইলটি লোড করা যাচ্ছেনা' height='200px' width='200px'/></td>"
                         + "<td><button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-status=" + status + " data-receivingdate=" + receivingDate[i] + " data-depoforigin=" + depOfOrigin[i] + " data-requestid=" + requestId[i] + " data-subjectofletter=" + subjectOfLetter[i] + " data-enddate=" + endDate[i] + " data-documentid=" + documentId[i] + " data-shortdesc=" + shortDesc[i] + " data-scanfile=" + scanFile[i] + " class='open-spceDialog' href='#addSpec' >অগ্রাধিকার ঠিক করুন</a>"
+                        + "<a data-toggle='modal' data-letterid='"+letterId[i]+"' data-status='"+ status +"' data-receivingdate='" + receivingDate[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-documentid='" + documentId[i] + "' data-shortdesc='" + shortDesc[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog' href='#addSpec' >অগ্রাধিকার ঠিক করুন</a>"
                         + "</button>"
                         + "</td>"
                         + "</tr>");

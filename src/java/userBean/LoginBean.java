@@ -62,19 +62,19 @@ public class LoginBean extends HttpServlet {
                 }
                 switch(role){
                     case "webadmin" :{
-                        response.sendRedirect("webAdmin/dashbord.jsp");
+                        response.sendRedirect("webAdmin/dashboard.jsp");
                         break;
                     }
                     case "frontdesk": {
-                        response.sendRedirect("frontDesk/dashbord.jsp");
+                        response.sendRedirect("frontDesk/dashboard.jsp");
                         break;
                     }
                     case "DG": {
-                        response.sendRedirect("director_general/dashbord.jsp");
+                        response.sendRedirect("director_general/dashboard.jsp");
                         break;
                     }
                     case "employee": {
-                        response.sendRedirect("employee/dashbord.jsp");
+                        response.sendRedirect("employee/dashboard.jsp");
                         break;
                     }
                 }

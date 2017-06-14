@@ -12,6 +12,11 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <h1>Employee</h1>
+        <%}%>
     </body>
 </html>

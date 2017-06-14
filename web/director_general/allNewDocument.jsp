@@ -43,6 +43,10 @@
         <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
     <body>
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <div id="wrapper">
 
             <!-- Navigation Bar-->
@@ -277,10 +281,10 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">Add Specification</h4>
+                        <h4 class="modal-title" id="myModalLabel">অগ্রাধিকার নির্ধারন কর</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="">
+                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
                             <div class="form-group">
                                 <label for="status" class="col-sm-4 control-label">অবস্থা</label>
                                 <div class="col-sm-8">
@@ -288,15 +292,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="endDate" class="col-sm-4 control-label">শেষ তারিখ</label>
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
                                 <div class="col-sm-8">
-                                    <input  type="date" id="endDate" name="endDate" class="form-control" value="" required/>
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
                                 <div class="col-sm-8">
-                                    <img src="../uplopded_file/${scanfile}"  alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -306,41 +310,58 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="priority" id="priority" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="1">উচ্চ</option>
+                                        <option value="2">মাঝারি</option>
+                                        <option value="3">নিম্ন</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
                                 <div class="col-sm-8">
-                                <select class="form-control" name="goingTo" id="goingTo" required>
-                                    <option value="">কর্মচারী নির্বাচন করুন</option>
-                                    <%
-                                        int i = 0;
-                                        ResultSet rs;
-                                        String columnName = " * ";
-                                        String tableName = " employee_organogram ";
-                                        rs = SelectQueryDao.selectQueryWithOutWhereClause(columnName, tableName);
-                                        rs.last();
-                                        int orgRow = rs.getRow();
-                                        int[] empOrgId = new int[orgRow];
-                                        String[] designation = new String[orgRow];
-                                        String[] department = new String[orgRow];
-                                        int[] hasParent = new int[orgRow];
-                                        int[] parentId = new int[orgRow];
-                                        rs.beforeFirst();
-                                        while (rs.next()) {
-                                            empOrgId[i] = rs.getInt("employee_organogram_id");
-                                            designation[i] = rs.getString("designation");
-                                            department[i] = rs.getString("department");
-                                            hasParent[i] = rs.getInt("has_parent");
-                                            parentId[i] = rs.getInt("parent_id");
-                                            i++;
-                                        }
-                                        for (i = 0; i < orgRow; i++) {
-                                    %>
-                                    <option value="<%=empOrgId[i]%>"><%=designation[i]%> (<%=department[i]%>)</option>
-                                    <%
-                                        }
-                                    %>
-                                </select>
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+                                        <%
+                                            int i = 0;
+                                            ResultSet rs;
+                                            int user_Id = Integer.parseInt(session.getAttribute("idUser").toString());
+                                            String columnName = " * ";
+                                            String tableName = " employee_emp_org ";
+                                            String whereCondition = " parent_id = '" + user_Id + "'";
+                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+                                            rs.last();
+                                            int orgRow = rs.getRow();
+                                            int[] employeeId = new int[orgRow];
+                                            int[] empOrgId = new int[orgRow];
+                                            String[] uName = new String[orgRow];
+                                            String[] designation = new String[orgRow];
+                                            String[] department = new String[orgRow];
+                                            int[] hasParent = new int[orgRow];
+                                            int[] parentId = new int[orgRow];
+                                            rs.beforeFirst();
+                                            while (rs.next()) {
+                                                employeeId[i] = rs.getInt("employee_id");
+                                                uName[i] = rs.getString("user_name");
+                                                empOrgId[i] = rs.getInt("employee_organogram_id");
+                                                designation[i] = rs.getString("designation");
+                                                department[i] = rs.getString("department");
+                                                hasParent[i] = rs.getInt("has_parent");
+                                                parentId[i] = rs.getInt("parent_id");
+                                                i++;
+                                            }
+                                            for (i = 0; i < orgRow; i++) {
+                                        %>
+                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
                                 </div>
-                                <input type="hidden" id="empOrgId" name="empOrgId" class="form-control" required>
+                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
                             </div>
                             <center>
                                 <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
@@ -353,6 +374,7 @@
                 </div>
             </div>
         </div>
+        <%}%>
         <script>
 //            setTimeout(function () {
 //                $('#message').fadeOut('fast');
@@ -374,6 +396,7 @@
 
             $(document).on("click", ".open-spceDialog", function () {
 
+                var letterId = $(this).data('letterid');
                 var status = $(this).data('status');
                 var receivingDate = $(this).data('receivingdate');
                 var depOfOrigin = $(this).data('depoforigin');
@@ -383,9 +406,10 @@
                 var documentId = $(this).data('documentid');
                 var shortDesc = $(this).data('shortdesc');
                 var scanFile = $(this).data('scanfile');
-
+//                console.log(status);
                 //console.log(pName);
 
+                $(".modal-body #letterId").val(letterId);
                 $(".modal-body #status").val(status);
                 $(".modal-body #receivingDate").val(receivingDate);
                 $(".modal-body #depOfOrigin").val(depOfOrigin);
@@ -394,7 +418,7 @@
                 $(".modal-body #endDate").val(endDate);
                 $(".modal-body #documentId").val(documentId);
                 $(".modal-body #shortDesc").val(shortDesc);
-                $(".modal-body #scanFile").val(scanFile);
+                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
             });
         </script>
     </body>

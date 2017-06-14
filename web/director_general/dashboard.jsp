@@ -38,6 +38,10 @@
         <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
     </head>
     <body>
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <div id="wrapper">
             
             <!-- Navigation Bar-->
@@ -761,5 +765,6 @@
                 <!-- /.row -->
             </div>
         </div>
+        <%}%>
     </body>
 </html>

@@ -41,8 +41,12 @@
         <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
     <body>
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <div id="wrapper">
-            
+
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -221,7 +225,7 @@
                     </div>
                 </div>
             </nav>
-            
+
             <!--Page Body Part--> 
             <div id="page-wrapper">
                 <div class="row">
@@ -308,6 +312,6 @@
                 </div>
             </div>
         </div>
-        
+        <%}%>
     </body>
 </html>

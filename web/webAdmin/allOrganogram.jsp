@@ -46,7 +46,10 @@
     </head>
 
     <body>
-
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <div id="wrapper">
 
             <!-- Navigation Bar-->
@@ -344,7 +347,7 @@
                 </div>
             </div>
         </div>
-
+        <%}%>
         <script>
             $(document).ready(function () {
                 $.ajax({

@@ -31,6 +31,10 @@
 
     </head>
     <body>
+        <%
+            if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
+                response.sendRedirect("../login.jsp");
+            } else {%>
         <div id="wrapper">
            <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -370,7 +374,7 @@
                 </div>
             </div>
         </div>
-        
+        <%}%>
         <script type="text/javascript">
             $("#designation").change(function () {
                 var empOrgId = $(this).val();
