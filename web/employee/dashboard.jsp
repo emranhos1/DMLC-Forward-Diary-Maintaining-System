@@ -1,12 +1,12 @@
 <%-- 
-    Document   : addOrganogram
-    Created on : Jun 07, 2017, 10:40:58 AM
+    Document   : dashbord
+    Created on : Jun 5, 2017, 1:07:25 PM
     Author     : Md. Emran Hossain
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +43,7 @@
                 response.sendRedirect("../login.jsp");
             } else {%>
         <div id="wrapper">
-            
+
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -208,33 +208,11 @@
                             </li>
 
                             <li>
-                                <a href="addOrganogram.jsp"><i class="fa fa-users fa-fw"></i> নতুন অর্গানোগ্রাম</a>
+                                <a href="allNewWork.jsp"><i class="fa fa-users fa-fw"></i>সব নতুন কাজ</a>
                             </li>
 
                             <li>
-                                <a href="allOrganogram.jsp"><i class="fa fa-users fa-fw"></i> সকল অর্গানোগ্রাম</a>
-                            </li>
-
-                            <li>
-                                <a href="addEmployee.jsp"><i class="fa fa-user fa-fw"></i> নতুন কর্মচারী</a>
-                            </li>
-
-                            <li>
-                                <a href="allEmployee.jsp"><i class="fa fa-user fa-fw"></i> সকল কর্মচারী</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> অন্যান্য<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="#">বার্তা পাঠান</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">বার্তা দেখুন</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">প্রজ্ঞাপন</a>
-                                    </li>
-                                </ul>
+                                <a href="allReturnWork.jsp"><i class="fa fa-users fa-fw"></i>ফিরে আসা সকল কাজ</a>
                             </li>
                             <li>
                                 <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
@@ -244,7 +222,7 @@
                     </div>
                 </div>
             </nav>
-            
+
             <!--body part-->
             <div id="page-wrapper">
                 <div class="row">
@@ -778,15 +756,12 @@
                                     </span>
                                 </div>
                             </div>
-                            <!-- /.panel-footer -->
                         </div>
-                        <!-- /.panel .chat-panel -->
                     </div>
-                    <!-- /.col-lg-4 -->
                 </div>
-                <!-- /.row -->
             </div>
         </div>
+
         <%}%>
     </body>
 </html>
