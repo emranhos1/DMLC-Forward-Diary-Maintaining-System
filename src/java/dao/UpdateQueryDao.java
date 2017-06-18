@@ -17,7 +17,7 @@ public class UpdateQueryDao {
     static ResultSet rs;
     static PreparedStatement pstm;
     
-    public static boolean updateCompany(String tableName, String columnNameANDcolumnValue, String whereCondition) throws SQLException {
+    public static boolean updateQueryWithWhereClause(String tableName, String columnNameANDcolumnValue, String whereCondition) throws SQLException {
         
         //Update tableName set columnName = ?, columnName = ? where whereCondition
         con = db.myConn();

@@ -1,5 +1,5 @@
 <%-- 
-    Document   : dashbord
+    Document   : allNewDocument
     Created on : Jun 5, 2017, 1:07:25 PM
     Author     : Md. Emran Hossain
 --%>
@@ -406,8 +406,6 @@
                 var documentId = $(this).data('documentid');
                 var shortDesc = $(this).data('shortdesc');
                 var scanFile = $(this).data('scanfile');
-//                console.log(status);
-                //console.log(pName);
 
                 $(".modal-body #letterId").val(letterId);
                 $(".modal-body #status").val(status);
