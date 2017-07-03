@@ -379,10 +379,10 @@
         </div>
         <%}%>
         <script>
-//            setTimeout(function () {
-//                $('#message').fadeOut('fast');
-//            }, 2000);
-//            
+            setTimeout(function () {
+                $('#message').fadeOut('slow');
+            }, 2000);
+            
             $(window).on("load", function () {
                 $.ajax({
                     type: "POST",
