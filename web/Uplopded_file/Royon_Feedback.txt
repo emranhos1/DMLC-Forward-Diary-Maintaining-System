@@ -1,0 +1,149 @@
+DESKTOP-4N6K53C (7:02 PM):
+see this is the login screen
+loggin in as purchaser
+r u there?
+SHAMSULAREFEEN (7:03 PM):
+asking me?
+DESKTOP-4N6K53C (7:03 PM):
+yes
+SHAMSULAREFEEN (7:03 PM):
+yes i am here
+but can i be called in facebook or skype to have it narrated for me?
+DESKTOP-4N6K53C (7:04 PM):
+now purchaser can create his own tender document template
+now Purchaser is going to create a tender document
+SHAMSULAREFEEN (7:05 PM):
+what is this column type?
+DESKTOP-4N6K53C (7:06 PM):
+I have selected Serial Number as number
+SHAMSULAREFEEN (7:06 PM):
+what is the diff between column type and customer input type?
+DESKTOP-4N6K53C (7:06 PM):
+and Specifications as TextArea
+SHAMSULAREFEEN (7:07 PM):
+it is not looking very user-friendly
+DESKTOP-4N6K53C (7:08 PM):
+Group is required as in a single project there may have several types of requirements like civil works
+Select Supplier
+now the request goes to supplier
+Now for reverse auction purchaser can do this
+showing u
+Reverse auction date and time input
+SHAMSULAREFEEN (7:17 PM):
+'Before Make a Tender' cannot be a tab name
+who is showing this to me?
+Sunjur is there or not?
+DESKTOP-4N6K53C (7:18 PM):
+yes i am here
+SHAMSULAREFEEN (7:18 PM):
+i am done with this
+let's talk
+DESKTOP-4N6K53C (7:18 PM):
+ok
+SHAMSULAREFEEN (7:20 PM):
+i dont have a microphone plugged into my laptop
+DESKTOP-4N6K53C (7:20 PM):
+Ooo
+SHAMSULAREFEEN (7:21 PM):
+i can hear u
+but may u cant hear me
+DESKTOP-4N6K53C (7:21 PM):
+yes
+SHAMSULAREFEEN (7:21 PM):
+1. the interface doesn't look very user-friendly
+nobody is going to use it until it becomes easy for them
+so far.....you haven't worked much apart from little bit modifying a template
+there is no sense of workflow in the whole development
+it should be a work-flow driven interface
+like......creating a procurement project-->item description and specification-->uploading documents-->so on
+yes i can do that
+but type, length size egula user put kore poshabe na
+just give them the provision to attach a excel file
+excel or word file...
+tahole eta keno dorkar?
+then call it a purchaser account info
+yea....
+'admin panel' type jargon avoid koro
+ora jeta bujhbe serokom naam dao
+yes
+purchaser account page....
+tar moddhye tomar ja ja lage
+ekta purchaser tar page e dhuke dekhte pabe tar ongoing project gula ki
+se 'new project' create korte chaile create korte parbe
+tarpor workflow gula ashbe project er against e
+ha
+either se existing project select korbe or new project create korbe
+right
+it is ok
+yea
+seta depend kore workflow er upor
+ha
+right
+sei define er option koi?
+but it can be 'open' or closed
+na.....eta evabe hoy na
+reverse auction ta tomader kisui hoy nai
+'reverse auction' ekta independent process hote pare
+price bolte hobe na
+but purchaser chaile starting base price select kore dite parbe
+base price e shuru hobe....tarpor je joto komate pare
+it has to be a time-bound real-time bidding
+right
+it is a separate process
+kono tender reverse auction korte chaile....se sei module e dhukbe
+screen to tomake dekhano hoisilo
+thik erokom hobe na
+just project details summary thakbe.....
+supplier ra login korbe....
+price bid korbe....
+it has to be a web application
+yes
+na....but ekta reverse auction ekta jinish ba ekta 'package' er upor hobe jetar jonno supplier price bid korte parbe
+ekta reverse auction window te A4 paper supplier r generator supplier ekshathe participate korbe na
+that's impractical
+it has to be single item or single package
+project e paper r generator eki shathe lagar kono concept nai
+dont see 'project' from customer perspective
+see 'project' as procurement perspective
+ekta jinish kenar beparta ekta procurement project
+project er definition hocche....
+a 'procurement project' is a purchasing act where the purchaser will put in the requirement of a item or a package of items which can be supplier by a single supplier entitiy (if needed the supplier can come in the form of a consortium)
+supplied*
+ha
+right
+category-wise
+shob bolte ki ki?
+ha....those are related
+keu jodi kagoj, file-folder r stappler kinte chay se to 3 ta project create korbe na
+shobgula milaye ekta 'stationaries' purchase project create korbe
+ha
+ha
+dont see project from the organization perspective
+come on...
+no....that's not a workable idea
+bujhchi but eta evabe hoy na
+tumi dhoro ekta bank er branch manager
+tomar branch e office stationaries-o lage, software o lage 
+tumi jokhon procurement department e communicate koro....tomar different requirement er Purchase Requirement (PR) dao
+whatever you call it
+it is one purchase action
+r ami chai.....purchasertar account e login kora matro sekhane se tar existing project er list dekhte pabe
+tahole seta niye kotha boli
+ha
+list er item er upor click korle se dekhte pabe se kon work-flow e eta chalacche 
+ha.....drop it
+amra ekhon seta banachhi na
+mane dhoro.......GP tomake RFI dey, tumi RFI response koro, then tomake RFQ dey...tumi seta response koro....tarpor tomake negotiation meeting e call kore.....
+bujhte parso concept ta?
+right
+kon stage e ase
+i will make a presentation and send it to you
+amar semester break cholchhe
+class nai
+but research er kaaje office jete hoy
+ekhon 9 ta baje....10 tar moddhye gele hobe
+15 mins
+GP-r ta niye kotha boli
+facebook messenger e call koro
+skype?
+ha.....amar whatsapp number obossho different

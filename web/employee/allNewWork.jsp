@@ -1,49 +1,54 @@
 <%-- 
-    Document   : dashbord
+    Document   : allNewWork
     Created on : Jun 15, 2017, 1:07:25 PM
     Author     : Md. Emran Hossain
 --%>
 
+<%@page import="dao.SelectQueryDao"%>
+<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>DMLC - Dashboard</title>
 
+        <title>DMLC - All New Document</title>
+        <!-- Bootstrap Core CSS -->
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
         <link href="../allStyles/vendor/metisMenu/metisMenu.min.css" rel="stylesheet" type="text/css"/>
         <!-- Custom CSS -->
         <link href="../allStyles/dist/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
-        <!-- Morris Charts CSS -->
-        <link href="../allStyles/vendor/morrisjs/morris.css" rel="stylesheet" type="text/css"/>
         <!-- Custom Fonts -->
         <link href="../allStyles/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <!-- DataTables CSS -->
+        <link href="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet" type="text/css"/>
+        <!-- DataTables Responsive CSS -->
+        <link href="../allStyles/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet" type="text/css"/>
         <!-- jQuery -->
         <script src="../allStyles/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="../allStyles/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
         <!-- Metis Menu Plugin JavaScript -->
         <script src="../allStyles/vendor/metisMenu/metisMenu.min.js" type="text/javascript"></script>
-        <!-- Morris Charts JavaScript -->
-        <script src="../allStyles/vendor/raphael/raphael.min.js" type="text/javascript"></script>
-        <script src="../allStyles/vendor/morrisjs/morris.min.js" type="text/javascript"></script>
-        <script src="../allStyles/data/morris-data.js" type="text/javascript"></script>
         <!-- Custom Theme JavaScript -->
         <script src="../allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
+        <!-- DataTables JavaScript -->
+        <script src="../allStyles/vendor/datatables/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="../allStyles/vendor/datatables-plugins/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="../allStyles/vendor/datatables-responsive/dataTables.responsive.js" type="text/javascript"></script>
     </head>
     <body>
         <%
             if ((session.getAttribute("idUser") == null) || (session.getAttribute("idUser") == "")) {
                 response.sendRedirect("../login.jsp");
             } else {%>
-
         <div id="wrapper">
+
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -222,7 +227,7 @@
                     </div>
                 </div>
             </nav>
-            
+
             <!--Page Body Part-->
             <div id="page-wrapper">
                 <div class="row">
@@ -249,7 +254,6 @@
                                             <th>শেষ তারিখ</th>
                                             <th>নথি আইডি</th>
                                             <th>ছোট বিবরণ</th>
-                                            <th>স্ক্যান ফাইল</th>
                                             <th>অগ্রাধিকার</th>
                                         </tr>
                                     </thead>
@@ -267,6 +271,251 @@
                 </div>
             </div>
         </div>
+
+        <!--Specification Dialog addSpce-->
+        <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">addSpec</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                            <div class="form-group">
+                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
+                                <div class="col-sm-8">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
+                                <div class="col-sm-8">
+                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="priority" id="priority" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="1">উচ্চ</option>
+                                        <option value="2">মাঝারি</option>
+                                        <option value="3">নিম্ন</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+                                        <%
+                                            int i = 0;
+                                            ResultSet rs;
+                                            int user_Id = Integer.parseInt(session.getAttribute("idUser").toString());
+                                            String columnName = " * ";
+                                            String tableName = " employee_emp_org ";
+                                            String whereCondition = " parent_id = '" + user_Id + "'";
+                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+                                            rs.last();
+                                            int orgRow = rs.getRow();
+                                            int[] employeeId = new int[orgRow];
+                                            int[] empOrgId = new int[orgRow];
+                                            String[] uName = new String[orgRow];
+                                            String[] designation = new String[orgRow];
+                                            String[] department = new String[orgRow];
+                                            int[] hasParent = new int[orgRow];
+                                            int[] parentId = new int[orgRow];
+                                            rs.beforeFirst();
+                                            while (rs.next()) {
+                                                employeeId[i] = rs.getInt("employee_id");
+                                                uName[i] = rs.getString("user_name");
+                                                empOrgId[i] = rs.getInt("employee_organogram_id");
+                                                designation[i] = rs.getString("designation");
+                                                department[i] = rs.getString("department");
+                                                hasParent[i] = rs.getInt("has_parent");
+                                                parentId[i] = rs.getInt("parent_id");
+                                                i++;
+                                            }
+                                            for (i = 0; i < orgRow; i++) {
+                                        %>
+                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
+                            </div>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Specification Dialog addSpce2-->
+        <div class="modal fade" id="addSpec2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">addSpec2</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                            <div class="form-group">
+                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
+                                <div class="col-sm-8">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
+                                <div class="col-sm-8">
+                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="priority" id="priority" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="1">উচ্চ</option>
+                                        <option value="2">মাঝারি</option>
+                                        <option value="3">নিম্ন</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+                                        <%
+                                            columnName = " * ";
+                                            tableName = " employee_emp_org ";
+                                            whereCondition = " parent_id = '" + user_Id + "'";
+                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+                                            rs.last();
+                                            int orgRow1 = rs.getRow();
+                                            int[] employeeId1 = new int[orgRow1];
+                                            int[] empOrgId1 = new int[orgRow1];
+                                            String[] uName1 = new String[orgRow1];
+                                            String[] designation1 = new String[orgRow1];
+                                            String[] department1 = new String[orgRow1];
+                                            int[] hasParent1 = new int[orgRow1];
+                                            int[] parentId1 = new int[orgRow1];
+                                            rs.beforeFirst();
+                                            while (rs.next()) {
+                                                employeeId[i] = rs.getInt("employee_id");
+                                                uName[i] = rs.getString("user_name");
+                                                empOrgId[i] = rs.getInt("employee_organogram_id");
+                                                designation[i] = rs.getString("designation");
+                                                department[i] = rs.getString("department");
+                                                hasParent[i] = rs.getInt("has_parent");
+                                                parentId[i] = rs.getInt("parent_id");
+                                                i++;
+                                            }
+                                            for (i = 0; i < orgRow1; i++) {
+                                        %>
+                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
+                            </div>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%}%>
+        <script>
+            setTimeout(function () {
+                $('#message').fadeOut('fast');
+            }, 2000);
+
+            $(window).on("load", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "../AllNewWorkEmp",
+                    success: function (data) {
+                        $("#tebleRow").show();
+                        $("#tebleRow").html(data);
+                        $('#dataTables-example').DataTable({
+                            responsive: true
+                        });
+                    }
+                });
+            });
+
+//            $(document).on("click", ".open-spceDialog", function () {
+//
+//                var letterId = $(this).data('letterid');
+//                var status = $(this).data('status');
+//                var receivingDate = $(this).data('receivingdate');
+//                var depOfOrigin = $(this).data('depoforigin');
+//                var requestId = $(this).data('requestid');
+//                var subjectOfLetter = $(this).data('subjectofletter');
+//                var endDate = $(this).data('enddate');
+//                var documentId = $(this).data('documentid');
+//                var shortDesc = $(this).data('shortdesc');
+//                var scanFile = $(this).data('scanfile');
+////                console.log(status);
+//                //console.log(pName);
+//
+//                $(".modal-body #letterId").val(letterId);
+//                $(".modal-body #status").val(status);
+//                $(".modal-body #receivingDate").val(receivingDate);
+//                $(".modal-body #depOfOrigin").val(depOfOrigin);
+//                $(".modal-body #requestId").val(requestId);
+//                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
+//                $(".modal-body #endDate").val(endDate);
+//                $(".modal-body #documentId").val(documentId);
+//                $(".modal-body #shortDesc").val(shortDesc);
+//                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
+        </script>
     </body>
-</html>

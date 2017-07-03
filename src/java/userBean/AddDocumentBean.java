@@ -80,7 +80,7 @@ public class AddDocumentBean extends HttpServlet {
             date = new Date();
 
             photo = "";
-            uploaded_file = "E:/project/DMLC/DMLC/web/uplopded_file";
+            uploaded_file = "E:/project/DMLC/DMLC/web/Uplopded_file";
             newFile = new File(uploaded_file);
 
             subject = new String(request.getParameter("subject").getBytes("ISO-8859-1"), "UTF-8");

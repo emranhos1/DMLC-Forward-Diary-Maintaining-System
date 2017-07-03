@@ -48,12 +48,12 @@ public class AddEmployeeBean extends HttpServlet {
             addEmployee = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             
             if(!addEmployee){
-                String addEmpSuccess = "<p class='alert-info'>নতুন কর্মচারী তালিকায় অন্তর্ভুক্ত করা হয়েছে</p>";
-                request.getSession().setAttribute("addEmpInfo", addEmpSuccess);
-                response.sendRedirect("webAdmin/addEmployee.jsp");
-            } else{
                 String addEmpError = "<p class='alert-info'>নতুন কর্মচারী তালিকায় অন্তর্ভুক্ত করা হয়নি</p>";
                 request.getSession().setAttribute("addEmpInfo", addEmpError);
+                response.sendRedirect("webAdmin/addEmployee.jsp");
+            } else{
+                String addEmpSuccess = "<p class='alert-info'>নতুন কর্মচারী তালিকায় অন্তর্ভুক্ত করা হয়েছে</p>";
+                request.getSession().setAttribute("addEmpInfo", addEmpSuccess);
                 response.sendRedirect("webAdmin/addEmployee.jsp");
             }
         } catch (SQLException ex) {

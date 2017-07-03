@@ -241,6 +241,9 @@
                             <div class="panel-heading">
                                 সকল নথিপত্র দেখুন
                             </div>
+                            <div id="message">
+                                <center><h3>${sendDocInfo}</h3></center>
+                            </div>
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
@@ -284,7 +287,7 @@
                         <h4 class="modal-title" id="myModalLabel">অগ্রাধিকার নির্ধারন কর</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                        <form role="form" class="form-horizontal" method="post" action="../AddReceivesDocument">
                             <div class="form-group">
                                 <label for="status" class="col-sm-4 control-label">অবস্থা</label>
                                 <div class="col-sm-8">
