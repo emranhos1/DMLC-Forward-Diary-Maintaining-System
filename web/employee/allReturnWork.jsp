@@ -1,6 +1,6 @@
 <%-- 
-    Document   : allNewDocument
-    Created on : Jun 5, 2017, 1:07:25 PM
+    Document   : allNewWork
+    Created on : Jun 15, 2017, 1:07:25 PM
     Author     : Md. Emran Hossain
 --%>
 
@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="dashbord.jsp">DMLC মহাপরিচালক</a>
+                    <a class="navbar-brand" href="index.html">DMLC Employee</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -211,17 +211,17 @@
                             <li>
                                 <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
+
                             <li>
-                                <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>নতুন নথি সমুহ</a>
+                                <a href="allNewWork.jsp"><i class="fa fa-users fa-fw"></i>সব নতুন কাজ</a>
+                            </li>
+
+                            <li>
+                                <a href="allReturnWork.jsp"><i class="fa fa-users fa-fw"></i>ফিরে আসা সকল কাজ</a>
                             </li>
                             <li>
-                                <a href="runningDocument.jsp"><i class="fa fa-users fa-fw"></i>চলমান নথি সমুহ</a>
-                            </li>
-                            <li>
-                                <a href="endDocument.jsp"><i class="fa fa-user fa-fw"></i>শেষ নথি সমুহ</a>
-                            </li>
-                            <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -232,7 +232,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">নতুন নথিপত্র সমূহ</h1>
+                        <h1 class="page-header">সকল ফেরত নথি</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -240,9 +240,6 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 সকল নথিপত্র দেখুন
-                            </div>
-                            <div id="message">
-                                <center><h3>${sendDocInfo}</h3></center>
                             </div>
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -257,7 +254,6 @@
                                             <th>শেষ তারিখ</th>
                                             <th>নথি আইডি</th>
                                             <th>ছোট বিবরণ</th>
-                                            <th>স্ক্যান ফাইল</th>
                                             <th>অগ্রাধিকার</th>
                                         </tr>
                                     </thead>
@@ -276,7 +272,7 @@
             </div>
         </div>
 
-        <!--Specification Dialog-->
+        <!--Specification Dialog addSpce-->
         <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -284,10 +280,10 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">অগ্রাধিকার নির্ধারন কর</h4>
+                        <h4 class="modal-title" id="myModalLabel">addSpec</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" class="form-horizontal" method="post" action="../AddReceivesDocument">
+                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
                             <div class="form-group">
                                 <label for="status" class="col-sm-4 control-label">অবস্থা</label>
                                 <div class="col-sm-8">
@@ -377,16 +373,115 @@
                 </div>
             </div>
         </div>
+
+        <!--Specification Dialog addSpce2-->
+        <div class="modal fade" id="addSpec2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">addSpec2</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                            <div class="form-group">
+                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
+                                <div class="col-sm-8">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
+                                <div class="col-sm-8">
+                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="priority" id="priority" required>
+                                        <option value="">নির্বাচন করুন</option>
+                                        <option value="1">উচ্চ</option>
+                                        <option value="2">মাঝারি</option>
+                                        <option value="3">নিম্ন</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+                                        <%
+                                            columnName = " * ";
+                                            tableName = " employee_emp_org ";
+                                            whereCondition = " parent_id = '" + user_Id + "'";
+                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+                                            rs.last();
+                                            int orgRow1 = rs.getRow();
+                                            int[] employeeId1 = new int[orgRow1];
+                                            int[] empOrgId1 = new int[orgRow1];
+                                            String[] uName1 = new String[orgRow1];
+                                            String[] designation1 = new String[orgRow1];
+                                            String[] department1 = new String[orgRow1];
+                                            int[] hasParent1 = new int[orgRow1];
+                                            int[] parentId1 = new int[orgRow1];
+                                            rs.beforeFirst();
+                                            while (rs.next()) {
+                                                employeeId[i] = rs.getInt("employee_id");
+                                                uName[i] = rs.getString("user_name");
+                                                empOrgId[i] = rs.getInt("employee_organogram_id");
+                                                designation[i] = rs.getString("designation");
+                                                department[i] = rs.getString("department");
+                                                hasParent[i] = rs.getInt("has_parent");
+                                                parentId[i] = rs.getInt("parent_id");
+                                                i++;
+                                            }
+                                            for (i = 0; i < orgRow1; i++) {
+                                        %>
+                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>
+                                </div>
+                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
+                            </div>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%}%>
         <script>
             setTimeout(function () {
-                $('#message').fadeOut('slow');
+                $('#message').fadeOut('fast');
             }, 2000);
-            
+
             $(window).on("load", function () {
                 $.ajax({
                     type: "POST",
-                    url: "../AllNewDocument",
+                    url: "../AllNewWorkEmp",
                     success: function (data) {
                         $("#tebleRow").show();
                         $("#tebleRow").html(data);
@@ -397,31 +492,30 @@
                 });
             });
 
-            $(document).on("click", ".open-spceDialog", function () {
-
-                var letterId = $(this).data('letterid');
-                var status = $(this).data('status');
-                var receivingDate = $(this).data('receivingdate');
-                var depOfOrigin = $(this).data('depoforigin');
-                var requestId = $(this).data('requestid');
-                var subjectOfLetter = $(this).data('subjectofletter');
-                var endDate = $(this).data('enddate');
-                var documentId = $(this).data('documentid');
-                var shortDesc = $(this).data('shortdesc');
-                var scanFile = $(this).data('scanfile');
-
-                $(".modal-body #letterId").val(letterId);
-                $(".modal-body #status").val(status);
-                $(".modal-body #receivingDate").val(receivingDate);
-                $(".modal-body #depOfOrigin").val(depOfOrigin);
-                $(".modal-body #requestId").val(requestId);
-                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
-                $(".modal-body #endDate").val(endDate);
-                $(".modal-body #documentId").val(documentId);
-                $(".modal-body #shortDesc").val(shortDesc);
-                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanFile);
-            });
+//            $(document).on("click", ".open-spceDialog", function () {
+//
+//                var letterId = $(this).data('letterid');
+//                var status = $(this).data('status');
+//                var receivingDate = $(this).data('receivingdate');
+//                var depOfOrigin = $(this).data('depoforigin');
+//                var requestId = $(this).data('requestid');
+//                var subjectOfLetter = $(this).data('subjectofletter');
+//                var endDate = $(this).data('enddate');
+//                var documentId = $(this).data('documentid');
+//                var shortDesc = $(this).data('shortdesc');
+//                var scanFile = $(this).data('scanfile');
+////                console.log(status);
+//                //console.log(pName);
+//
+//                $(".modal-body #letterId").val(letterId);
+//                $(".modal-body #status").val(status);
+//                $(".modal-body #receivingDate").val(receivingDate);
+//                $(".modal-body #depOfOrigin").val(depOfOrigin);
+//                $(".modal-body #requestId").val(requestId);
+//                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
+//                $(".modal-body #endDate").val(endDate);
+//                $(".modal-body #documentId").val(documentId);
+//                $(".modal-body #shortDesc").val(shortDesc);
+//                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
         </script>
     </body>
-</html>
-

@@ -246,15 +246,13 @@
                                     <thead>
                                         <tr>
                                             <th>ক্রমিক নং</th>
-                                            <th>বর্তমান অবস্থা</th>
-                                            <th>প্রাপ্তির তারিখ</th>
                                             <th>মূল বিভাগ</th>
-                                            <th>অনুরোধ আইডি</th>
-                                            <th>চিঠি বিষয়</th>
+                                            <th>চিঠির বিষয়</th>
                                             <th>শেষ তারিখ</th>
-                                            <th>নথি আইডি</th>
                                             <th>ছোট বিবরণ</th>
                                             <th>অগ্রাধিকার</th>
+                                            <th>স্ক্যান ফাইল</th>
+                                            <th>আপনার মন্তব্য</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tebleRow">
@@ -272,7 +270,7 @@
             </div>
         </div>
 
-        <!--Specification Dialog addSpce-->
+        <!--Specification Dialog-->
         <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -280,14 +278,13 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="myModalLabel">addSpec</h4>
+                        <h4 class="modal-title" id="myModalLabel">মন্তব্য করুন ও পাঠান</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                        <form role="form" class="form-horizontal" method="post" action="">
                             <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -297,73 +294,27 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
+                                <label for="depOfOrigin" class="col-sm-4 control-label">মূল বিভাগ়</label>
                                 <div class="col-sm-8">
-                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
+                                    <input  type="text" id="depOfOrigin" name="depOfOrigin" class="form-control" value="" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
+                                <label for="endDate" class="col-sm-4 control-label">শেষ তারিখ়</label>
                                 <div class="col-sm-8">
-                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
+                                    <input  type="text" id="endDate" name="endDate" class="form-control" value="" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
+                                <label for="shortDesc" class="col-sm-4 control-label">ছোট বিবরণ়</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" name="priority" id="priority" required>
-                                        <option value="">নির্বাচন করুন</option>
-                                        <option value="1">উচ্চ</option>
-                                        <option value="2">মাঝারি</option>
-                                        <option value="3">নিম্ন</option>
-                                    </select>
+                                    <input  type="text" id="shortDesc" name="shortDesc" class="form-control" value="" readonly/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
-                                        <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        <%
-                                            int i = 0;
-                                            ResultSet rs;
-                                            int user_Id = Integer.parseInt(session.getAttribute("idUser").toString());
-                                            String columnName = " * ";
-                                            String tableName = " employee_emp_org ";
-                                            String whereCondition = " parent_id = '" + user_Id + "'";
-                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-                                            rs.last();
-                                            int orgRow = rs.getRow();
-                                            int[] employeeId = new int[orgRow];
-                                            int[] empOrgId = new int[orgRow];
-                                            String[] uName = new String[orgRow];
-                                            String[] designation = new String[orgRow];
-                                            String[] department = new String[orgRow];
-                                            int[] hasParent = new int[orgRow];
-                                            int[] parentId = new int[orgRow];
-                                            rs.beforeFirst();
-                                            while (rs.next()) {
-                                                employeeId[i] = rs.getInt("employee_id");
-                                                uName[i] = rs.getString("user_name");
-                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                designation[i] = rs.getString("designation");
-                                                department[i] = rs.getString("department");
-                                                hasParent[i] = rs.getInt("has_parent");
-                                                parentId[i] = rs.getInt("parent_id");
-                                                i++;
-                                            }
-                                            for (i = 0; i < orgRow; i++) {
-                                        %>
-                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
-                                        <%
-                                            }
-                                        %>
-                                    </select>
-                                </div>
-                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
-                            </div>
+                            <input  type="hidden" id="comTemployeeId" name="comTemployeeId" class="form-control" value=""/>
                             <center>
-                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
+                                <input id="btn-confirm" type="submit" name="submit" value="আপনার মন্তব্য দিন" class="btn btn-success"/>
+                                <input id="btn-confirm" type="submit" name="submit" value="ফেরত পাঠান" class="btn btn-success"/>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">Cancel</span>
                                 </button>
@@ -372,106 +323,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!--Specification Dialog addSpce2-->
-        <div class="modal fade" id="addSpec2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">addSpec2</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
-                            <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
-                                <div class="col-sm-8">
-                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
-                                <div class="col-sm-8">
-                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="priority" id="priority" required>
-                                        <option value="">নির্বাচন করুন</option>
-                                        <option value="1">উচ্চ</option>
-                                        <option value="2">মাঝারি</option>
-                                        <option value="3">নিম্ন</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
-                                        <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        <%
-                                            columnName = " * ";
-                                            tableName = " employee_emp_org ";
-                                            whereCondition = " parent_id = '" + user_Id + "'";
-                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-                                            rs.last();
-                                            int orgRow1 = rs.getRow();
-                                            int[] employeeId1 = new int[orgRow1];
-                                            int[] empOrgId1 = new int[orgRow1];
-                                            String[] uName1 = new String[orgRow1];
-                                            String[] designation1 = new String[orgRow1];
-                                            String[] department1 = new String[orgRow1];
-                                            int[] hasParent1 = new int[orgRow1];
-                                            int[] parentId1 = new int[orgRow1];
-                                            rs.beforeFirst();
-                                            while (rs.next()) {
-                                                employeeId[i] = rs.getInt("employee_id");
-                                                uName[i] = rs.getString("user_name");
-                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                designation[i] = rs.getString("designation");
-                                                department[i] = rs.getString("department");
-                                                hasParent[i] = rs.getInt("has_parent");
-                                                parentId[i] = rs.getInt("parent_id");
-                                                i++;
-                                            }
-                                            for (i = 0; i < orgRow1; i++) {
-                                        %>
-                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
-                                        <%
-                                            }
-                                        %>
-                                    </select>
-                                </div>
-                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
-                            </div>
-                            <center>
-                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">Cancel</span>
-                                </button>
-                            </center>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>    
         <%}%>
         <script>
             setTimeout(function () {
@@ -492,30 +344,40 @@
                 });
             });
 
-//            $(document).on("click", ".open-spceDialog", function () {
-//
-//                var letterId = $(this).data('letterid');
-//                var status = $(this).data('status');
-//                var receivingDate = $(this).data('receivingdate');
-//                var depOfOrigin = $(this).data('depoforigin');
-//                var requestId = $(this).data('requestid');
-//                var subjectOfLetter = $(this).data('subjectofletter');
-//                var endDate = $(this).data('enddate');
-//                var documentId = $(this).data('documentid');
-//                var shortDesc = $(this).data('shortdesc');
-//                var scanFile = $(this).data('scanfile');
-////                console.log(status);
-//                //console.log(pName);
-//
-//                $(".modal-body #letterId").val(letterId);
-//                $(".modal-body #status").val(status);
-//                $(".modal-body #receivingDate").val(receivingDate);
-//                $(".modal-body #depOfOrigin").val(depOfOrigin);
-//                $(".modal-body #requestId").val(requestId);
-//                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
-//                $(".modal-body #endDate").val(endDate);
-//                $(".modal-body #documentId").val(documentId);
-//                $(".modal-body #shortDesc").val(shortDesc);
-//                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
+            $(document).on("click", ".open-spceDialog", function () {
+
+                var currentstatus = $(this).data('currentstatus');
+                var depoforigin = $(this).data('depoforigin');
+                var requestid = $(this).data('requestid');
+                var subjectofletter = $(this).data('subjectofletter');
+                var enddate = $(this).data('enddate');
+                var shortdesc = $(this).data('shortdesc');
+                var scanfile = $(this).data('scanfile');
+                var prioritys = $(this).data('prioritys');
+                var comtemployeeid = $(this).data('comtemployeeid');
+                var comment = $(this).data('comment');
+                
+                console.log(currentstatus);
+                console.log(depoforigin);
+                console.log(requestid);
+                console.log(subjectofletter);
+                console.log(enddate);
+                console.log(shortdesc);
+                console.log(scanfile);
+                console.log(prioritys);
+                console.log(comtemployeeid);
+                console.log(comment);
+
+                $(".modal-body #status").val(currentstatus);
+                $(".modal-body #depOfOrigin").val(depoforigin);
+                $(".modal-body #requestId").val(requestid);
+                $(".modal-body #subjectOfLetter").val(subjectofletter);
+                $(".modal-body #endDate").val(enddate);
+                $(".modal-body #shortDesc").val(shortdesc);
+                $(".modal-body #prioritys").val(prioritys);
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
+                $(".modal-body #comTemployeeId").val(comtemployeeid);
+                $(".modal-body #comment").val(comment);
+            });
         </script>
     </body>

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class AddEmployeeBean extends HttpServlet {
+    
     private String uName;
     private String password;
     private String fullName;
@@ -19,13 +20,12 @@ public class AddEmployeeBean extends HttpServlet {
     private String cellNo;
     private String email;
     private String task;
-    private String empOrgId;
     private String status;
+    private String empOrgId;
     private String tableName;
     private String columnName;
     private String values;
     private boolean addEmployee;
-    private String numCompleatedTask;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

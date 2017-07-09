@@ -32,11 +32,6 @@ public class AddOrganogramBean extends HttpServlet {
             depertment = new String(request.getParameter("depertment").getBytes("ISO-8859-1"), "UTF-8");
             parentId = new String(request.getParameter("parentId").getBytes("ISO-8859-1"), "UTF-8");
             hasParent = new String(request.getParameter("hasParent").getBytes("ISO-8859-1"), "UTF-8");
-
-            System.out.println("designation : " + designation);
-            System.out.println("depertment : " + depertment);
-            System.out.println("parentId : " + parentId);
-            System.out.println("hasParent : " + hasParent);
             
             tableName = " employee_organogram ";
             columnName = " designation, department, has_parent, parent_id ";

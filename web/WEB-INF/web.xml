@@ -45,12 +45,12 @@
         <servlet-class>userBean.AddReceivesDocument</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AllNewWorkEmp</servlet-name>
-        <servlet-class>userBean.AllNewWorkEmp</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AllReturnWorkEmp</servlet-name>
         <servlet-class>userBean.AllReturnWorkEmp</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AllNewWorkEmp</servlet-name>
+        <servlet-class>userBean.AllNewWorkEmp</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
@@ -97,12 +97,12 @@
         <url-pattern>/AddReceivesDocument</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AllNewWorkEmp</servlet-name>
-        <url-pattern>/AllNewWorkEmp</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AllReturnWorkEmp</servlet-name>
         <url-pattern>/AllReturnWorkEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllNewWorkEmp</servlet-name>
+        <url-pattern>/AllNewWorkEmp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

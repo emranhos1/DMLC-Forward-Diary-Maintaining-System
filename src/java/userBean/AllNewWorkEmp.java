@@ -11,97 +11,105 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-public class AllNewDocument extends HttpServlet {
-
+public class AllNewWorkEmp extends HttpServlet {
+    
     private int i;
+    private String userId;
     private String columnName;
     private String tableName;
     private String whereCondition;
-    ResultSet rs;
+    private ResultSet rs;
     private int dataRow;
-    private String[] letterId;
     private int[] currentStatus;
-    private String[] receivingDate;
     private String[] depOfOrigin;
     private String[] requestId;
     private String[] subjectOfLetter;
     private String[] endDate;
-    private int[] documentId;
     private String[] shortDesc;
     private String[] scanFile;
-    private String[] priority;
-    private String status;
+    private int[] priority;
+    private int[] comTemployeeId;
+    private String[] comment;
+    private String[] employeeName;
+    private String[] dateTime;
+    private String prioritys;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
             i = 0;
+            
+            HttpSession session = request.getSession();
+            userId = session.getAttribute("idUser").toString();
+            
             columnName = "*";
-            tableName = " letter ";
-            whereCondition = " current_status = 1 ";
+            tableName = " letter_comments_on_receives_document ";
+            whereCondition = " recdocTemployee_id = '"+userId+"'";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
             rs.last();
             dataRow = rs.getRow();
-            letterId = new String[dataRow];
             currentStatus = new int[dataRow];
-            receivingDate = new String[dataRow];
             depOfOrigin = new String[dataRow];
             requestId = new String[dataRow];
             subjectOfLetter = new String[dataRow];
             endDate = new String[dataRow];
-            documentId = new int[dataRow];
             shortDesc = new String[dataRow];
             scanFile = new String[dataRow];
-            priority = new String[dataRow];
+            priority = new int[dataRow];
+            comTemployeeId = new int[dataRow];
+            comment = new String[dataRow];
+            employeeName = new String[dataRow];
+            dateTime = new String[dataRow];
             rs.beforeFirst();
             while (rs.next()) {
-                letterId[i] = rs.getString("letter_id");
                 currentStatus[i] = rs.getInt("current_status");
-                receivingDate[i] = rs.getString("receiving_date");
                 depOfOrigin[i] = rs.getString("department_of_origin");
                 requestId[i] = rs.getString("request_id");
                 subjectOfLetter[i] = rs.getString("subject_of_letter");
                 endDate[i] = rs.getString("end_date");
-                documentId[i] = rs.getInt("document_id");
                 shortDesc[i] = rs.getString("short_desc");
                 scanFile[i] = rs.getString("scan_file");
-                priority[i] = rs.getString("priority");
+                priority[i] = rs.getInt("priority");
+                comTemployeeId[i] = rs.getInt("comTemployee_id");
+                comment[i] = rs.getString("comment");
+                employeeName[i] = rs.getString("employee_name");
+                dateTime[i] = rs.getString("date_time");
                 i++;
             }
 
-            for (i = 0; i < dataRow; i++) {
-                if (currentStatus[i] == 1) {
-                    status = "শুরু হয়েছে";
-                } else if (currentStatus[i] == 2) {
-                    status = "চলমান";
-                } else if (currentStatus[i] == 3) {
-                    status = "শেষ";
+            for(i = 0; i < dataRow; i++){
+                if(priority[i] ==1){
+                    prioritys = "উচ্চ";
                 }
+                else if(priority[i] ==2){
+                    prioritys = "মাঝারি";
+                }
+                else if(priority[i] ==3){
+                    prioritys = "নিন্ম";
+                }
+            
                 response.setContentType("text/plain");
                 response.getWriter().write("<tr>"
                         + "<td>" + (i + 1) + "</td>"
-                        + "<td>" + status + "</td>"
-                        + "<td>" + receivingDate[i] + "</td>"
                         + "<td>" + depOfOrigin[i] + "</td>"
-                        + "<td>" + requestId[i] + "</td>"
                         + "<td>" + subjectOfLetter[i] + "</td>"
                         + "<td>" + endDate[i] + "</td>"
-                        + "<td>" + documentId[i] + "</td>"
                         + "<td>" + shortDesc[i] + "</td>"
-                        + "<td><img src='../Uplopded_file/" + scanFile[i] + "' alt='এই ফাইলটি লোড করা যাচ্ছেনা' height='200px' width='200px'/></td>"
+                        + "<td>" + prioritys + "</td>"
+                        + "<td><img src='../Uplopded_file/" + scanFile[i] + "' alt='এই ফাইলটি লোড করা যাচ্ছেনা' height='500px' width='500px'/></td>"
                         + "<td><button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-letterid='"+letterId[i]+"' data-status='"+ status +"' data-receivingdate='" + receivingDate[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-documentid='" + documentId[i] + "' data-shortdesc='" + shortDesc[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog' href='#addSpec' >অগ্রাধিকার ঠিক করুন</a>"
+                        + "<a data-toggle='modal' data-currentstatus='"+currentStatus[i]+"' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='"+requestId[i]+"' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' data-comtemployeeid='"+comTemployeeId[i]+"' data-comment='"+comment[i]+"' class='open-spceDialog' href='#addSpec' >মন্তব্য করুন ও পাঠান</a>"
                         + "</button>"
                         + "</td>"
                         + "</tr>");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AllNewDocument.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AllNewWorkEmp.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
