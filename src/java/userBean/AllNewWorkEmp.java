@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class AllNewWorkEmp extends HttpServlet {
-    
+
     private int i;
     private String userId;
     private String columnName;
@@ -30,11 +30,10 @@ public class AllNewWorkEmp extends HttpServlet {
     private String[] shortDesc;
     private String[] scanFile;
     private int[] priority;
-    private int[] comTemployeeId;
-    private String[] comment;
-    private String[] employeeName;
-    private String[] dateTime;
     private String prioritys;
+    private int[] documentId;
+    private int[] letterId;
+    private int[] forwardingId;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -42,17 +41,19 @@ public class AllNewWorkEmp extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             i = 0;
-            
+
             HttpSession session = request.getSession();
             userId = session.getAttribute("idUser").toString();
-            
-            columnName = "*";
-            tableName = " letter_comments_on_receives_document ";
-            whereCondition = " recdocTemployee_id = '"+userId+"'";
+
+            columnName = " * ";
+            tableName = " letter_receives_document ";
+            whereCondition = " employee_id = '" + userId + "' and status = 'Active' ";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
             rs.last();
             dataRow = rs.getRow();
+            letterId = new int[dataRow];
+            documentId = new int[dataRow];
             currentStatus = new int[dataRow];
             depOfOrigin = new String[dataRow];
             requestId = new String[dataRow];
@@ -61,12 +62,11 @@ public class AllNewWorkEmp extends HttpServlet {
             shortDesc = new String[dataRow];
             scanFile = new String[dataRow];
             priority = new int[dataRow];
-            comTemployeeId = new int[dataRow];
-            comment = new String[dataRow];
-            employeeName = new String[dataRow];
-            dateTime = new String[dataRow];
+            forwardingId = new int[dataRow];
             rs.beforeFirst();
             while (rs.next()) {
+                letterId[i] = rs.getInt("letter_id");
+                documentId[i] = rs.getInt("document_id");
                 currentStatus[i] = rs.getInt("current_status");
                 depOfOrigin[i] = rs.getString("department_of_origin");
                 requestId[i] = rs.getString("request_id");
@@ -75,35 +75,37 @@ public class AllNewWorkEmp extends HttpServlet {
                 shortDesc[i] = rs.getString("short_desc");
                 scanFile[i] = rs.getString("scan_file");
                 priority[i] = rs.getInt("priority");
-                comTemployeeId[i] = rs.getInt("comTemployee_id");
-                comment[i] = rs.getString("comment");
-                employeeName[i] = rs.getString("employee_name");
-                dateTime[i] = rs.getString("date_time");
+                forwardingId[i] = rs.getInt("forwarding_id");
                 i++;
             }
 
-            for(i = 0; i < dataRow; i++){
-                if(priority[i] ==1){
+            for (i = 0; i < dataRow; i++) {
+                if (priority[i] == 1) {
                     prioritys = "উচ্চ";
-                }
-                else if(priority[i] ==2){
+                } else if (priority[i] == 2) {
                     prioritys = "মাঝারি";
-                }
-                else if(priority[i] ==3){
+                } else if (priority[i] == 3) {
                     prioritys = "নিন্ম";
                 }
-            
+
                 response.setContentType("text/plain");
                 response.getWriter().write("<tr>"
-                        + "<td>" + (i + 1) + "</td>"
+                        + "<td>" + (i + 1) + "<input  type='hidden' id='letterId' name='letterId' class='form-control' value='" + letterId[i] + "'/></td>"
                         + "<td>" + depOfOrigin[i] + "</td>"
                         + "<td>" + subjectOfLetter[i] + "</td>"
                         + "<td>" + endDate[i] + "</td>"
                         + "<td>" + shortDesc[i] + "</td>"
                         + "<td>" + prioritys + "</td>"
                         + "<td><img src='../Uplopded_file/" + scanFile[i] + "' alt='এই ফাইলটি লোড করা যাচ্ছেনা' height='500px' width='500px'/></td>"
-                        + "<td><button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-currentstatus='"+currentStatus[i]+"' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='"+requestId[i]+"' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' data-comtemployeeid='"+comTemployeeId[i]+"' data-comment='"+comment[i]+"' class='open-spceDialog' href='#addSpec' >মন্তব্য করুন ও পাঠান</a>"
+                        + "<td>"
+                        + "<button class='btn btn-success'>"
+                        + "<a data-toggle='modal' data-documentid='" + documentId[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-comment' href='#addSpecComment' >মন্তব্য করুন</a>"
+                        + "</button>        "
+                        + "<button class='btn btn-success'>"
+                        + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-currentstatus='" + currentStatus[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog' href='#addSpec' >পরবর্তী ধাপে পাঠান</a>"
+                        + "</button>        "
+                        + "<button class='btn btn-success'>"
+                        + "<a data-toggle='modal' class='open-spceDialog-return' href='#addSpecReturn' >ফেরত পাঠান</a>"
                         + "</button>"
                         + "</td>"
                         + "</tr>");
