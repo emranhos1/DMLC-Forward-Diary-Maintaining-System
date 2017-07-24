@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AllNewWorkEmp extends HttpServlet {
+public class RunningReturnDocument extends HttpServlet {
 
     private int i;
     private String userId;
@@ -113,10 +113,10 @@ public class AllNewWorkEmp extends HttpServlet {
                         + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-currentstatus='" + currentStatus[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog' href='#addSpec' >পরবর্তী ধাপে পাঠান</a>"
                         + "</button>        "
                         + "<button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-letterid='"+letterId[i]+"' data-forwardingid='" + forwardingId[i] + "' data-forwardedtoemployeeusername='"+forwardedToEmployeeUsername[i]+"' data-acknowledgedbyemployeeusername='"+acknowledgedByEmployeeUsername[i]+"' data-documentid='" + documentId[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-return' href='#addSpecReturn' >ফেরত পাঠান</a>"
+                        + "<a data-toggle='modal' data-letterid='"+letterId[i]+"' data-forwardingid='" + forwardingId[i] + "' data-forwardedtoemployeeusername='"+forwardedToEmployeeUsername[i]+"' data-acknowledgedbyemployeeusername='"+acknowledgedByEmployeeUsername[i]+"' data-documentid='" + documentId[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-comTyper' href='#addSpecComTyper' >কম্পিউটার টাইপস্টকে পাঠান</a>"
                         + "</button>        "
-                        + "<button class='btn btn-success'>"
-                        + "<a data-toggle='modal' class='open-spceDialog-comtypwritter' href='#addSpecComtypwritter' >কম্পিউটার টাইপস্টকে পাঠান</a>"
+                        + "<button class='btn btn-danger'>"
+                        + "<a data-toggle='modal' class='open-spceDialog-delete' href='#addSpecDelete' >বাতিল করুন</a>"
                         + "</button>"
                         + "</td>"
                         + "</tr>");

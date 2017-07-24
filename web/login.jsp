@@ -32,42 +32,42 @@
         <script src="allStyles/dist/js/sb-admin-2.js" type="text/javascript"></script>
     </head>
     <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="row">
-                    <div class="top-logo">
-                        <div class="col-sm-6"><img class="img img-responsive" src="Image/alogo.png" alt=""/></div>
-                        <div class="col-sm-6"><img class="img img-responsive pull-right" src="Image/slogo.png" alt=""></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="row">
+                        <div class="top-logo">
+                            <div class="col-sm-6"><img class="img img-responsive" src="Image/alogo.png" alt=""/></div>
+                            <div class="col-sm-6"><img class="img img-responsive pull-right" src="Image/slogo.png" alt=""></div>
+                        </div>
                     </div>
-                </div>
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" role="form" action="LoginBean" method="post" class="form-horizontal">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Username" name="username" type="text" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <div>
-                                    <input type="submit" value="Login" class="btn btn-lg btn-success btn-block"/>
-                                </div>
-                            </fieldset>
-                        </form>
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please Sign In</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" role="form" action="LoginBean" method="post" class="form-horizontal">
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Username" name="username" type="text" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="Login" class="btn btn-lg btn-success btn-block"/>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>

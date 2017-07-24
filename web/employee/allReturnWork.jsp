@@ -283,7 +283,7 @@
                         <h4 class="modal-title" id="myModalLabel">addSpec</h4>
                     </div>
                     <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
+                        <form class="form-horizontal" method="post" action="">
                             <div class="form-group">
                                 <label for="status" class="col-sm-4 control-label">অবস্থা</label>
                                 <div class="col-sm-8">
@@ -324,40 +324,7 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" name="goingTo" id="goingTo" required>
                                         <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        <%
-                                            int i = 0;
-                                            ResultSet rs;
-                                            int user_Id = Integer.parseInt(session.getAttribute("idUser").toString());
-                                            String columnName = " * ";
-                                            String tableName = " employee_emp_org ";
-                                            String whereCondition = " parent_id = '" + user_Id + "'";
-                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-                                            rs.last();
-                                            int orgRow = rs.getRow();
-                                            int[] employeeId = new int[orgRow];
-                                            int[] empOrgId = new int[orgRow];
-                                            String[] uName = new String[orgRow];
-                                            String[] designation = new String[orgRow];
-                                            String[] department = new String[orgRow];
-                                            int[] hasParent = new int[orgRow];
-                                            int[] parentId = new int[orgRow];
-                                            rs.beforeFirst();
-                                            while (rs.next()) {
-                                                employeeId[i] = rs.getInt("employee_id");
-                                                uName[i] = rs.getString("user_name");
-                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                designation[i] = rs.getString("designation");
-                                                department[i] = rs.getString("department");
-                                                hasParent[i] = rs.getInt("has_parent");
-                                                parentId[i] = rs.getInt("parent_id");
-                                                i++;
-                                            }
-                                            for (i = 0; i < orgRow; i++) {
-                                        %>
-                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
-                                        <%
-                                            }
-                                        %>
+                                        
                                     </select>
                                 </div>
                                 <input type="hidden" id="letterId" name="letterId" class="form-control" required>
@@ -426,37 +393,7 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" name="goingTo" id="goingTo" required>
                                         <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        <%
-                                            columnName = " * ";
-                                            tableName = " employee_emp_org ";
-                                            whereCondition = " parent_id = '" + user_Id + "'";
-                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-                                            rs.last();
-                                            int orgRow1 = rs.getRow();
-                                            int[] employeeId1 = new int[orgRow1];
-                                            int[] empOrgId1 = new int[orgRow1];
-                                            String[] uName1 = new String[orgRow1];
-                                            String[] designation1 = new String[orgRow1];
-                                            String[] department1 = new String[orgRow1];
-                                            int[] hasParent1 = new int[orgRow1];
-                                            int[] parentId1 = new int[orgRow1];
-                                            rs.beforeFirst();
-                                            while (rs.next()) {
-                                                employeeId[i] = rs.getInt("employee_id");
-                                                uName[i] = rs.getString("user_name");
-                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                designation[i] = rs.getString("designation");
-                                                department[i] = rs.getString("department");
-                                                hasParent[i] = rs.getInt("has_parent");
-                                                parentId[i] = rs.getInt("parent_id");
-                                                i++;
-                                            }
-                                            for (i = 0; i < orgRow1; i++) {
-                                        %>
-                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
-                                        <%
-                                            }
-                                        %>
+                                        
                                     </select>
                                 </div>
                                 <input type="hidden" id="letterId" name="letterId" class="form-control" required>
@@ -478,19 +415,19 @@
                 $('#message').fadeOut('fast');
             }, 2000);
 
-            $(window).on("load", function () {
-                $.ajax({
-                    type: "POST",
-                    url: "../AllNewWorkEmp",
-                    success: function (data) {
-                        $("#tebleRow").show();
-                        $("#tebleRow").html(data);
-                        $('#dataTables-example').DataTable({
-                            responsive: true
-                        });
-                    }
-                });
-            });
+//            $(window).on("load", function () {
+//                $.ajax({
+//                    type: "POST",
+//                    url: "../AllNewWorkEmp",
+//                    success: function (data) {
+//                        $("#tebleRow").show();
+//                        $("#tebleRow").html(data);
+//                        $('#dataTables-example').DataTable({
+//                            responsive: true
+//                        });
+//                    }
+//                });
+//            });
 
 //            $(document).on("click", ".open-spceDialog", function () {
 //
@@ -519,3 +456,4 @@
 //                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
         </script>
     </body>
+</html>

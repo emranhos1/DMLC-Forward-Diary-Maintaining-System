@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UpdateRecDoc extends HttpServlet {
+
     private String letterId;
     private String columnName;
     private String tableName;
@@ -34,30 +35,30 @@ public class UpdateRecDoc extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             letterId = request.getParameter("letterId");
-            
+
             dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
             date = new Date();
-            
+
             currentDate = dateFormate.format(date);
-            
+
             columnName = " status, acknowledgement_date_time ";
             tableName = " receives_document ";
-            whereCondition = " letter_id = '"+letterId+"'";
+            whereCondition = " letter_id = '" + letterId + "'";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-            
+
             while (rs.next()) {
                 status = rs.getString("status");
                 acknowledgementDateTime = rs.getString("acknowledgement_date_time");
             }
-            
-            if(acknowledgementDateTime == null && status.equals("Active") ){
-                columnNameANDcolumnValue = " acknowledgement_date_time = '"+currentDate+"'";
+
+            if (acknowledgementDateTime == null && status.equals("Active")) {
+                columnNameANDcolumnValue = " acknowledgement_date_time = '" + currentDate + "'";
                 updateRecDoc = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
             }
-    }   catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(UpdateRecDoc.class.getName()).log(Level.SEVERE, null, ex);
         }
-}
+    }
 }

@@ -1,11 +1,9 @@
 <%-- 
-    Document   : allNewDocument
-    Created on : Jun 5, 2017, 1:07:25 PM
+    Document   : runningReturnDocument
+    Created on : Jul 22, 2017, 2:23:56 PM
     Author     : Md. Emran Hossain
 --%>
 
-<%@page import="dao.SelectQueryDao"%>
-<%@page import="java.sql.ResultSet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -235,7 +233,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">নতুন নথিপত্র সমূহ</h1>
+                        <h1 class="page-header">চলমান ফেরত নথি সমূহ</h1>
                     </div>
                 </div>
                 <div class="row">
@@ -252,16 +250,13 @@
                                     <thead>
                                         <tr>
                                             <th>ক্রমিক নং</th>
-                                            <th>বর্তমান অবস্থা</th>
-                                            <th>প্রাপ্তির তারিখ</th>
                                             <th>মূল বিভাগ</th>
-                                            <th>অনুরোধ আইডি</th>
                                             <th>চিঠি বিষয়</th>
                                             <th>শেষ তারিখ</th>
-                                            <th>নথি আইডি</th>
                                             <th>ছোট বিবরণ</th>
-                                            <th>স্ক্যান ফাইল</th>
                                             <th>অগ্রাধিকার</th>
+                                            <th>স্ক্যান ফাইল</th>
+                                            <th>আপনার মন্তব্য</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tebleRow">
@@ -279,106 +274,6 @@
             </div>
         </div>
 
-        <!--Specification Dialog-->
-        <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">অগ্রাধিকার নির্ধারন কর</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form role="form" class="form-horizontal" method="post" action="../AddReceivesDocument">
-                            <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
-                                <div class="col-sm-8">
-                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
-                                <div class="col-sm-8">
-                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="priority" id="priority" required>
-                                        <option value="">নির্বাচন করুন</option>
-                                        <option value="1">উচ্চ</option>
-                                        <option value="2">মাঝারি</option>
-                                        <option value="3">নিম্ন</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
-                                        <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        <%
-                                            int i = 0;
-                                            ResultSet rs;
-                                            int user_Id = Integer.parseInt(session.getAttribute("idUser").toString());
-                                            String columnName = " * ";
-                                            String tableName = " employee_emp_org ";
-                                            String whereCondition = " parent_id = '" + user_Id + "'";
-                                            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-                                            rs.last();
-                                            int orgRow = rs.getRow();
-                                            int[] employeeId = new int[orgRow];
-                                            int[] empOrgId = new int[orgRow];
-                                            String[] uName = new String[orgRow];
-                                            String[] designation = new String[orgRow];
-                                            String[] department = new String[orgRow];
-                                            int[] hasParent = new int[orgRow];
-                                            int[] parentId = new int[orgRow];
-                                            rs.beforeFirst();
-                                            while (rs.next()) {
-                                                employeeId[i] = rs.getInt("employee_id");
-                                                uName[i] = rs.getString("user_name");
-                                                empOrgId[i] = rs.getInt("employee_organogram_id");
-                                                designation[i] = rs.getString("designation");
-                                                department[i] = rs.getString("department");
-                                                hasParent[i] = rs.getInt("has_parent");
-                                                parentId[i] = rs.getInt("parent_id");
-                                                i++;
-                                            }
-                                            for (i = 0; i < orgRow; i++) {
-                                        %>
-                                        <option value="<%=employeeId[i]%>"><%=uName[i]%> : <%=designation[i]%> (<%=department[i]%>)</option>
-                                        <%
-                                            }
-                                        %>
-                                    </select>
-                                </div>
-                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
-                            </div>
-                            <center>
-                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">Cancel</span>
-                                </button>
-                            </center>
-                        </form>
-                    </div>
-                </div>
-            </div>
         </div>
         <%}%>
         <script>
@@ -389,7 +284,7 @@
             $(window).on("load", function () {
                 $.ajax({
                     type: "POST",
-                    url: "../AllNewDocument",
+                    url: "../RunningReturnDocument",
                     success: function (data) {
                         $("#tebleRow").show();
                         $("#tebleRow").html(data);
@@ -398,31 +293,6 @@
                         });
                     }
                 });
-            });
-
-            $(document).on("click", ".open-spceDialog", function () {
-
-                var letterId = $(this).data('letterid');
-                var status = $(this).data('status');
-                var receivingDate = $(this).data('receivingdate');
-                var depOfOrigin = $(this).data('depoforigin');
-                var requestId = $(this).data('requestid');
-                var subjectOfLetter = $(this).data('subjectofletter');
-                var endDate = $(this).data('enddate');
-                var documentId = $(this).data('documentid');
-                var shortDesc = $(this).data('shortdesc');
-                var scanFile = $(this).data('scanfile');
-
-                $(".modal-body #letterId").val(letterId);
-                $(".modal-body #status").val(status);
-                $(".modal-body #receivingDate").val(receivingDate);
-                $(".modal-body #depOfOrigin").val(depOfOrigin);
-                $(".modal-body #requestId").val(requestId);
-                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
-                $(".modal-body #endDate").val(endDate);
-                $(".modal-body #documentId").val(documentId);
-                $(".modal-body #shortDesc").val(shortDesc);
-                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanFile);
             });
         </script>
     </body>

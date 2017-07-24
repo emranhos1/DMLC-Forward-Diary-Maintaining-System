@@ -60,7 +60,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Web Admin</a>
+                    <a class="navbar-brand" href="index.html">DMLC Employee</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -334,7 +334,7 @@
                                 <div class="col-sm-8">
                                     <select class="form-control" name="goingTo" id="goingTo" required>
                                         <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        
+
                                     </select>
                                 </div>
                             </div>
@@ -391,6 +391,51 @@
             </div>
         </div>
 
+        <!--Specification Dialog for return running document-->
+        <div class="modal fade" id="addSpecReturn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">ফেরত পাঠান</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../ReturnErrorDocument">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="acknowledgedByEmployeeUsername" class="col-sm-4 control-label">যার কাছে ফেরত যাবে</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="acknowledgedByEmployeeUsername" name="acknowledgedByEmployeeUsername" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য দিন</label>
+                                <div class="col-sm-12">
+                                    <textarea id="comment" name="comment" class="form-control" required></textarea>
+                                </div>
+                            </div>
+                            <input  type="hidden" id="forwardedToEmployeeUsername" name="forwardedToEmployeeUsername" class="form-control" value="" readonly/>
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" value=""/>
+                            <input  type="hidden" id="letterId" name="letterId" class="form-control" value=""/>
+                            <input  type="hidden" id="forwardingId" name="forwardingId" class="form-control" value=""/>
+
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="মন্তব্য দিন" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%}%>
         <script>
             setTimeout(function () {
@@ -419,7 +464,7 @@
                 $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
                 $(".modal-body #documentId").val(documentid);
             });
-            
+
             $(document).on("click", ".open-spceDialog", function () {
 
                 var letterid = $(this).data('letterid');
@@ -459,7 +504,7 @@
                         table.destroy();
                     }
                 });
-                
+
                 $.ajax({
                     type: "POST",
                     url: "../AllEmpUnderEmp",
@@ -467,14 +512,13 @@
                         $("#goingTo").show();
                         console.log(data);
                         $("#goingTo").append(data);
-                        
+
                     }
                 });
             });
 
             $(document).on("click", "#tebleRow tr", function () {
                 var letterid = $("#letterId").val();
-                console.log(letterid);
                 $.ajax({
                     type: "POST",
                     url: "../UpdateRecDoc",
@@ -484,5 +528,22 @@
                     }
                 });
             });
+
+            $(document).on("click", ".open-spceDialog-return", function () {
+                var forwardedtoemployeeusername = $(this).data('forwardedtoemployeeusername');
+                var acknowledgedbyemployeeusername = $(this).data('acknowledgedbyemployeeusername');
+                var documentid = $(this).data('documentid');
+                var letterid = $(this).data('letterid');
+                var forwardingid = $(this).data('forwardingid');
+                var scanfile = $(this).data('scanfile');
+
+                $(".modal-body #forwardedToEmployeeUsername").val(forwardedtoemployeeusername);
+                $(".modal-body #acknowledgedByEmployeeUsername").val(acknowledgedbyemployeeusername);
+                $(".modal-body #documentId").val(documentid);
+                $(".modal-body #letterId").val(letterid);
+                $(".modal-body #forwardingId").val(forwardingid);
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
+            });
         </script>
     </body>
+</html>

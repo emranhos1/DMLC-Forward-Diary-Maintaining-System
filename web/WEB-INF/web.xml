@@ -72,6 +72,14 @@
         <servlet-name>AddRecDocForEmp</servlet-name>
         <servlet-class>userBean.AddRecDocForEmp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RunningReturnDocument</servlet-name>
+        <servlet-class>userBean.RunningReturnDocument</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReturnErrorDocument</servlet-name>
+        <servlet-class>userBean.ReturnErrorDocument</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -143,6 +151,14 @@
     <servlet-mapping>
         <servlet-name>AddRecDocForEmp</servlet-name>
         <url-pattern>/AddRecDocForEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RunningReturnDocument</servlet-name>
+        <url-pattern>/RunningReturnDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReturnErrorDocument</servlet-name>
+        <url-pattern>/ReturnErrorDocument</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

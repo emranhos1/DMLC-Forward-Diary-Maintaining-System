@@ -17,79 +17,78 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AddRecDocForEmp extends HttpServlet {
-    
-    private SimpleDateFormat dateFormate;
-    private Date date;
-    private String userId;
-    private String goingToUserId;
+public class ReturnErrorDocument extends HttpServlet {
+
+    private String acknowledgedByEmployeeUsername;
+    private String forwardedToEmployeeUsername;
+    private String documentId;
+    private String comment;
     private String letterId;
-    private String forwardingId;
-    private String status;
     private String columnName;
     private String tableName;
     private String whereCondition;
-    private ResultSet selectAcknowledgedUserName;
-    private String acknowledgedByEmployeeUserName;
-    private ResultSet selectForwardedUserName;
-    private String forwardedToEmployeeUsername;
+    private ResultSet rs;
+    private int employeeId;
+    private SimpleDateFormat dateFormate;
+    private Date date;
     private String forwardingDateTime;
+    private String status;
     private String values;
-    private boolean insertReceivesDocumentTable;
+    private boolean addRecDoc;
+    private String forwardingId;
     private String columnNameANDcolumnValue;
     private boolean updateRecDocTable;
-    
+    private String userId;
+    private boolean addComment;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
-            date = new Date();
+
+            forwardedToEmployeeUsername = new String(request.getParameter("acknowledgedByEmployeeUsername").getBytes("ISO-8859-1"), "UTF-8");
+            acknowledgedByEmployeeUsername = new String(request.getParameter("forwardedToEmployeeUsername").getBytes("ISO-8859-1"), "UTF-8");
+            documentId = new String(request.getParameter("documentId").getBytes("ISO-8859-1"), "UTF-8");
+            letterId = new String(request.getParameter("letterId").getBytes("ISO-8859-1"), "UTF-8");
+            forwardingId = new String(request.getParameter("forwardingId").getBytes("ISO-8859-1"), "UTF-8");
+            comment = new String(request.getParameter("comment").getBytes("ISO-8859-1"), "UTF-8");
+            status = "Active";
 
             HttpSession session = request.getSession();
             userId = session.getAttribute("idUser").toString();
-            
-            goingToUserId = new String(request.getParameter("goingTo").getBytes("ISO-8859-1"), "UTF-8");
-            letterId = new String(request.getParameter("letterId").getBytes("ISO-8859-1"), "UTF-8");
-            forwardingId = new String(request.getParameter("forwardingId").getBytes("ISO-8859-1"), "UTF-8");
-            status = "Active";
-            
-            columnName = " user_name ";
+
+            columnName = " employee_id ";
             tableName = " employee ";
-            whereCondition = " employee_id = '" + userId + "'";
+            whereCondition = " user_name = '" + forwardedToEmployeeUsername + "'";
+            rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
-            selectAcknowledgedUserName = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-            
-            while (selectAcknowledgedUserName.next()) {
-                acknowledgedByEmployeeUserName = selectAcknowledgedUserName.getString("user_name");
+            while (rs.next()) {
+                employeeId = rs.getInt("employee_id");
             }
-            
-            columnName = " user_name ";
-            tableName = " employee ";
-            whereCondition = " employee_id = '" + goingToUserId + "'";
 
-            selectForwardedUserName = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-
-            while (selectForwardedUserName.next()) {
-                forwardedToEmployeeUsername = selectForwardedUserName.getString("user_name");
-            }
-            
+            dateFormate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            date = new Date();
             forwardingDateTime = dateFormate.format(date);
-            
+
             tableName = " receives_document ";
             columnName = " forwarding_date_time, forwarded_to_employee_username, acknowledged_by_employee_username, employee_id, letter_id, status ";
-            values = " '" + forwardingDateTime + "', '" + forwardedToEmployeeUsername + "', '" + acknowledgedByEmployeeUserName + "', '" + goingToUserId + "', '" + letterId + "', '" + status + "' ";
-            insertReceivesDocumentTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
+            values = "'" + forwardingDateTime + "', " + "'" + forwardedToEmployeeUsername + "', " + "'" + acknowledgedByEmployeeUsername + "', " + "'" + employeeId + "', " + "'" + letterId + "', " + "'" + status + "'";
+            addRecDoc = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
 
             columnNameANDcolumnValue = " status = 'Inactive' ";
             tableName = " receives_document ";
             whereCondition = " forwarding_id = '" + forwardingId + "'";
             updateRecDocTable = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
-            
-                if (insertReceivesDocumentTable) {
-                    if (updateRecDocTable) {
+
+            tableName = " comments_on ";
+            columnName = " comment, employee_name, date_time, document_id, employee_id ";
+            values = "'" + comment + "', '" + acknowledgedByEmployeeUsername + "', '" + forwardingDateTime + "', '" + documentId + "', '" + userId + "'";
+            addComment = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
+
+            if (addRecDoc) {
+                if (updateRecDocTable) {
+                    if (addComment) {
                         String sendDocSuccess = "<p class='alert-info'>নথি সফলভাবে পাঠানো হয়েছে</p>";
                         request.getSession().setAttribute("sendDocInfo", sendDocSuccess);
                         response.sendRedirect("employee/allNewWork.jsp");
@@ -103,8 +102,13 @@ public class AddRecDocForEmp extends HttpServlet {
                     request.getSession().setAttribute("sendDocInfo", sendDocError);
                     response.sendRedirect("employee/allNewWork.jsp");
                 }
+            } else {
+                String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
+                request.getSession().setAttribute("sendDocInfo", sendDocError);
+                response.sendRedirect("employee/allNewWork.jsp");
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(AddRecDocForEmp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ReturnErrorDocument.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
