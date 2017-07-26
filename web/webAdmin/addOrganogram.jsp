@@ -260,7 +260,7 @@
                             </div>
 
                             <div id="message">
-                                <center><h3>${addOrgInfo}</h3></center>
+                                <center><h3>${message}</h3></center>
                             </div>
 
                             <div class="panel-body">

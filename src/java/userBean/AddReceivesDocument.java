@@ -102,21 +102,21 @@ public class AddReceivesDocument extends HttpServlet {
                 if (insertReceivesDocumentTable) {
                     if (insertCommentTable) {
                         String sendDocSuccess = "<p class='alert-info'>নথি সফলভাবে পাঠানো হয়</p>";
-                        request.getSession().setAttribute("sendDocInfo", sendDocSuccess);
+                        request.getSession().setAttribute("message", sendDocSuccess);
                         response.sendRedirect("director_general/allNewDocument.jsp");
                     } else {
                         String sendDocError = "<p class='alert-info'>নথি পাঠানো হয় না</p>";
-                        request.getSession().setAttribute("sendDocInfo", sendDocError);
+                        request.getSession().setAttribute("message", sendDocError);
                         response.sendRedirect("director_general/allNewDocument.jsp");
                     }
                 } else {
                     String sendDocError = "<p class='alert-info'>নথি পাঠানো হয় না</p>";
-                    request.getSession().setAttribute("sendDocInfo", sendDocError);
+                    request.getSession().setAttribute("message", sendDocError);
                     response.sendRedirect("director_general/allNewDocument.jsp");
                 }
             } else {
                 String sendDocError = "<p class='alert-info'>নথি পাঠানো হয় না</p>";
-                request.getSession().setAttribute("sendDocInfo", sendDocError);
+                request.getSession().setAttribute("message", sendDocError);
                 response.sendRedirect("director_general/allNewDocument.jsp");
             }
         } catch (SQLException ex) {

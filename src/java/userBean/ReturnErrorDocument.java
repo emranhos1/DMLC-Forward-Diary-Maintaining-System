@@ -90,21 +90,21 @@ public class ReturnErrorDocument extends HttpServlet {
                 if (updateRecDocTable) {
                     if (addComment) {
                         String sendDocSuccess = "<p class='alert-info'>নথি সফলভাবে পাঠানো হয়েছে</p>";
-                        request.getSession().setAttribute("sendDocInfo", sendDocSuccess);
+                        request.getSession().setAttribute("message", sendDocSuccess);
                         response.sendRedirect("employee/allNewWork.jsp");
                     } else {
                         String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
-                        request.getSession().setAttribute("sendDocInfo", sendDocError);
+                        request.getSession().setAttribute("message", sendDocError);
                         response.sendRedirect("employee/allNewWork.jsp");
                     }
                 } else {
                     String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
-                    request.getSession().setAttribute("sendDocInfo", sendDocError);
+                    request.getSession().setAttribute("message", sendDocError);
                     response.sendRedirect("employee/allNewWork.jsp");
                 }
             } else {
                 String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
-                request.getSession().setAttribute("sendDocInfo", sendDocError);
+                request.getSession().setAttribute("message", sendDocError);
                 response.sendRedirect("employee/allNewWork.jsp");
             }
         } catch (SQLException ex) {

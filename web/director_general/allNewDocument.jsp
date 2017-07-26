@@ -245,7 +245,7 @@
                                 সকল নথিপত্র দেখুন
                             </div>
                             <div id="message">
-                                <center><h3>${sendDocInfo}</h3></center>
+                                <center><h3>${message}</h3></center>
                             </div>
                             <div class="panel-body">
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">

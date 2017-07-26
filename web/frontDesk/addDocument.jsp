@@ -237,7 +237,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-2 col-md-6">
                                         <div id="message">
-                                            <center><h3>${addDocInfo}</h3></center>
+                                            <center><h3>${message}</h3></center>
                                         </div>
                                         <form name="addDocument" action="../AddDocumentBean" class="form-horizontal" method="POST" enctype="multipart/form-data">
                                             <div class="form-group">

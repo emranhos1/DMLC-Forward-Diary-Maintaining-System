@@ -80,7 +80,7 @@ public class LoginBean extends HttpServlet {
                 }
             } else {
                 String loginError = "<p class='alert-danger'>User Email or Password Incorrect</p>";
-                request.getSession().setAttribute("loginError", loginError);
+                request.getSession().setAttribute("message", loginError);
                 response.sendRedirect("login.jsp");
             }
             

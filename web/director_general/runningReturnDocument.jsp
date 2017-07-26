@@ -242,10 +242,10 @@
                             <div class="panel-heading">
                                 সকল নথিপত্র দেখুন
                             </div>
-                            <div id="message">
-                                <center><h3>${sendDocInfo}</h3></center>
-                            </div>
                             <div class="panel-body">
+                                <div id="message">
+                                    <center><h3>${message}</h3></center>
+                                </div>
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
@@ -274,13 +274,163 @@
             </div>
         </div>
 
+        <!--Specification Dialog for comment-->
+        <div class="modal fade" id="addSpecComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">মন্তব্য করুন</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../InsertCommentForDG">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shortDesc" class="col-sm-4 control-label">আপনার মন্তব্য দিন</label>
+                                <div class="col-sm-12">
+                                    <textarea id="comment" name="comment" class="form-control" required></textarea>
+                                </div>
+                            </div>
+
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" value=""/>
+
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="মন্তব্য দিন" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--Specification Dialog-->
+        <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">মন্তব্য করুন ও পাঠান</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../AddRecDocForDG">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="depOfOrigin" class="col-sm-4 control-label">মূল বিভাগ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="depOfOrigin" name="depOfOrigin" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate" class="col-sm-4 control-label">শেষ তারিখ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="endDate" name="endDate" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shortDesc" class="col-sm-4 control-label">ছোট বিবরণ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="shortDesc" name="shortDesc" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comingFrom" class="col-sm-4 control-label">যার থেকে ফিরে এসেছে</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="comingFrom" name="comingFrom" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example-spce">
+                                    <thead>
+                                        <tr>
+                                            <th>ক্রমিক নং</th>
+                                            <th>যারা মন্তব্য করেছেন</th>
+                                            <th>মন্তব্য</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="spceTebleRow">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" required/>
+                            <input  type="hidden" id="letterId" name="letterId" class="form-control" required/>
+                            <input  type="hidden" id="forwardingId" name="forwardingId" class="form-control" required/>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="পাঠান" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>  
+        
+        <!--Specification Dialog for delete-->
+        <div class="modal fade" id="addSpecDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">নথিটি মুছুন</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../DeleteDocument">
+                            <center>আপনি কি এই নথিটি মুছে ফেলতে চান?</center>
+                            <input  type="hidden" id="forwardingId" name="forwardingId" class="form-control" value=""/>
+                            <input  type="hidden" id="letterId" name="letterId" class="form-control" value=""/>
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" value=""/>
+                            
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="মুছুন" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         <%}%>
         <script>
             setTimeout(function () {
                 $('#message').fadeOut('slow');
             }, 2000);
-            
+
             $(window).on("load", function () {
                 $.ajax({
                     type: "POST",
@@ -293,6 +443,78 @@
                         });
                     }
                 });
+            });
+            
+            $(document).on("click", ".open-spceDialog-comment", function () {
+
+                var scanfile = $(this).data('scanfile');
+                var documentid = $(this).data('documentid');
+
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
+                $(".modal-body #documentId").val(documentid);
+            });
+            
+            $(document).on("click", ".open-spceDialog", function () {
+
+                var letterid = $(this).data('letterid');
+                var documentid = $(this).data('documentid');
+                var currentstatus = $(this).data('currentstatus');
+                var depoforigin = $(this).data('depoforigin');
+                var requestid = $(this).data('requestid');
+                var subjectofletter = $(this).data('subjectofletter');
+                var enddate = $(this).data('enddate');
+                var shortdesc = $(this).data('shortdesc');
+                var scanfile = $(this).data('scanfile');
+                var prioritys = $(this).data('prioritys');
+                var forwardingid = $(this).data('forwardingid');
+                var ackbyempname = $(this).data('ackbyempname');
+
+                $(".modal-body #letterId").val(letterid);
+                $(".modal-body #documentId").val(documentid);
+                $(".modal-body #status").val(currentstatus);
+                $(".modal-body #depOfOrigin").val(depoforigin);
+                $(".modal-body #requestId").val(requestid);
+                $(".modal-body #subjectOfLetter").val(subjectofletter);
+                $(".modal-body #endDate").val(enddate);
+                $(".modal-body #shortDesc").val(shortdesc);
+                $(".modal-body #prioritys").val(prioritys);
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
+                $(".modal-body #forwardingId").val(forwardingid);
+                $(".modal-body #comingFrom").val(ackbyempname);
+
+                $.ajax({
+                    type: "POST",
+                    url: "../AllComment",
+                    data: 'documentId=' + documentid,
+                    success: function (data) {
+                        $("#spceTebleRow").show();
+                        $("#spceTebleRow").html(data);
+                        var table = $('#dataTables-example-spce').DataTable({
+                            responsive: true
+                        });
+                        table.destroy();
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "../AllEmpUnderEmp",
+                    success: function (data) {
+                        $("#goingTo").show();
+                        $("#goingTo").append(data);
+                    }
+                });
+            });
+            
+            $(document).on("click", ".open-spceDialog-delete", function () {
+
+                var forwardingid = $(this).data('forwardingid');
+                var letterid = $(this).data('letterid');
+                var documentid = $(this).data('documentid');
+
+                $(".modal-body #forwardingId").val(forwardingid);
+                $(".modal-body #letterId").val(letterid);
+                $(".modal-body #documentId").val(documentid);
             });
         </script>
     </body>

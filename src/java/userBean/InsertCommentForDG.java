@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class InsertComment extends HttpServlet {
+public class InsertCommentForDG extends HttpServlet {
     private String comment;
     private String documentId;
     private String userId;
@@ -64,12 +64,12 @@ public class InsertComment extends HttpServlet {
             if(!addComment){
                 String addCommentError = "<p class='alert-info'>নতুন মন্তব্য তালিকায় অন্তর্ভুক্ত করা হয়নি</p>";
                 request.getSession().setAttribute("message", addCommentError);
-                response.sendRedirect("employee/allNewWork.jsp");
+                response.sendRedirect("director_general/runningReturnDocument.jsp");
             } else{
                 String addCommentSuccess = "<p class='alert-info'>নতুন মন্তব্য তালিকায় অন্তর্ভুক্ত করা হয়েছে</p>";
                 request.getSession().setAttribute("message", addCommentSuccess);
-                response.sendRedirect("employee/allNewWork.jsp");
-            }            
+                response.sendRedirect("director_general/runningReturnDocument.jsp");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(InsertComment.class.getName()).log(Level.SEVERE, null, ex);
         }

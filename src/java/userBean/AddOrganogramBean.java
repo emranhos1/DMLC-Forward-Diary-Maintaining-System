@@ -40,11 +40,11 @@ public class AddOrganogramBean extends HttpServlet {
 
             if (addOrganogram) {
                 String addOrgSuccess = "<p class='alert-info'>অর্গানোগ্রাম নিবন্ধিত হয়েছে</p>";
-                request.getSession().setAttribute("addOrgInfo", addOrgSuccess);
+                request.getSession().setAttribute("message", addOrgSuccess);
                 response.sendRedirect("webAdmin/addOrganogram.jsp");
             } else {
                 String addOrgError = "<p class='alert-info'>অর্গানোগ্রাম নিবন্ধিত হয়নি</p>";
-                request.getSession().setAttribute("addOrgInfo", addOrgError);
+                request.getSession().setAttribute("message", addOrgError);
                 response.sendRedirect("webAdmin/addOrganogram.jsp");
             }
         } catch (SQLException ex) {

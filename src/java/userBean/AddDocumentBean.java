@@ -126,16 +126,16 @@ public class AddDocumentBean extends HttpServlet {
             if (addDocument) {
                 if (addLetter) {
                     String addDocSuccess = "<p class='alert-info'>নতুন নথি সফলভাবে সংযোজিত হয়েছে</p>";
-                    request.getSession().setAttribute("addDocInfo", addDocSuccess);
+                    request.getSession().setAttribute("message", addDocSuccess);
                     response.sendRedirect("frontDesk/addDocument.jsp");
                 } else {
                     String addDocError = "<p class='alert-info'> নতুন নথিটি অন্তর্ভুক্ত করা হয়নি</p>";
-                    request.getSession().setAttribute("addDocInfo", addDocError);
+                    request.getSession().setAttribute("message", addDocError);
                     response.sendRedirect("frontDesk/addDocument.jsp");
                 }
             } else {
                 String addDocError = "<p class='alert-info'> নতুন নথিটি অন্তর্ভুক্ত করা হয়নি</p>";
-                request.getSession().setAttribute("addDocInfo", addDocError);
+                request.getSession().setAttribute("message", addDocError);
                 response.sendRedirect("frontDesk/addDocument.jsp");
             }
         } catch (SQLException ex) {

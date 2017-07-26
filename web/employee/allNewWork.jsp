@@ -243,8 +243,7 @@
                             </div>
                             <div class="panel-body">
                                 <div id="message">
-                                    <center><h3>${addCommentInfo}</h3></center>
-                                    <center><h3>${sendDocInfo}</h3></center>
+                                    <center><h3>${message}</h3></center>
                                 </div>
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>

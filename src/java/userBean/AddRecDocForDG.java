@@ -17,8 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AddRecDocForEmp extends HttpServlet {
-    
+public class AddRecDocForDG extends HttpServlet {
     private SimpleDateFormat dateFormate;
     private Date date;
     private String userId;
@@ -38,7 +37,7 @@ public class AddRecDocForEmp extends HttpServlet {
     private boolean insertReceivesDocumentTable;
     private String columnNameANDcolumnValue;
     private boolean updateRecDocTable;
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,9 +58,7 @@ public class AddRecDocForEmp extends HttpServlet {
             columnName = " user_name ";
             tableName = " employee ";
             whereCondition = " employee_id = '" + userId + "'";
-
             selectAcknowledgedUserName = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-            
             while (selectAcknowledgedUserName.next()) {
                 acknowledgedByEmployeeUserName = selectAcknowledgedUserName.getString("user_name");
             }
@@ -69,9 +66,7 @@ public class AddRecDocForEmp extends HttpServlet {
             columnName = " user_name ";
             tableName = " employee ";
             whereCondition = " employee_id = '" + goingToUserId + "'";
-
             selectForwardedUserName = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-
             while (selectForwardedUserName.next()) {
                 forwardedToEmployeeUsername = selectForwardedUserName.getString("user_name");
             }
@@ -82,29 +77,29 @@ public class AddRecDocForEmp extends HttpServlet {
             columnName = " forwarding_date_time, forwarded_to_employee_username, acknowledged_by_employee_username, employee_id, letter_id, status ";
             values = " '" + forwardingDateTime + "', '" + forwardedToEmployeeUsername + "', '" + acknowledgedByEmployeeUserName + "', '" + goingToUserId + "', '" + letterId + "', '" + status + "' ";
             insertReceivesDocumentTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
-
+            
             columnNameANDcolumnValue = " status = 'Inactive' ";
             tableName = " receives_document ";
             whereCondition = " forwarding_id = '" + forwardingId + "'";
             updateRecDocTable = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
             
-                if (insertReceivesDocumentTable) {
+            if (insertReceivesDocumentTable) {
                     if (updateRecDocTable) {
                         String sendDocSuccess = "<p class='alert-info'>নথি সফলভাবে পাঠানো হয়েছে</p>";
                         request.getSession().setAttribute("message", sendDocSuccess);
-                        response.sendRedirect("employee/allNewWork.jsp");
+                        response.sendRedirect("director_general/runningReturnDocument.jsp");
                     } else {
                         String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
                         request.getSession().setAttribute("message", sendDocError);
-                        response.sendRedirect("employee/allNewWork.jsp");
+                        response.sendRedirect("director_general/runningReturnDocument.jsp");
                     }
                 } else {
                     String sendDocError = "<p class='alert-info'>নথিটি সফলভাবে পাঠানো হয় নি</p>";
                     request.getSession().setAttribute("message", sendDocError);
-                    response.sendRedirect("employee/allNewWork.jsp");
+                    response.sendRedirect("director_general/runningReturnDocument.jsp");
                 }
         } catch (SQLException ex) {
-            Logger.getLogger(AddRecDocForEmp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddRecDocForDG.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

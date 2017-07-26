@@ -80,6 +80,18 @@
         <servlet-name>ReturnErrorDocument</servlet-name>
         <servlet-class>userBean.ReturnErrorDocument</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InsertCommentForDG</servlet-name>
+        <servlet-class>userBean.InsertCommentForDG</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddRecDocForDG</servlet-name>
+        <servlet-class>userBean.AddRecDocForDG</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteDocument</servlet-name>
+        <servlet-class>userBean.DeleteDocument</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -159,6 +171,18 @@
     <servlet-mapping>
         <servlet-name>ReturnErrorDocument</servlet-name>
         <url-pattern>/ReturnErrorDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InsertCommentForDG</servlet-name>
+        <url-pattern>/InsertCommentForDG</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddRecDocForDG</servlet-name>
+        <url-pattern>/AddRecDocForDG</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteDocument</servlet-name>
+        <url-pattern>/DeleteDocument</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

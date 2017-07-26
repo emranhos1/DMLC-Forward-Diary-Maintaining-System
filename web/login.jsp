@@ -44,6 +44,9 @@
                     <div class="login-panel panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">Please Sign In</h3>
+                            <div id="message">
+                                <center><h3>${message}</h3></center>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <form role="form" role="form" action="LoginBean" method="post" class="form-horizontal">
@@ -69,5 +72,10 @@
                 </div>
             </div>
         </div>
+        <script>
+            setTimeout(function () {
+                $('#message').fadeOut('fast');
+            }, 2000);
+        </script>
     </body>
 </html>

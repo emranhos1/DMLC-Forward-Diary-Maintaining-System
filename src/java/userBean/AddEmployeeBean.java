@@ -49,11 +49,11 @@ public class AddEmployeeBean extends HttpServlet {
             
             if(!addEmployee){
                 String addEmpError = "<p class='alert-info'>নতুন কর্মচারী তালিকায় অন্তর্ভুক্ত করা হয়নি</p>";
-                request.getSession().setAttribute("addEmpInfo", addEmpError);
+                request.getSession().setAttribute("message", addEmpError);
                 response.sendRedirect("webAdmin/addEmployee.jsp");
             } else{
                 String addEmpSuccess = "<p class='alert-info'>নতুন কর্মচারী তালিকায় অন্তর্ভুক্ত করা হয়েছে</p>";
-                request.getSession().setAttribute("addEmpInfo", addEmpSuccess);
+                request.getSession().setAttribute("message", addEmpSuccess);
                 response.sendRedirect("webAdmin/addEmployee.jsp");
             }
         } catch (SQLException ex) {
