@@ -58,7 +58,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="dashbord.jsp">DMLC মহাপরিচালক</a>
+                    <a class="navbar-brand" href="dashboard.jsp">DMLC মহাপরিচালক</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->

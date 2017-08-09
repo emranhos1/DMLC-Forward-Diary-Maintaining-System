@@ -1,19 +1,19 @@
 <%-- 
-    Document   : dashbord
-    Created on : Jun 5, 2017, 1:07:25 PM
+    Document   : dashboard
+    Created on : Aug 9, 2017, 3:33:48 PM
     Author     : Md. Emran Hossain
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>DMLC - Dashboard</title>
+        <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
         <link href="../allStyles/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
         <!-- MetisMenu CSS -->
@@ -43,7 +43,7 @@
                 response.sendRedirect("../login.jsp");
             } else {%>
         <div id="wrapper">
-
+            
             <!-- Navigation Bar-->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
 
@@ -55,7 +55,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="dashboard.jsp">DMLC Employee</a>
+                    <a class="navbar-brand" href="dashboard.jsp">DMLC কম্পিউটার অপারেটর</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -206,17 +206,11 @@
                             <li>
                                 <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
-
                             <li>
-                                <a href="allNewWork.jsp"><i class="fa fa-users fa-fw"></i>সব নতুন কাজ</a>
-                            </li>
-
-                            <li>
-                                <a href="allReturnWork.jsp"><i class="fa fa-users fa-fw"></i>ফিরে আসা সকল কাজ</a>
+                                <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>নতুন নথি সমুহ</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
-                                </a>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
                             </li>
                         </ul>
                     </div>
@@ -756,12 +750,15 @@
                                     </span>
                                 </div>
                             </div>
+                            <!-- /.panel-footer -->
                         </div>
+                        <!-- /.panel .chat-panel -->
                     </div>
+                    <!-- /.col-lg-4 -->
                 </div>
+                <!-- /.row -->
             </div>
         </div>
-
         <%}%>
     </body>
 </html>

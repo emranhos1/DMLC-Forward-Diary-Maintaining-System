@@ -57,6 +57,8 @@ public class LoginBean extends HttpServlet {
                     role = "frontdesk";
                 } else if (designation.equals("মহাপরিচালক") && department.equals("সকল")) {
                     role = "DG";
+                } else if (designation.equals("কম্পিউটার অপারেটর")) {
+                    role = "CTR";
                 } else {
                     role = "employee";
                 }
@@ -71,6 +73,10 @@ public class LoginBean extends HttpServlet {
                     }
                     case "DG": {
                         response.sendRedirect("director_general/dashboard.jsp");
+                        break;
+                    }
+                    case "CTR": {
+                        response.sendRedirect("ctr/dashboard.jsp");
                         break;
                     }
                     case "employee": {

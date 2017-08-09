@@ -57,7 +57,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">DMLC Front Desk</a>
+                    <a class="navbar-brand" href="dashboard.jsp">DMLC Front Desk</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
