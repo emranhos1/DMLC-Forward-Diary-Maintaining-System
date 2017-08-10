@@ -435,6 +435,85 @@
                 </div>
             </div>
         </div>
+        
+        <!--Specification Dialog for document computer operator-->
+        <div class="modal fade" id="addSpecComtypwritter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">কম্পিউটার টাইপ রাইটার কে পাঠান</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../AddRecDocForEmp">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="depOfOrigin" class="col-sm-4 control-label">মূল বিভাগ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="depOfOrigin" name="depOfOrigin" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="endDate" class="col-sm-4 control-label">শেষ তারিখ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="endDate" name="endDate" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="shortDesc" class="col-sm-4 control-label">ছোট বিবরণ়</label>
+                                <div class="col-sm-8">
+                                    <input  type="text" id="shortDesc" name="shortDesc" class="form-control" value="" readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example-ctr">
+                                    <thead>
+                                        <tr>
+                                            <th>ক্রমিক নং</th>
+                                            <th>যারা মন্তব্য করেছেন</th>
+                                            <th>মন্তব্য</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="ctrTebleRow">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                        <option value="">কর্মচারী নির্বাচন করুন</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" required/>
+                            <input  type="hidden" id="letterId" name="letterId" class="form-control" required/>
+                            <input  type="hidden" id="forwardingId" name="forwardingId" class="form-control" required/>
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="পাঠান" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%}%>
         <script>
             setTimeout(function () {
@@ -516,6 +595,47 @@
                 });
             });
 
+            $(document).on("click", ".open-spceDialog-comtypwritter", function () {
+
+                var letterid = $(this).data('letterid');
+                var documentid = $(this).data('documentid');
+                var currentstatus = $(this).data('currentstatus');
+                var depoforigin = $(this).data('depoforigin');
+                var requestid = $(this).data('requestid');
+                var subjectofletter = $(this).data('subjectofletter');
+                var enddate = $(this).data('enddate');
+                var shortdesc = $(this).data('shortdesc');
+                var scanfile = $(this).data('scanfile');
+                var prioritys = $(this).data('prioritys');
+                var forwardingid = $(this).data('forwardingid');
+
+                $(".modal-body #letterId").val(letterid);
+                $(".modal-body #documentId").val(documentid);
+                $(".modal-body #status").val(currentstatus);
+                $(".modal-body #depOfOrigin").val(depoforigin);
+                $(".modal-body #requestId").val(requestid);
+                $(".modal-body #subjectOfLetter").val(subjectofletter);
+                $(".modal-body #endDate").val(enddate);
+                $(".modal-body #shortDesc").val(shortdesc);
+                $(".modal-body #prioritys").val(prioritys);
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
+                $(".modal-body #forwardingId").val(forwardingid);
+                
+                $.ajax({
+                    type: "POST",
+                    url: "../AllComment",
+                    data: 'documentId=' + documentid,
+                    success: function (data) {
+                        $("#ctrTebleRow").show();
+                        $("#ctrTebleRow").html(data);
+                        var table = $('#dataTables-example-ctr').DataTable({
+                            responsive: true
+                        });
+                        table.destroy();
+                    }
+                });
+            });
+            
             $(document).on("click", "#tebleRow tr", function () {
                 var letterid = $("#letterId").val();
                 $.ajax({
