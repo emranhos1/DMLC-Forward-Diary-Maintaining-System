@@ -447,7 +447,7 @@
                         <h4 class="modal-title" id="myModalLabel">কম্পিউটার টাইপ রাইটার কে পাঠান</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" class="form-horizontal" method="post" action="../CTRAddRecDocFor">
+                        <form role="form" class="form-horizontal" method="post" action="../AddRecDocForCTR">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>

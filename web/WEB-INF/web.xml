@@ -97,8 +97,8 @@
         <servlet-class>userBean.CTRUnderDept</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CTRAddRecDocFor</servlet-name>
-        <servlet-class>userBean.CTRAddRecDocFor</servlet-class>
+        <servlet-name>AddRecDocForCTR</servlet-name>
+        <servlet-class>userBean.AddRecDocForCTR</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
@@ -197,8 +197,8 @@
         <url-pattern>/CTRUnderDept</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CTRAddRecDocFor</servlet-name>
-        <url-pattern>/CTRAddRecDocFor</url-pattern>
+        <servlet-name>AddRecDocForCTR</servlet-name>
+        <url-pattern>/AddRecDocForCTR</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
