@@ -92,6 +92,14 @@
         <servlet-name>DeleteDocument</servlet-name>
         <servlet-class>userBean.DeleteDocument</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CTRUnderDept</servlet-name>
+        <servlet-class>userBean.CTRUnderDept</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CTRAddRecDocFor</servlet-name>
+        <servlet-class>userBean.CTRAddRecDocFor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -183,6 +191,14 @@
     <servlet-mapping>
         <servlet-name>DeleteDocument</servlet-name>
         <url-pattern>/DeleteDocument</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CTRUnderDept</servlet-name>
+        <url-pattern>/CTRUnderDept</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CTRAddRecDocFor</servlet-name>
+        <url-pattern>/CTRAddRecDocFor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

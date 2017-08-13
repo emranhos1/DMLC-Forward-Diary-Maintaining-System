@@ -447,7 +447,7 @@
                         <h4 class="modal-title" id="myModalLabel">কম্পিউটার টাইপ রাইটার কে পাঠান</h4>
                     </div>
                     <div class="modal-body">
-                        <form role="form" class="form-horizontal" method="post" action="../AddRecDocForEmp">
+                        <form role="form" class="form-horizontal" method="post" action="../CTRAddRecDocFor">
                             <div class="form-group">
                                 <div class="col-sm-12">
                                     <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
@@ -494,7 +494,7 @@
                             <div class="form-group">
                                 <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
+                                    <select class="form-control" name="goingToCTR" id="goingToCTR" required>
                                         <option value="">কর্মচারী নির্বাচন করুন</option>
 
                                     </select>
@@ -632,6 +632,17 @@
                             responsive: true
                         });
                         table.destroy();
+                    }
+                });
+                
+                $.ajax({
+                    type: "POST",
+                    url: "../CTRUnderDept",
+                    success: function (data) {
+                        $("#goingToCTR").show();
+                        console.log(data);
+                        $("#goingToCTR").append(data);
+
                     }
                 });
             });
