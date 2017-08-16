@@ -100,6 +100,10 @@
         <servlet-name>AddRecDocForCTR</servlet-name>
         <servlet-class>userBean.AddRecDocForCTR</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AllNewWorkCTR</servlet-name>
+        <servlet-class>userBean.AllNewWorkCTR</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -199,6 +203,10 @@
     <servlet-mapping>
         <servlet-name>AddRecDocForCTR</servlet-name>
         <url-pattern>/AddRecDocForCTR</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AllNewWorkCTR</servlet-name>
+        <url-pattern>/AllNewWorkCTR</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

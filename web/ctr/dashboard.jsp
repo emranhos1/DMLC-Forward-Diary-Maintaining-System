@@ -55,7 +55,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="dashboard.jsp">DMLC কম্পিউটার অপারেটর</a>
+                    <a class="navbar-brand" href="dashboard.jsp">DMLC CTR(কম্পিউটার অপারেটর)</a>
                 </div>
 
                 <!--Navigation Bar Head(User)-->
@@ -206,11 +206,17 @@
                             <li>
                                 <a href="dashboard.jsp"><i class="fa fa-dashboard fa-fw"></i> ড্যাশবোর্ড</a>
                             </li>
+
                             <li>
-                                <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>নতুন নথি সমুহ</a>
+                                <a href="allNewDocument.jsp"><i class="fa fa-users fa-fw"></i>সব নতুন কাজ</a>
+                            </li>
+
+                            <li>
+                                <a href="oldDocNewFile.jsp"><i class="fa fa-users fa-fw"></i>পুরানো ডকুমেন্ট নতুন ফাইল</a>
                             </li>
                             <li>
-                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান</a>
+                                <a href="../logout.jsp"><i class="fa fa-user fa-fw"></i>প্রস্থান
+                                </a>
                             </li>
                         </ul>
                     </div>
