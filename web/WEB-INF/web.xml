@@ -104,6 +104,14 @@
         <servlet-name>AllNewWorkCTR</servlet-name>
         <servlet-class>userBean.AllNewWorkCTR</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DownloadFile</servlet-name>
+        <servlet-class>userBean.DownloadFile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownloadFiles</servlet-name>
+        <servlet-class>userBean.DownloadFiles</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>AllNewWorkCTR</servlet-name>
         <url-pattern>/AllNewWorkCTR</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadFile</servlet-name>
+        <url-pattern>/DownloadFile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadFiles</servlet-name>
+        <url-pattern>/DownloadFiles</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -109,7 +109,7 @@ public class AllNewWorkCTR extends HttpServlet {
                         + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-receivingdate='" + receivingDate[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-comments' href='#addSpecComments' >মন্তব্য এবং ফাইল দেখুন</a>"
                         + "</button><br/><br/>"
                         + "<button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-receivingdate='" + receivingDate[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-download' href='#addSpecDownload' >ডাউনলোড করুন</a>"
+                        + "<a href= 'http://localhost:8080/DMLC/Uplopded_file/"+scanFile[i]+"' target ='_blank' >ডাউনলোড করুন</a>"
                         + "</button>"
                         + "</td>"
                         + "</tr>");
