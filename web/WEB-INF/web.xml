@@ -112,6 +112,14 @@
         <servlet-name>DownloadFiles</servlet-name>
         <servlet-class>userBean.DownloadFiles</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OldDocNewFileCTR</servlet-name>
+        <servlet-class>userBean.OldDocNewFileCTR</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddResDocForCTR</servlet-name>
+        <servlet-class>userBean.AddResDocForCTR</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -223,6 +231,14 @@
     <servlet-mapping>
         <servlet-name>DownloadFiles</servlet-name>
         <url-pattern>/DownloadFiles</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OldDocNewFileCTR</servlet-name>
+        <url-pattern>/OldDocNewFileCTR</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddResDocForCTR</servlet-name>
+        <url-pattern>/AddResDocForCTR</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
