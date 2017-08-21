@@ -53,6 +53,9 @@ public class AddResDocForCTR extends HttpServlet {
     private boolean updateRecDocTable;
     private String parentUsername;
     private ResultSet selectParentUsername;
+    private SimpleDateFormat dateFormat;
+    private Date date;
+    private String sendingDate;
 
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
@@ -96,6 +99,10 @@ public class AddResDocForCTR extends HttpServlet {
             HttpSession session = request.getSession();
             userId = session.getAttribute("idUser").toString();
 
+            dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+            date = new Date();
+            sendingDate = dateFormat.format(date);
+            
             scanfile = request.getPart("file");
             documentId = Integer.parseInt(request.getParameter("documentId"));
             forwardingId = Integer.parseInt(request.getParameter("forwardingId"));
@@ -126,8 +133,8 @@ public class AddResDocForCTR extends HttpServlet {
             if (file.exists()) {
                 getRandom();
                 tableName = " response_document ";
-                columnName = " current_working_employee, document_id, response_file, status ";
-                values = "'" + parentUsername + "', '" + documentId + "', '" + newFileName + "', '" + Status + "'";
+                columnName = " current_working_employee, document_id, response_file, status, sending_date ";
+                values = "'" + parentUsername + "', '" + documentId + "', '" + newFileName + "', '" + Status + "', '" + sendingDate + "'";
                 addResDocTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             } else {
                 newFile.mkdir();
@@ -140,8 +147,8 @@ public class AddResDocForCTR extends HttpServlet {
                     out1.write(bytes, 0, read);
                 }
                 tableName = " response_document ";
-                columnName = " current_working_employee, document_id, response_file, status ";
-                values = "'" + parentUsername + "', '" + documentId + "', '" + fileName + "', '" + Status + "'";
+                columnName = " current_working_employee, document_id, response_file, status, sending_date ";
+                values = "'" + parentUsername + "', '" + documentId + "', '" + fileName + "', '" + Status + "', '" + sendingDate + "'";
                 addResDocTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             }
 

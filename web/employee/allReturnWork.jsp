@@ -246,15 +246,8 @@
                                     <thead>
                                         <tr>
                                             <th>ক্রমিক নং</th>
-                                            <th>বর্তমান অবস্থা</th>
                                             <th>প্রাপ্তির তারিখ</th>
-                                            <th>মূল বিভাগ</th>
-                                            <th>অনুরোধ আইডি</th>
-                                            <th>চিঠি বিষয়</th>
-                                            <th>শেষ তারিখ</th>
-                                            <th>নথি আইডি</th>
-                                            <th>ছোট বিবরণ</th>
-                                            <th>অগ্রাধিকার</th>
+                                            <th>প্রতিক্রিয়া ফাইল</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tebleRow">
@@ -272,188 +265,29 @@
             </div>
         </div>
 
-        <!--Specification Dialog addSpce-->
-        <div class="modal fade" id="addSpec" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">addSpec</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="">
-                            <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
-                                <div class="col-sm-8">
-                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
-                                <div class="col-sm-8">
-                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="priority" id="priority" required>
-                                        <option value="">নির্বাচন করুন</option>
-                                        <option value="1">উচ্চ</option>
-                                        <option value="2">মাঝারি</option>
-                                        <option value="3">নিম্ন</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
-                                        <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        
-                                    </select>
-                                </div>
-                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
-                            </div>
-                            <center>
-                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">Cancel</span>
-                                </button>
-                            </center>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--Specification Dialog addSpce2-->
-        <div class="modal fade" id="addSpec2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <h4 class="modal-title" id="myModalLabel">addSpec2</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form class="form-horizontal" method="post" action="../AddReceivesDocument">
-                            <div class="form-group">
-                                <label for="status" class="col-sm-4 control-label">অবস্থা</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="status" name="status" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="subjectOfLetter" class="col-sm-4 control-label">পত্রের বিষয়</label>
-                                <div class="col-sm-8">
-                                    <input  type="text" id="subjectOfLetter" name="subjectOfLetter" class="form-control" value="" readonly/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="scanFile" class="col-sm-4 control-label">স্ক্যান ফাইল</label>
-                                <div class="col-sm-8">
-                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="300px" width="300px"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">আপনার মন্তব্য</label>
-                                <div class="col-sm-8">
-                                    <textarea id="comment" name="comment" class="form-control" value="" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="priority" class="col-sm-4 control-label">অগ্রাধিকার</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="priority" id="priority" required>
-                                        <option value="">নির্বাচন করুন</option>
-                                        <option value="1">উচ্চ</option>
-                                        <option value="2">মাঝারি</option>
-                                        <option value="3">নিম্ন</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="comment" class="col-sm-4 control-label">যাকে পাঠাতে চান</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control" name="goingTo" id="goingTo" required>
-                                        <option value="">কর্মচারী নির্বাচন করুন</option>
-                                        
-                                    </select>
-                                </div>
-                                <input type="hidden" id="letterId" name="letterId" class="form-control" required>
-                            </div>
-                            <center>
-                                <input id="btn-confirm" type="submit" name="submit" value="Confirm" class="btn btn-success"/>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">Cancel</span>
-                                </button>
-                            </center>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <%}%>
         <script>
             setTimeout(function () {
                 $('#message').fadeOut('fast');
             }, 2000);
 
-//            $(window).on("load", function () {
-//                $.ajax({
-//                    type: "POST",
-//                    url: "../AllNewWorkEmp",
-//                    success: function (data) {
-//                        $("#tebleRow").show();
-//                        $("#tebleRow").html(data);
-//                        $('#dataTables-example').DataTable({
-//                            responsive: true
-//                        });
-//                    }
-//                });
-//            });
+            $(window).on("load", function () {
+                $.ajax({
+                    type: "POST",
+                    url: "../AllReturnWorkForEmp",
+                    success: function (data) {
+                        $("#tebleRow").show();
+                        $("#tebleRow").html(data);
+                        $('#dataTables-example').DataTable({
+                            responsive: true
+                        });
+                    }
+                });
+            });
 
-//            $(document).on("click", ".open-spceDialog", function () {
-//
-//                var letterId = $(this).data('letterid');
-//                var status = $(this).data('status');
-//                var receivingDate = $(this).data('receivingdate');
-//                var depOfOrigin = $(this).data('depoforigin');
-//                var requestId = $(this).data('requestid');
-//                var subjectOfLetter = $(this).data('subjectofletter');
-//                var endDate = $(this).data('enddate');
-//                var documentId = $(this).data('documentid');
-//                var shortDesc = $(this).data('shortdesc');
-//                var scanFile = $(this).data('scanfile');
-////                console.log(status);
-//                //console.log(pName);
-//
-//                $(".modal-body #letterId").val(letterId);
-//                $(".modal-body #status").val(status);
-//                $(".modal-body #receivingDate").val(receivingDate);
-//                $(".modal-body #depOfOrigin").val(depOfOrigin);
-//                $(".modal-body #requestId").val(requestId);
-//                $(".modal-body #subjectOfLetter").val(subjectOfLetter);
-//                $(".modal-body #endDate").val(endDate);
-//                $(".modal-body #documentId").val(documentId);
-//                $(".modal-body #shortDesc").val(shortDesc);
-//                $(".modal-body #scanFile").attr('src', '../uplopded_file/' + scanFile);
+            $(document).on("click", ".open-spceDialog-send-parent", function () {
+                
+            });
         </script>
     </body>
 </html>
