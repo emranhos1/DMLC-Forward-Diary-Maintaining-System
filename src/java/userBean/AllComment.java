@@ -40,7 +40,7 @@ public class AllComment extends HttpServlet {
             
             columnName = "*";
             tableName = " letter_comments_on_receives_document ";
-            whereCondition = " recdocTemployee_id = '" + userId + "' and document_id = '"+documentId+"'";
+            whereCondition = " forwarded_to_employee_id = '" + userId + "' and document_id = '"+documentId+"'";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
             rs.last();

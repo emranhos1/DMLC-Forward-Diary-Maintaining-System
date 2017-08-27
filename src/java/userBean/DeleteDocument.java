@@ -1,6 +1,6 @@
 package userBean;
 
-import dao.DeleteQueryDao;
+import dao.UpdateQueryDao;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -18,9 +18,8 @@ public class DeleteDocument extends HttpServlet {
     private String documentId;
     private String tableName;
     private String whereCondition;
-    private boolean deleteDocumentTable;
-    private boolean deleteLetterTable;
-    private boolean deleteRecDocTable;
+    private String columnNameANDcolumnValue;
+    private boolean updateRecDocTable;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -32,38 +31,15 @@ public class DeleteDocument extends HttpServlet {
             letterId = new String(request.getParameter("letterId").getBytes("ISO-8859-1"), "UTF-8");
             documentId = new String(request.getParameter("documentId").getBytes("ISO-8859-1"), "UTF-8");
 
+            columnNameANDcolumnValue = "status = 'Disable'";
             tableName = " receives_document ";
             whereCondition = " letter_id = '" + letterId + "'";
-            deleteRecDocTable = DeleteQueryDao.deleteQueryWithWhereClause(tableName, whereCondition);
+            updateRecDocTable = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
 
-            tableName = " letter ";
-            whereCondition = " letter_id = '" + letterId + "'";
-            deleteLetterTable = DeleteQueryDao.deleteQueryWithWhereClause(tableName, whereCondition);
-
-            tableName = " comments_on ";
-            whereCondition = " document_id = '" + documentId + "'";
-            deleteDocumentTable = DeleteQueryDao.deleteQueryWithWhereClause(tableName, whereCondition);
-            
-            tableName = " document ";
-            whereCondition = " document_id = '" + documentId + "'";
-            deleteDocumentTable = DeleteQueryDao.deleteQueryWithWhereClause(tableName, whereCondition);
-
-            if (deleteRecDocTable) {
-                if (deleteLetterTable) {
-                    if (deleteDocumentTable) {
-                        String deleteDocSuccess = "<p class='alert-info'>নথিটি সফলভাবে মোছা হয়েছে</p>";
-                        request.getSession().setAttribute("message", deleteDocSuccess);
-                        response.sendRedirect("director_general/runningReturnDocument.jsp");
-                    } else {
-                        String deleteDocError = "<p class='alert-danger'>নথি সফলভাবে মোছা হয়নি</p>";
-                        request.getSession().setAttribute("message", deleteDocError);
-                        response.sendRedirect("director_general/runningReturnDocument.jsp");
-                    }
-                } else {
-                    String deleteDocError = "<p class='alert-danger'>নথি সফলভাবে মোছা হয়নি</p>";
-                    request.getSession().setAttribute("message", deleteDocError);
-                    response.sendRedirect("director_general/runningReturnDocument.jsp");
-                }
+            if (updateRecDocTable) {
+                String deleteDocSuccess = "<p class='alert-info'>নথিটি সফলভাবে মোছা হয়েছে</p>";
+                request.getSession().setAttribute("message", deleteDocSuccess);
+                response.sendRedirect("director_general/runningReturnDocument.jsp");
             } else {
                 String deleteDocError = "<p class='alert-danger'>নথি সফলভাবে মোছা হয়নি</p>";
                 request.getSession().setAttribute("message", deleteDocError);

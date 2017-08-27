@@ -384,6 +384,7 @@
                             </div>
                             <input  type="hidden" id="documentId" name="documentId" class="form-control" required/>
                             <input  type="hidden" id="letterId" name="letterId" class="form-control" required/>
+                            <input  type="hidden" id="ackByEmpId" name="ackByEmpId" class="form-control" required/>
                             <input  type="hidden" id="forwardingId" name="forwardingId" class="form-control" required/>
                             <center>
                                 <input id="btn-confirm" type="submit" name="submit" value="পাঠান" class="btn btn-success"/>
@@ -454,6 +455,18 @@
                 $(".modal-body #documentId").val(documentid);
             });
             
+            $(document).on("click", "#tebleRow tr", function () {
+                var letterid = $("#letterId").val();
+                $.ajax({
+                    type: "POST",
+                    url: "../UpdateRecDoc",
+                    data: 'letterId=' + letterid,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+            
             $(document).on("click", ".open-spceDialog", function () {
 
                 var letterid = $(this).data('letterid');
@@ -467,7 +480,8 @@
                 var scanfile = $(this).data('scanfile');
                 var prioritys = $(this).data('prioritys');
                 var forwardingid = $(this).data('forwardingid');
-                var ackbyempname = $(this).data('ackbyempname');
+                var acknowledgedbyemployeeusername = $(this).data('acknowledgedbyemployeeusername');
+                var acknowledgedbyemployeeid = $(this).data('acknowledgedbyemployeeid');
 
                 $(".modal-body #letterId").val(letterid);
                 $(".modal-body #documentId").val(documentid);
@@ -480,7 +494,8 @@
                 $(".modal-body #prioritys").val(prioritys);
                 $(".modal-body #scanFile").attr('src', '../Uplopded_file/' + scanfile);
                 $(".modal-body #forwardingId").val(forwardingid);
-                $(".modal-body #comingFrom").val(ackbyempname);
+                $(".modal-body #comingFrom").val(acknowledgedbyemployeeusername);
+                $(".modal-body #ackByEmpId").val(acknowledgedbyemployeeid);
 
                 $.ajax({
                     type: "POST",

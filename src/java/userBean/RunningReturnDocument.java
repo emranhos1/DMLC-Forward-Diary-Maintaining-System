@@ -38,6 +38,8 @@ public class RunningReturnDocument extends HttpServlet {
     private String ackEmployeeId;
     private String userName;
     private String[] forwardedToEmployeeUsername;
+    private int[] forwardedToEmployeeId;
+    private int[] acknowledgedByEmployeeId;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -51,7 +53,7 @@ public class RunningReturnDocument extends HttpServlet {
 
             columnName = " * ";
             tableName = " letter_receives_document ";
-            whereCondition = " employee_id = '" + userId + "' and status = 'Active' ";
+            whereCondition = " forwarded_to_employee_id = '" + userId + "' and status = 'Active' ";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
 
             rs.last();
@@ -69,6 +71,8 @@ public class RunningReturnDocument extends HttpServlet {
             forwardingId = new int[dataRow];
             forwardedToEmployeeUsername = new String[dataRow];
             acknowledgedByEmployeeUsername = new String[dataRow];
+            forwardedToEmployeeId = new int[dataRow];
+            acknowledgedByEmployeeId = new int[dataRow];
             rs.beforeFirst();
             while (rs.next()) {
                 letterId[i] = rs.getInt("letter_id");
@@ -84,6 +88,8 @@ public class RunningReturnDocument extends HttpServlet {
                 forwardingId[i] = rs.getInt("forwarding_id");
                 forwardedToEmployeeUsername[i] = rs.getString("forwarded_to_employee_username");
                 acknowledgedByEmployeeUsername[i] = rs.getString("acknowledged_by_employee_username");
+                forwardedToEmployeeId[i] = rs.getInt("forwarded_to_employee_id");
+                acknowledgedByEmployeeId[i] = rs.getInt("acknowledged_by_employee_id");
                 i++;
             }
             
@@ -110,10 +116,7 @@ public class RunningReturnDocument extends HttpServlet {
                         + "<a data-toggle='modal' data-documentid='" + documentId[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-comment' href='#addSpecComment' >মন্তব্য করুন</a>"
                         + "</button>        "
                         + "<button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-currentstatus='" + currentStatus[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' data-ackbyempname='"+acknowledgedByEmployeeUsername[i]+"' class='open-spceDialog' href='#addSpec' >পরবর্তী ধাপে পাঠান</a>"
-                        + "</button>        "
-                        + "<button class='btn btn-success'>"
-                        + "<a data-toggle='modal' data-letterid='"+letterId[i]+"' data-forwardingid='" + forwardingId[i] + "' data-forwardedtoemployeeusername='"+forwardedToEmployeeUsername[i]+"' data-acknowledgedbyemployeeusername='"+acknowledgedByEmployeeUsername[i]+"' data-documentid='" + documentId[i] + "' data-scanfile='" + scanFile[i] + "' class='open-spceDialog-comTyper' href='#addSpecComTyper' >কম্পিউটার টাইপস্টকে পাঠান</a>"
+                        + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' data-currentstatus='" + currentStatus[i] + "' data-depoforigin='" + depOfOrigin[i] + "' data-requestid='" + requestId[i] + "' data-subjectofletter='" + subjectOfLetter[i] + "' data-enddate='" + endDate[i] + "' data-shortdesc='" + shortDesc[i] + "' data-prioritys='" + prioritys + "' data-scanfile='" + scanFile[i] + "' data-acknowledgedbyemployeeusername='"+acknowledgedByEmployeeUsername[i]+"' data-acknowledgedbyemployeeid='"+acknowledgedByEmployeeId[i]+"' class='open-spceDialog' href='#addSpec' >পরবর্তী ধাপে পাঠান</a>"
                         + "</button>        "
                         + "<button class='btn btn-danger'>"
                         + "<a data-toggle='modal' data-forwardingid='" + forwardingId[i] + "' data-letterid='" + letterId[i] + "' data-documentid='" + documentId[i] + "' class='open-spceDialog-delete' href='#addSpecDelete' >বাতিল করুন</a>"

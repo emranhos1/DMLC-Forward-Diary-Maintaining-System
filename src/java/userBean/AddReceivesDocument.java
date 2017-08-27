@@ -81,8 +81,8 @@ public class AddReceivesDocument extends HttpServlet {
             updateLetterTable = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
 
             tableName = " receives_document ";
-            columnName = " forwarding_date_time, forwarded_to_employee_username, acknowledged_by_employee_username, employee_id, letter_id, status ";
-            values = " '" + forwardingDateTime + "', '" + forwardedToEmployeeUsername + "', '" + acknowledgedByEmployeeUserName + "', '" + goingToUserId + "', '" + letterId + "', '" + status + "' ";
+            columnName = " forwarding_date_time, forwarded_to_employee_id, acknowledged_by_employee_id, forwarded_to_employee_username, acknowledged_by_employee_username, letter_id, status ";
+            values = " '" + forwardingDateTime + "', '" + goingToUserId + "', '" + userId+ "', '" + forwardedToEmployeeUsername + "', '" + acknowledgedByEmployeeUserName + "', '" + letterId + "', '" + status + "' ";
             insertReceivesDocumentTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
 
             tableName = " letter ";

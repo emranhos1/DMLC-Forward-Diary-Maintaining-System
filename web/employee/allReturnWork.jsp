@@ -287,6 +287,9 @@
 
             $(document).on("click", ".open-spceDialog-send-parent", function () {
                 
+                var documentid = $(this).data('documentid');
+                
+                $(".modal-body #documentId").val(documentid);
             });
         </script>
     </body>

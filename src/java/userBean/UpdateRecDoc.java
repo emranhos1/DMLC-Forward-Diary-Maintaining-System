@@ -53,7 +53,7 @@ public class UpdateRecDoc extends HttpServlet {
                 acknowledgementDateTime = rs.getString("acknowledgement_date_time");
             }
 
-            if (acknowledgementDateTime == null && status.equals("Active")) {
+            if (status.equals("Active") && acknowledgementDateTime == null) {
                 columnNameANDcolumnValue = " acknowledgement_date_time = '" + currentDate + "'";
                 updateRecDoc = UpdateQueryDao.updateQueryWithWhereClause(tableName, columnNameANDcolumnValue, whereCondition);
             }
