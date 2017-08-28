@@ -35,6 +35,8 @@ public class AllNewWorkCTR extends HttpServlet {
     private int i;
     private String prioritys;
     private String[] receivingDate;
+    private String[] forwardedToEmployeeId;
+    private String[] acknowledgedByEmployeeId;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -46,9 +48,10 @@ public class AllNewWorkCTR extends HttpServlet {
             HttpSession session = request.getSession();
             userId = session.getAttribute("idUser").toString();
             
+            
             columnName = " * ";
             tableName = " letter_receives_document ";
-            whereCondition = " employee_id = '" + userId + "' and status = 'Active' ";
+            whereCondition = " forwarded_to_employee_id = '" + userId + "' and status = 'Active' ";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
             
             rs.last();
@@ -65,7 +68,9 @@ public class AllNewWorkCTR extends HttpServlet {
             priority = new int[dataRow];
             forwardingId = new int[dataRow];
             forwardedToEmployeeUsername = new String[dataRow];
+            forwardedToEmployeeId = new String[dataRow];
             acknowledgedByEmployeeUsername = new String[dataRow];
+            acknowledgedByEmployeeId = new String[dataRow];
             rs.beforeFirst();
             
             while (rs.next()) {
@@ -81,7 +86,9 @@ public class AllNewWorkCTR extends HttpServlet {
                 priority[i] = rs.getInt("priority");
                 forwardingId[i] = rs.getInt("forwarding_id");
                 forwardedToEmployeeUsername[i] = rs.getString("forwarded_to_employee_username");
+                forwardedToEmployeeId[i] = rs.getString("forwarded_to_employee_id");
                 acknowledgedByEmployeeUsername[i] = rs.getString("acknowledged_by_employee_username");
+                acknowledgedByEmployeeId[i] = rs.getString("acknowledged_by_employee_id");
                 i++;
             }
             

@@ -56,6 +56,8 @@ public class AddResDocForCTR extends HttpServlet {
     private SimpleDateFormat dateFormat;
     private Date date;
     private String sendingDate;
+    private String comingFromEmpUserName;
+    private int comingFromEmpId;
 
     private String getFileName(final Part part) {
         final String partHeader = part.getHeader("content-disposition");
@@ -122,19 +124,20 @@ public class AddResDocForCTR extends HttpServlet {
             }
             Status = "Active";
 
-            columnName = " acknowledged_by_employee_username ";
+            columnName = " acknowledged_by_employee_username, acknowledged_by_employee_id ";
             tableName = " receives_document ";
             whereCondition = " forwarding_id = '" + forwardingId + "'";
             selectParentUsername = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
             while (selectParentUsername.next()) {
-                parentUsername = selectParentUsername.getString("acknowledged_by_employee_username");
+                comingFromEmpUserName = selectParentUsername.getString("acknowledged_by_employee_username");
+                comingFromEmpId = selectParentUsername.getInt("acknowledged_by_employee_id");
             }
-
+            
             if (file.exists()) {
                 getRandom();
                 tableName = " response_document ";
-                columnName = " current_working_employee, document_id, response_file, status, sending_date ";
-                values = "'" + parentUsername + "', '" + documentId + "', '" + newFileName + "', '" + Status + "', '" + sendingDate + "'";
+                columnName = " current_working_employee_id, current_working_employee_username, coming_from_employee_id, coming_from_employee_username, document_id, response_file, status, sending_date ";
+                values = "'" + comingFromEmpId + "', '" + comingFromEmpUserName + "', '" + userId + "', '" + currentWorkingEmployee + "', '" + documentId + "', '" + newFileName + "', '" + Status + "', '" + sendingDate + "'";
                 addResDocTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             } else {
                 newFile.mkdir();
@@ -147,8 +150,8 @@ public class AddResDocForCTR extends HttpServlet {
                     out1.write(bytes, 0, read);
                 }
                 tableName = " response_document ";
-                columnName = " current_working_employee, document_id, response_file, status, sending_date ";
-                values = "'" + parentUsername + "', '" + documentId + "', '" + fileName + "', '" + Status + "', '" + sendingDate + "'";
+                columnName = " current_working_employee_id, current_working_employee_username, coming_from_employee_id, coming_from_employee_username, document_id, response_file, status, sending_date ";
+                values = "'" + comingFromEmpId + "', '" + comingFromEmpUserName + "', '" + userId + "', '" + currentWorkingEmployee + "', '" + documentId + "', '" + fileName + "', '" + Status + "', '" + sendingDate + "'";
                 addResDocTable = InsertQueryDao.insertQueryWithOutWhereClause(tableName, columnName, values);
             }
 
