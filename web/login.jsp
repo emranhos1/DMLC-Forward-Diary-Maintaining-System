@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="top-logo">
                             <div class="col-sm-6"><img class="img img-responsive" src="Image/alogo.png" alt=""/></div>
-                            <div class="col-sm-6"><img class="img img-responsive pull-right" src="Image/slogo.png" alt=""></div>
+<!--                            <div class="col-sm-6"><img class="img img-responsive pull-right" src="Image/slogo.png" alt=""></div>-->
                         </div>
                     </div>
                     <div class="login-panel panel panel-default">

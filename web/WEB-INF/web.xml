@@ -124,6 +124,10 @@
         <servlet-name>AllReturnWorkForEmp</servlet-name>
         <servlet-class>userBean.AllReturnWorkForEmp</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AddResDocForRmp</servlet-name>
+        <servlet-class>userBean.AddResDocForRmp</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddOrganogramBean</servlet-name>
         <url-pattern>/AddOrganogramBean</url-pattern>
@@ -247,6 +251,10 @@
     <servlet-mapping>
         <servlet-name>AllReturnWorkForEmp</servlet-name>
         <url-pattern>/AllReturnWorkForEmp</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddResDocForRmp</servlet-name>
+        <url-pattern>/AddResDocForRmp</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

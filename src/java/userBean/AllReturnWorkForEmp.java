@@ -21,7 +21,6 @@ public class AllReturnWorkForEmp extends HttpServlet {
     private String tableName;
     private String whereCondition;
     private ResultSet rs;
-    private String userName;
     private int dataRow;
     private String[] responseFile;
     private String[] sendingDate;
@@ -32,6 +31,9 @@ public class AllReturnWorkForEmp extends HttpServlet {
     private int parentId;
     private String department;
     private int designation;
+    private int[] currentWorkEmpId;
+    private String[] comingFromEmp;
+    private int[] comingFromEmpId;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -40,29 +42,32 @@ public class AllReturnWorkForEmp extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             i = 0;
-
             HttpSession session = request.getSession();
             userId = session.getAttribute("idUser").toString();
-
             columnName = " * ";
-            
-            getParentid();
+//            getParentid();
             
             tableName = " response_document ";
-            whereCondition = " current_working_employee = '" + userName + "' and status = 'Active' ";
+            whereCondition = " current_working_employee_id = '" + userId + "' and status = 'Active' ";
             rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-
+            
             rs.last();
             dataRow = rs.getRow();
             currentWorkEmp = new String[dataRow];
+            currentWorkEmpId = new int[dataRow];
+            comingFromEmp = new String[dataRow];
+            comingFromEmpId = new int[dataRow];
             documentId = new int[dataRow];
             responseFile = new String[dataRow];
             status = new String[dataRow];
             sendingDate = new String[dataRow];
             rs.beforeFirst();
-
+            
             while (rs.next()) {
-                currentWorkEmp[i] = rs.getString("current_working_employee");
+                currentWorkEmp[i] = rs.getString("current_working_employee_username");
+                currentWorkEmpId[i] = rs.getInt("current_working_employee_id");
+                comingFromEmp[i] = rs.getString("coming_from_employee_username");
+                comingFromEmpId[i] = rs.getInt("coming_from_employee_id");
                 documentId[i] = rs.getInt("document_id");
                 responseFile[i] = rs.getString("response_file");
                 status[i] = rs.getString("status");
@@ -92,33 +97,33 @@ public class AllReturnWorkForEmp extends HttpServlet {
         }
     }
 
-    protected void getParentid() throws SQLException {
-        
-        tableName = " employee ";
-        whereCondition = " employee_id = '" + userId + "' ";
-        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-
-        while (rs.next()) {
-            userName = rs.getString("user_name");
-            empOrgId = rs.getInt("employee_organogram_id");
-        }
-        
-        tableName = " employee_organogram ";
-        whereCondition = " employee_organogram_id = '" + empOrgId + "' ";
-        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-        
-        while(rs.next()){
-            parentId = rs.getInt("parent_id");
-            department = rs.getString("department");
-        }
-        
-        tableName = " employee_organogram ";
-        whereCondition = " employee_organogram_id = '" + parentId + "' ";
-        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
-        
-        while(rs.next()){
-            designation = rs.getInt("designation");
-            department =rs.getString("department");
-        }
-    }
+//    protected void getParentid() throws SQLException {
+//        
+//        tableName = " employee ";
+//        whereCondition = " employee_id = '" + userId + "' ";
+//        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+//
+//        while (rs.next()) {
+//            userName = rs.getString("user_name");
+//            empOrgId = rs.getInt("employee_organogram_id");
+//        }
+//        
+//        tableName = " employee_organogram ";
+//        whereCondition = " employee_organogram_id = '" + empOrgId + "' ";
+//        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+//        
+//        while(rs.next()){
+//            parentId = rs.getInt("parent_id");
+//            department = rs.getString("department");
+//        }
+//        
+//        tableName = " employee_organogram ";
+//        whereCondition = " employee_organogram_id = '" + parentId + "' ";
+//        rs = SelectQueryDao.selectQueryWithWhereClause(columnName, tableName, whereCondition);
+//        
+//        while(rs.next()){
+//            designation = rs.getInt("designation");
+//            department =rs.getString("department");
+//        }
+//    }
 }

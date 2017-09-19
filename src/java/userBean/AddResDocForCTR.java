@@ -109,7 +109,7 @@ public class AddResDocForCTR extends HttpServlet {
             documentId = Integer.parseInt(request.getParameter("documentId"));
             forwardingId = Integer.parseInt(request.getParameter("forwardingId"));
 
-            uploaded_file = "E:/project/DMLC/DMLC/web/Uplopded_file_return/";
+            uploaded_file = "E:/Programming/1. Office project/Project/DMLC/DMLC/web/Uplopded_file_return/";
             newFile = new File(uploaded_file);
 
             fileName = getFileName(scanfile);

@@ -242,12 +242,16 @@
                                 সকল নথিপত্র দেখুন
                             </div>
                             <div class="panel-body">
+                                <div id="message">
+                                    <center><h3>${message}</h3></center>
+                                </div>
                                 <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                     <thead>
                                         <tr>
                                             <th>ক্রমিক নং</th>
                                             <th>প্রাপ্তির তারিখ</th>
                                             <th>প্রতিক্রিয়া ফাইল</th>
+                                            <th>নির্বাচন করুন</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tebleRow">
@@ -265,6 +269,38 @@
             </div>
         </div>
 
+         <!--Specification Dialog for comment-->
+        <div class="modal fade" id="addSpecToParent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">মন্তব্য করুন</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form role="form" class="form-horizontal" method="post" action="../AddResDocForRmp">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <img id="scanFile" alt="এই ফাইলটি লোড করা যাচ্ছেনা" height="100%" width="100%"/>
+                                </div>
+                            </div>
+
+                            <input  type="hidden" id="documentId" name="documentId" class="form-control" value=""/>
+
+                            <center>
+                                <input id="btn-confirm" type="submit" name="submit" value="পাঠান" class="btn btn-success"/>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">Cancel</span>
+                                </button>
+                            </center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
         <%}%>
         <script>
             setTimeout(function () {
@@ -288,8 +324,10 @@
             $(document).on("click", ".open-spceDialog-send-parent", function () {
                 
                 var documentid = $(this).data('documentid');
+                var scanfile = $(this).data('scanfile');
                 
                 $(".modal-body #documentId").val(documentid);
+                $(".modal-body #scanFile").attr('src', '../Uplopded_file_return/' + scanfile);
             });
         </script>
     </body>
